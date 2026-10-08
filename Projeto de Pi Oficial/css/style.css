@@ -1,0 +1,1566 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap');
+
+
+/* =====================================================
+   RESET
+===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* =====================================================
+   VARIÁVEIS
+===================================================== */
+
+:root {
+    --cor-fundo: #F9F5E9;
+    --cor-texto: #153A24;
+    --cor-destaque: #D48B54;
+    --cor-secundaria: #153A24;
+    --cor-branca: #FFFFFF;
+
+    --fonte-titulo: 'Playfair Display', serif;
+    --fonte-texto: 'Poppins', sans-serif;
+}
+
+
+/* =====================================================
+   BODY
+===================================================== */
+
+body {
+    background:
+        radial-gradient(
+            circle at 85% 10%,
+            rgba(212, 127, 82, 0.12),
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 10% 85%,
+            rgba(23, 74, 53, 0.10),
+            transparent 35%
+        ),
+
+        linear-gradient(
+            135deg,
+            #F7F3EA 0%,
+            #fadc81 45%,
+            #ebac71 100%
+        );
+
+    color: var(--cor-texto);
+
+    font-family: var(--fonte-texto);
+
+    line-height: 1.6;
+
+    overflow-x: hidden;
+
+    /* Animação de entrada */
+    opacity: 0;
+    animation: aparecerPagina 0.6s ease forwards;
+}
+
+
+/* =====================================================
+   ANIMAÇÃO DE ENTRADA DA PÁGINA
+===================================================== */
+
+@keyframes aparecerPagina {
+
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+/* =====================================================
+   ANIMAÇÃO DE SAÍDA DA PÁGINA
+===================================================== */
+
+body.saindo {
+    animation: sairPagina 0.4s ease forwards;
+}
+
+
+@keyframes sairPagina {
+
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+}
+
+
+/* =====================================================
+   CABEÇALHO
+===================================================== */
+
+.cabecalho {
+    width: 100%;
+    max-width: 1430px;
+
+    margin: 0 auto;
+
+    padding: 1.2rem 0;
+
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.logotipo img {
+    width: 85px;
+    height: 85px;
+
+    object-fit: contain;
+
+    display: block;
+}
+
+
+.logo {
+    display: flex;
+
+    align-items: center;
+
+    gap: 0.5rem;
+
+    font-size: 1.2rem;
+
+    font-weight: 500;
+}
+
+
+.logo i {
+    color: var(--cor-secundaria);
+
+    font-size: 1.8rem;
+}
+
+
+.logo strong {
+    color: var(--cor-destaque);
+}
+
+
+/* =====================================================
+   NAVEGAÇÃO
+===================================================== */
+
+.navegacao {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 3.5rem;
+
+    text-align: center;
+}
+
+
+.navegacao a {
+    text-decoration: none;
+
+    color: var(--cor-texto);
+
+    font-weight: 500;
+
+    text-transform: uppercase;
+
+    font-size: 0.9rem;
+
+    transition: color 0.3s ease;
+}
+
+
+.navegacao a.ativo {
+    border-bottom: 2px solid var(--cor-destaque);
+}
+
+
+.navegacao a:hover {
+    color: var(--cor-destaque);
+}
+
+
+/* =====================================================
+   AÇÕES DO CABEÇALHO
+===================================================== */
+
+.acoes-cabecalho {
+    display: flex;
+
+    align-items: center;
+
+    gap: 1rem;
+
+    max-width: 1430px;
+}
+
+
+.busca {
+    background: var(--cor-branca);
+
+    padding: 0.6rem 1rem;
+
+    border-radius: 25px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 0.5rem;
+}
+
+
+.busca i {
+    color: var(--cor-secundaria);
+}
+
+
+.busca input {
+    border: none;
+
+    outline: none;
+
+    background: transparent;
+
+    font-family: var(--fonte-texto);
+}
+
+
+/* =====================================================
+   BOTÃO PRINCIPAL - CADASTRE-SE
+===================================================== */
+
+.btn-principal {
+    position: relative;
+
+    overflow: hidden;
+
+    background: var(--cor-secundaria);
+
+    color: var(--cor-branca);
+
+    border: none;
+
+    padding: 0.7rem 1.5rem;
+
+    border-radius: 25px;
+
+    font-weight: 500;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        background-color 0.3s ease;
+}
+
+
+.btn-principal::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -120%;
+
+    width: 80%;
+    height: 100%;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.25),
+        transparent
+    );
+
+    transform: skewX(-20deg);
+
+    transition: left 0.6s ease;
+}
+
+
+.btn-principal:hover {
+    background: #0F2A1A;
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 8px 20px rgba(21, 58, 36, 0.25);
+}
+
+
+.btn-principal:hover::before {
+    left: 130%;
+}
+
+
+.btn-principal:active {
+    transform: translateY(-1px) scale(0.97);
+
+    box-shadow:
+        0 4px 10px rgba(21, 58, 36, 0.2);
+}
+
+
+/* =====================================================
+   BANNER PRINCIPAL
+===================================================== */
+
+.banner-principal {
+    width: 90%;
+
+    max-width: 2600px;
+
+    margin: 0 auto;
+
+    position: relative;
+
+    height: 480px;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    background-color: #D3D3D3;
+
+    isolation: isolate;
+}
+
+
+.banner-principal::after {
+    content: '';
+
+    position: absolute;
+
+    inset: 0;
+
+    background: linear-gradient(
+        90deg,
+        rgba(10, 29, 18, 0.78),
+        rgba(10, 29, 18, 0.18) 72%
+    );
+
+    z-index: 1;
+}
+
+
+.banner-principal img {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    object-position: center;
+
+    z-index: 0;
+}
+
+
+.conteudo-banner {
+    position: absolute;
+
+    bottom: 0;
+
+    left: 4%;
+
+    width: 55%;
+
+    padding: 1.5rem 0 7rem 0;
+
+    color: var(--cor-branca);
+
+    z-index: 2;
+}
+
+
+.rotulo {
+    display: inline-block;
+
+    background: var(--cor-secundaria);
+
+    color: var(--cor-branca);
+
+    padding: 0.4rem 1.1rem;
+
+    border-radius: 20px;
+
+    font-size: 0.75rem;
+
+    margin-bottom: 1rem;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.5px;
+
+    font-weight: 500;
+}
+
+
+.banner-principal h1 {
+    font-family: var(--fonte-titulo);
+
+    font-size: 3.2rem;
+
+    line-height: 1.05;
+
+    margin-bottom: 1rem;
+
+    color: var(--cor-branca);
+
+    font-weight: 600;
+}
+
+
+.banner-principal h1 span {
+    color: var(--cor-destaque);
+}
+
+
+.banner-principal p {
+    max-width: 95%;
+
+    margin-bottom: 1.8rem;
+
+    font-size: 0.9rem;
+
+    color: var(--cor-branca);
+
+    opacity: 0.95;
+
+    line-height: 1.5;
+}
+
+
+/* =====================================================
+   BOTÕES
+===================================================== */
+
+.btn {
+    background-color: #5fd113;
+
+    color: #ffffff;
+
+    border: none;
+
+    padding: 12px 25px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        background-color 0.3s ease;
+}
+
+
+.btn-destaque {
+    position: relative;
+
+    overflow: hidden;
+
+    background: var(--cor-destaque);
+
+    color: var(--cor-branca);
+
+    border: none;
+
+    padding: 0.7rem 1.6rem;
+
+    border-radius: 25px;
+
+    font-size: 0.9rem;
+
+    font-weight: 500;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease;
+}
+
+
+.btn-destaque::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -120%;
+
+    width: 80%;
+    height: 100%;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.35),
+        transparent
+    );
+
+    transform: skewX(-20deg);
+
+    transition: left 0.6s ease;
+}
+
+
+.btn-destaque:hover {
+    background: #C27A43;
+
+    transform: translateY(-4px) scale(1.02);
+
+    box-shadow:
+        0 10px 25px rgba(212, 139, 84, 0.35);
+}
+
+
+.btn-destaque:hover::before {
+    left: 130%;
+}
+
+
+.btn-destaque:active {
+    transform: translateY(-1px) scale(0.97);
+
+    box-shadow:
+        0 5px 12px rgba(212, 139, 84, 0.25);
+}
+
+
+/* =====================================================
+   BOTÃO SECUNDÁRIO
+===================================================== */
+
+.btn-secundario {
+    position: relative;
+
+    overflow: hidden;
+
+    isolation: isolate;
+
+    background: transparent;
+
+    color: var(--cor-branca);
+
+    border: 2px solid var(--cor-secundaria);
+
+    padding: 0.7rem 1.6rem;
+
+    border-radius: 25px;
+
+    font-size: 0.9rem;
+
+    font-weight: 500;
+
+    cursor: pointer;
+
+    transition:
+        color 0.3s ease,
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+.btn-secundario::before {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 0;
+    height: 0;
+
+    background: var(--cor-secundaria);
+
+    border-radius: 50%;
+
+    transform: translate(-50%, -50%);
+
+    transition:
+        width 0.4s ease,
+        height 0.4s ease;
+
+    z-index: -1;
+}
+
+
+.btn-secundario:hover {
+    color: var(--cor-branca);
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 8px 20px rgba(21, 58, 36, 0.20);
+}
+
+
+.btn-secundario:hover::before {
+    width: 350px;
+
+    height: 350px;
+}
+
+
+.btn-secundario:active {
+    transform: scale(0.97);
+}
+
+
+/* =====================================================
+   VALORES
+===================================================== */
+
+.valores {
+    width: 90%;
+
+    max-width: 1400px;
+
+    margin: 4rem auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(280px, 1fr));
+
+    gap: 2rem;
+}
+
+
+.card-valor {
+    background: var(--cor-branca);
+
+    padding: 2rem;
+
+    border-radius: 20px;
+
+    text-align: center;
+
+    box-shadow:
+        0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+
+.icone-valor {
+    width: 50px;
+    height: 50px;
+
+    background: rgba(21, 58, 36, 0.1);
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin: 0 auto 1rem;
+
+    color: var(--cor-secundaria);
+
+    font-size: 1.3rem;
+}
+
+
+.card-valor h3 {
+    font-family: var(--fonte-titulo);
+
+    margin-bottom: 0.8rem;
+
+    font-size: 1.3rem;
+}
+
+
+/* =====================================================
+   ANIMAIS DISPONÍVEIS
+===================================================== */
+
+.animais-disponiveis {
+    width: 90%;
+
+    max-width: 1400px;
+
+    margin: 5rem auto;
+}
+
+
+.cabecalho-secao {
+    margin-bottom: 3rem;
+}
+
+
+.cabecalho-secao h2 {
+    font-family: var(--fonte-titulo);
+
+    font-size: 2.5rem;
+
+    margin-bottom: 1rem;
+}
+
+
+.cabecalho-secao h2 strong {
+    color: var(--cor-destaque);
+}
+
+
+/* =====================================================
+   CARROSSEL
+===================================================== */
+
+.carrossel-animais {
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 20px;
+}
+
+
+.area-carrossel {
+    width: 100%;
+
+    overflow: hidden;
+}
+
+
+.lista-animais {
+    display: flex;
+
+    gap: 2rem;
+
+    transition: transform 0.6s ease;
+
+    width: 100%;
+}
+
+
+.lista-animais .card-animal {
+    flex: 0 0 calc((100% - 4rem) / 3);
+
+    min-width: 0;
+}
+
+
+/* =====================================================
+   SETAS DO CARROSSEL
+===================================================== */
+
+.seta-carrossel {
+    position: absolute;
+
+    top: 50%;
+
+    z-index: 10;
+
+    width: 42px;
+    height: 42px;
+
+    border: 0;
+
+    border-radius: 50%;
+
+    background: var(--cor-secundaria);
+
+    color: var(--cor-branca);
+
+    cursor: pointer;
+
+    transform: translateY(-50%);
+
+    transition:
+        transform 0.2s,
+        background 0.2s,
+        opacity 0.2s;
+}
+
+
+.seta-carrossel:hover {
+    background: var(--cor-destaque);
+
+    transform:
+        translateY(-50%)
+        scale(1.06);
+}
+
+
+.seta-carrossel:disabled {
+    opacity: 0.35;
+
+    cursor: not-allowed;
+}
+
+
+.seta-carrossel.esquerda {
+    left: -20px;
+}
+
+
+.seta-carrossel.direita {
+    right: -20px;
+}
+
+
+/* =====================================================
+   INDICADORES
+===================================================== */
+
+.indicadores-carrossel {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 0.5rem;
+
+    margin-top: 1.5rem;
+}
+
+
+.indicador {
+    width: 9px;
+    height: 9px;
+
+    border-radius: 50%;
+
+    background: #c9c4b6;
+
+    cursor: pointer;
+
+    transition:
+        width 0.3s ease,
+        background 0.3s ease;
+}
+
+
+.indicador.ativo {
+    background: var(--cor-destaque);
+
+    width: 28px;
+
+    border-radius: 10px;
+}
+
+
+/* =====================================================
+   BOTÃO FAVORITO
+===================================================== */
+
+.botao-favorito {
+    position: absolute;
+
+    right: 1rem;
+    bottom: 1rem;
+
+    z-index: 2;
+
+    border: 0;
+
+    background: transparent;
+
+    color: var(--cor-branca);
+
+    font-size: 1.2rem;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        color 0.2s ease;
+}
+
+
+.botao-favorito:hover {
+    transform: scale(1.15);
+}
+
+
+.botao-favorito.ativo {
+    color: var(--cor-destaque);
+}
+
+
+.botao-favorito.favoritado {
+    color: var(--cor-destaque);
+}
+
+
+/* =====================================================
+   CARDS DOS ANIMAIS
+===================================================== */
+
+.card-animal {
+    background: var(--cor-branca);
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    transition:
+        transform 0.3s ease;
+
+    box-shadow:
+        0 3px 10px rgba(0, 0, 0, 0.05);
+}
+
+
+.card-animal:hover {
+    transform: translateY(-8px);
+}
+
+
+/* =====================================================
+   IMAGEM DOS ANIMAIS
+===================================================== */
+
+.imagem-animal {
+    height: 280px;
+
+    background: var(--cor-destaque);
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: var(--cor-branca);
+
+    font-size: 3rem;
+}
+
+
+.imagem-animal img {
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    object-position: center;
+
+    display: block;
+}
+
+
+/* =====================================================
+   TAGS
+===================================================== */
+
+.tag {
+    position: absolute;
+
+    top: 1rem;
+    left: 1rem;
+
+    background: var(--cor-branca);
+
+    color: var(--cor-texto);
+
+    padding: 0.3rem 0.8rem;
+
+    border-radius: 15px;
+
+    font-size: 0.8rem;
+
+    font-weight: 500;
+}
+
+
+.tag.tipo {
+    left: auto;
+
+    right: 1rem;
+
+    background: var(--cor-destaque);
+
+    color: var(--cor-branca);
+}
+
+
+/* =====================================================
+   AGRUPAMENTO DE TAGS
+===================================================== */
+
+.tags-animal {
+    position: absolute;
+
+    top: 1rem;
+    left: 1rem;
+
+    display: flex;
+
+    gap: 0.5rem;
+
+    z-index: 2;
+}
+
+
+.tags-animal .tag {
+    position: static;
+}
+
+
+/* =====================================================
+   ÍCONE FAVORITO
+===================================================== */
+
+.imagem-animal i:last-child {
+    position: absolute;
+
+    bottom: 1rem;
+
+    right: 1rem;
+
+    font-size: 1.2rem;
+
+    cursor: pointer;
+}
+
+
+/* =====================================================
+   DADOS DOS ANIMAIS
+===================================================== */
+
+.dados-animal {
+    padding: 1.5rem;
+}
+
+
+.nome-idade {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 0.5rem;
+}
+
+
+.nome-idade h3 {
+    font-family: var(--fonte-titulo);
+
+    font-size: 1.5rem;
+}
+
+
+.dados-animal p {
+    margin-bottom: 0.8rem;
+
+    font-size: 0.95rem;
+}
+
+
+.dados-animal p i {
+    color: var(--cor-destaque);
+
+    margin-right: 0.5rem;
+}
+
+
+/* =====================================================
+   BOTÃO DOS CARDS
+===================================================== */
+
+.btn-card {
+    position: relative;
+
+    overflow: hidden;
+
+    width: 100%;
+
+    background: var(--cor-destaque);
+
+    color: var(--cor-branca);
+
+    border: none;
+
+    padding: 0.8rem;
+
+    border-radius: 15px;
+
+    font-weight: 500;
+
+    margin-top: 0.5rem;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease;
+}
+
+
+.btn-card::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -100%;
+
+    width: 60%;
+    height: 100%;
+
+    background: rgba(255, 255, 255, 0.2);
+
+    transform: skewX(-25deg);
+
+    transition: left 0.5s ease;
+}
+
+
+.btn-card:hover {
+    background: #C27A43;
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 8px 18px rgba(212, 139, 84, 0.25);
+}
+
+
+.btn-card:hover::before {
+    left: 130%;
+}
+
+
+.btn-card:active {
+    transform: scale(0.98);
+}
+
+
+/* =====================================================
+   VER TODOS
+===================================================== */
+
+.ver-todos {
+    text-align: right;
+
+    margin-top: 2rem;
+}
+
+
+/* =====================================================
+   CITAÇÃO & ADOÇÃO
+===================================================== */
+
+.citacao-adoção {
+    width: 90%;
+
+    max-width: 1400px;
+
+    margin: 5rem auto;
+}
+
+
+.bloco-citacao {
+    text-align: center;
+
+    margin-bottom: 4rem;
+}
+
+
+.bloco-citacao i {
+    color: var(--cor-destaque);
+
+    font-size: 4rem;
+
+    margin-bottom: 1rem;
+}
+
+
+.bloco-citacao p {
+    font-family: var(--fonte-titulo);
+
+    font-size: 2.2rem;
+
+    line-height: 1.3;
+
+    max-width: 900px;
+
+    margin: 0 auto;
+}
+
+
+.bloco-adoção {
+    display: flex;
+
+    align-items: center;
+
+    gap: 3rem;
+
+    background: rgba(255, 255, 255, 0.5);
+
+    border-radius: 20px;
+
+    padding: 2rem;
+
+    flex-wrap: wrap;
+}
+
+
+.imagem-adoção {
+    flex: 1;
+
+    min-width: 350px;
+
+    height: 350px;
+
+    border-radius: 15px;
+
+    overflow: hidden;
+}
+
+
+.imagem-adoção img {
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    object-position: center;
+
+    display: block;
+}
+
+
+.conteudo-adoção {
+    flex: 1;
+
+    min-width: 350px;
+}
+
+
+.conteudo-adoção h2 {
+    font-family: var(--fonte-titulo);
+
+    font-size: 2.5rem;
+
+    margin-bottom: 1.5rem;
+}
+
+
+.conteudo-adoção p {
+    margin-bottom: 2rem;
+
+    font-size: 1.1rem;
+}
+
+
+/* =====================================================
+   SOBRE
+===================================================== */
+
+.sobre {
+    width: 90%;
+
+    max-width: 1400px;
+
+    margin: 5rem auto;
+}
+
+
+.conteudo-sobre {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 3rem;
+
+    margin-top: 2rem;
+}
+
+
+.conteudo-sobre p {
+    font-size: 1.05rem;
+}
+
+
+/* =====================================================
+   RODAPÉ
+===================================================== */
+
+.rodape {
+    background: var(--cor-secundaria);
+
+    color: var(--cor-branca);
+
+    padding: 4rem 0 0;
+}
+
+
+.conteudo-rodape {
+    width: 90%;
+
+    max-width: 1400px;
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(200px, 1fr));
+
+    gap: 2.5rem;
+
+    padding-bottom: 3rem;
+}
+
+
+.logo-rodape {
+    display: flex;
+
+    align-items: center;
+
+    gap: 0.5rem;
+
+    font-size: 1.2rem;
+
+    margin-bottom: 1rem;
+}
+
+
+.logo-rodape i {
+    color: var(--cor-destaque);
+
+    font-size: 1.8rem;
+}
+
+
+.coluna-rodape h4 {
+    margin-bottom: 1.2rem;
+
+    color: var(--cor-destaque);
+}
+
+
+.coluna-rodape a {
+    display: block;
+
+    color: var(--cor-branca);
+
+    text-decoration: none;
+
+    margin-bottom: 0.6rem;
+
+    transition: color 0.3s;
+}
+
+
+.coluna-rodape a:hover {
+    color: var(--cor-destaque);
+}
+
+
+.redes-sociais {
+    display: flex;
+
+    gap: 1rem;
+
+    font-size: 1.3rem;
+}
+
+
+.redes-sociais a {
+    color: var(--cor-branca);
+
+    transition: color 0.3s;
+}
+
+
+.redes-sociais a:hover {
+    color: var(--cor-destaque);
+}
+
+
+.copyright {
+    border-top:
+        1px solid rgba(255, 255, 255, 0.2);
+
+    padding: 1.5rem 0;
+
+    text-align: center;
+
+    font-size: 0.9rem;
+}
+
+
+/* =====================================================
+   RESPONSIVIDADE
+===================================================== */
+
+@media (max-width: 1000px) {
+
+    /* 2 cards por vez */
+
+    .lista-animais .card-animal {
+        flex: 0 0 calc((100% - 2rem) / 2);
+    }
+
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 900px) {
+
+    .cabecalho {
+        width: 90%;
+
+        flex-wrap: wrap;
+
+        gap: 1rem;
+    }
+
+
+    .acoes-cabecalho {
+        width: 100%;
+
+        justify-content: space-between;
+    }
+
+
+    .navegacao {
+        display: none;
+    }
+
+
+    .banner-principal h1 {
+        font-size: 2.5rem;
+    }
+
+
+    .conteudo-banner {
+        width: 80%;
+
+        left: 5%;
+    }
+
+
+    .bloco-adoção {
+        padding: 1.5rem;
+    }
+
+
+    .conteudo-sobre {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+/* =====================================================
+   CELULAR
+===================================================== */
+
+@media (max-width: 560px) {
+
+    .logotipo img {
+        width: 62px;
+
+        height: 62px;
+    }
+
+
+    .busca {
+        flex: 1;
+    }
+
+
+    .btn-principal {
+        padding: 0.7rem 1rem;
+    }
+
+
+    .banner-principal {
+        height: 560px;
+    }
+
+
+    .conteudo-banner {
+        width: 90%;
+
+        padding-bottom: 3rem;
+    }
+
+
+    .banner-principal h1 {
+        font-size: 2.2rem;
+    }
+
+
+    .botoes-banner {
+        display: grid;
+
+        gap: 0.7rem;
+    }
+
+
+    /* 1 CARD POR VEZ */
+
+    .lista-animais .card-animal {
+        flex: 0 0 100%;
+    }
+
+
+    /* Setas ficam dentro da área */
+
+    .seta-carrossel.esquerda {
+        left: 5px;
+    }
+
+
+    .seta-carrossel.direita {
+        right: 5px;
+    }
+
+
+    .imagem-adoção,
+    .conteudo-adoção {
+        min-width: 0;
+    }
+
+}

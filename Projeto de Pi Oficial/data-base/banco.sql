@@ -1,0 +1,23 @@
+CREATE TABLE IF NOT EXISTS usuarios (
+
+    id SERIAL PRIMARY KEY,
+
+    nome VARCHAR(100) NOT NULL,
+
+    sobrenome VARCHAR(100) NOT NULL,
+
+    email VARCHAR(150) NOT NULL UNIQUE,
+
+    senha TEXT NOT NULL,
+
+    cidade VARCHAR(100) NOT NULL,
+
+    bairro VARCHAR(100) NOT NULL,
+
+    numero VARCHAR(20) NOT NULL,
+
+    termos_aceitos BOOLEAN NOT NULL DEFAULT FALSE,
+
+    criado_em TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+
+);

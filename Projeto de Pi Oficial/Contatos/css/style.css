@@ -1,0 +1,1174 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap');
+
+
+:root {
+    --verde: #153A24;
+    --verde-escuro: #0d2c1c;
+    --laranja: #D48B54;
+    --laranja-escuro: #c66f32;
+    --creme: #F9F5E9;
+    --bege: #f1e4cc;
+    --branco: #ffffff;
+    --texto: #153A24;
+
+    --titulo: 'Playfair Display', serif;
+    --texto-fonte: 'Poppins', sans-serif;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    font-family: var(--texto-fonte);
+    color: var(--texto);
+    background:
+        radial-gradient(
+            circle at 85% 10%,
+            rgba(212, 127, 82, 0.12),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 10% 85%,
+            rgba(23, 74, 53, 0.10),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #F7F3EA 0%,
+            #fadc81 45%,
+            #ebac71 100%
+        );
+
+    line-height: 1.6;
+    overflow-x: hidden;
+
+    animation: entradaPagina 0.6s ease;
+}
+
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+button,
+input,
+select,
+textarea {
+    font-family: inherit;
+}
+
+
+/* =========================
+   CABEÇALHO
+========================= */
+
+.cabecalho {
+    width: 100%;
+    min-height: 82px;
+
+    padding: 0 6%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+
+    background: rgba(249, 245, 233, 0.94);
+
+    border-bottom: 1px solid rgba(21, 58, 36, 0.08);
+
+    position: relative;
+    z-index: 10;
+
+    backdrop-filter: blur(12px);
+}
+
+
+.logo {
+    display: flex;
+    flex-direction: column;
+
+    font-family: var(--titulo);
+
+    font-size: 25px;
+    font-weight: 700;
+
+    line-height: 0.95;
+
+    color: var(--verde);
+}
+
+
+.logo strong {
+    color: var(--laranja);
+}
+
+
+.navegacao {
+    display: flex;
+    align-items: center;
+    gap: 35px;
+}
+
+
+.navegacao a {
+    position: relative;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    transition: 0.3s ease;
+}
+
+
+.navegacao a::after {
+    content: "";
+
+    position: absolute;
+
+    width: 0;
+    height: 3px;
+
+    left: 50%;
+    bottom: -10px;
+
+    background: var(--laranja);
+
+    border-radius: 20px;
+
+    transform: translateX(-50%);
+
+    transition: 0.3s ease;
+}
+
+
+.navegacao a:hover,
+.navegacao a.ativo {
+    color: var(--laranja-escuro);
+}
+
+
+.navegacao a:hover::after,
+.navegacao a.ativo::after {
+    width: 65%;
+}
+
+
+.acoes-cabecalho {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+
+.busca {
+    height: 43px;
+    width: 190px;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 0 15px;
+
+    border: 1px solid #bdbdbd;
+    border-radius: 30px;
+
+    background: white;
+}
+
+
+.busca i {
+    font-size: 15px;
+}
+
+
+.busca input {
+    width: 100%;
+
+    border: none;
+    outline: none;
+
+    background: transparent;
+
+    font-size: 12px;
+}
+
+
+.btn-principal {
+    border: none;
+
+    padding: 13px 22px;
+
+    border-radius: 30px;
+
+    background: var(--verde);
+
+    color: white;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+
+.btn-principal:hover {
+    background: var(--laranja);
+    transform: translateY(-2px);
+}
+
+
+/* =========================
+   BANNER
+========================= */
+
+.banner-contato {
+    min-height: 370px;
+
+    display: flex;
+    align-items: center;
+
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(249, 245, 233, 0.98),
+            rgba(249, 245, 233, 0.82),
+            rgba(249, 245, 233, 0.15)
+        ),
+        url("../img/cachorro-gato.jpg");
+
+    background-size: cover;
+    background-position: center;
+
+    padding: 60px 7%;
+}
+
+
+.conteudo-banner {
+    max-width: 600px;
+
+    position: relative;
+    z-index: 2;
+}
+
+
+.rotulo {
+    display: inline-block;
+
+    padding: 7px 17px;
+
+    border-radius: 30px;
+
+    background: var(--verde);
+
+    color: white;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    margin-bottom: 15px;
+}
+
+
+.conteudo-banner h1 {
+    font-family: var(--titulo);
+
+    font-size: clamp(45px, 5vw, 70px);
+
+    line-height: 0.98;
+
+    color: var(--verde);
+
+    margin-bottom: 22px;
+}
+
+
+.conteudo-banner h1 span {
+    color: var(--laranja);
+}
+
+
+.conteudo-banner p {
+    max-width: 450px;
+
+    font-size: 15px;
+
+    color: #294333;
+}
+
+
+.imagem-banner {
+    position: absolute;
+
+    right: 10%;
+    bottom: 35px;
+
+    width: 250px;
+    height: 250px;
+}
+
+
+.circulo-pata {
+    width: 75px;
+    height: 75px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.5);
+
+    color: var(--laranja);
+
+    font-size: 42px;
+}
+
+
+.icone-coracao {
+    position: absolute;
+
+    left: 35px;
+    bottom: 25px;
+
+    font-size: 35px;
+
+    color: var(--laranja);
+
+    transform: rotate(-15deg);
+}
+
+
+/* =========================
+   CONTEÚDO
+========================= */
+
+.conteudo-contato {
+    max-width: 1250px;
+
+    margin: 0 auto;
+
+    padding: 70px 30px;
+
+    display: grid;
+
+    grid-template-columns: 0.8fr 1.2fr;
+
+    gap: 60px;
+}
+
+
+.informacoes h2 {
+    font-family: var(--titulo);
+
+    font-size: 40px;
+
+    line-height: 1.05;
+
+    margin-bottom: 30px;
+}
+
+
+.informacoes h2 span {
+    color: var(--laranja);
+}
+
+
+/* =========================
+   CARDS DE CONTATO
+========================= */
+
+.card-contato {
+    display: flex;
+    align-items: center;
+
+    gap: 18px;
+
+    padding: 17px;
+
+    margin-bottom: 14px;
+
+    background: rgba(255, 255, 255, 0.65);
+
+    border-radius: 15px;
+
+    box-shadow: 0 8px 25px rgba(21, 58, 36, 0.06);
+
+    transition: 0.3s ease;
+}
+
+
+.card-contato:hover {
+    transform: translateX(6px);
+
+    background: rgba(255, 255, 255, 0.9);
+}
+
+
+.icone-contato {
+    min-width: 48px;
+    height: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: var(--laranja);
+
+    color: white;
+
+    font-size: 19px;
+}
+
+
+.card-contato h3 {
+    font-size: 16px;
+
+    margin-bottom: 2px;
+}
+
+
+.card-contato p {
+    font-size: 13px;
+
+    margin-bottom: 2px;
+}
+
+
+.card-contato small {
+    font-size: 11px;
+
+    opacity: 0.75;
+}
+
+
+/* =========================
+   REDES
+========================= */
+
+.redes {
+    margin-top: 30px;
+
+    padding-left: 8px;
+}
+
+
+.redes h3 {
+    font-family: var(--titulo);
+
+    font-size: 21px;
+
+    margin-bottom: 4px;
+}
+
+
+.redes p {
+    font-size: 13px;
+
+    max-width: 300px;
+
+    margin-bottom: 15px;
+}
+
+
+.botoes-redes {
+    display: flex;
+    gap: 12px;
+}
+
+
+.botoes-redes a {
+    width: 43px;
+    height: 43px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: var(--verde);
+
+    color: white;
+
+    transition: 0.3s ease;
+}
+
+
+.botoes-redes a:hover {
+    background: var(--laranja);
+
+    transform: translateY(-4px);
+}
+
+
+/* =========================
+   FRASE
+========================= */
+
+.frase-contato {
+    display: flex;
+    align-items: center;
+
+    gap: 15px;
+
+    margin-top: 45px;
+
+    transform: rotate(-3deg);
+}
+
+
+.frase-contato i {
+    font-size: 35px;
+
+    color: var(--verde);
+}
+
+
+.frase-contato p {
+    font-family: var(--titulo);
+
+    font-size: 24px;
+
+    line-height: 1.05;
+}
+
+
+.frase-contato span {
+    color: var(--laranja);
+}
+
+
+/* =========================
+   FORMULÁRIO
+========================= */
+
+.formulario-contato {
+    padding: 35px;
+
+    border-radius: 18px;
+
+    background: rgba(255, 255, 255, 0.78);
+
+    box-shadow:
+        0 15px 45px rgba(21, 58, 36, 0.09);
+
+    backdrop-filter: blur(8px);
+}
+
+
+.titulo-formulario {
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 18px;
+
+    margin-bottom: 30px;
+}
+
+
+.icone-pata {
+    color: var(--laranja);
+
+    font-size: 34px;
+}
+
+
+.titulo-formulario h2 {
+    font-family: var(--titulo);
+
+    font-size: 31px;
+
+    line-height: 1.1;
+
+    margin-bottom: 7px;
+}
+
+
+.titulo-formulario p {
+    font-size: 13px;
+
+    max-width: 500px;
+}
+
+
+.linha-form {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 18px;
+}
+
+
+.campo {
+    margin-bottom: 20px;
+}
+
+
+.campo label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    font-size: 14px;
+
+    font-weight: 500;
+}
+
+
+.campo label span {
+    color: var(--laranja-escuro);
+}
+
+
+.campo input,
+.campo select,
+.campo textarea {
+    width: 100%;
+
+    border: 1px solid #d2d0c8;
+
+    border-radius: 11px;
+
+    outline: none;
+
+    background: rgba(255, 255, 255, 0.65);
+
+    color: var(--texto);
+
+    padding: 13px 14px;
+
+    font-size: 13px;
+
+    transition: 0.3s ease;
+}
+
+
+.campo input,
+.campo select {
+    height: 48px;
+}
+
+
+.campo textarea {
+    min-height: 145px;
+
+    resize: vertical;
+}
+
+
+.campo input:focus,
+.campo select:focus,
+.campo textarea:focus {
+    border-color: var(--laranja);
+
+    box-shadow: 0 0 0 3px rgba(212, 139, 84, 0.13);
+}
+
+
+.termos {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    margin: 5px 0 22px;
+
+    font-size: 12px;
+}
+
+
+.termos input {
+    width: 17px;
+    height: 17px;
+
+    accent-color: var(--laranja);
+}
+
+
+.termos a {
+    color: var(--verde);
+
+    text-decoration: underline;
+}
+
+
+.btn-enviar {
+    width: 100%;
+
+    height: 53px;
+
+    border: none;
+
+    border-radius: 30px;
+
+    background: var(--laranja);
+
+    color: white;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+
+.btn-enviar:hover {
+    background: var(--verde);
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 8px 20px rgba(21, 58, 36, 0.15);
+}
+
+
+.btn-enviar i {
+    margin-right: 10px;
+}
+
+
+.mensagem-sucesso {
+    text-align: center;
+
+    margin-top: 15px;
+
+    font-size: 13px;
+
+    font-weight: 500;
+}
+
+
+/* =========================
+   CHAMADA FINAL
+========================= */
+
+.chamada-contato {
+    min-height: 145px;
+
+    padding: 30px 7%;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 25px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f0eddb,
+            #e5e4cd
+        );
+
+    position: relative;
+}
+
+
+.pata-chamada {
+    font-size: 45px;
+
+    color: var(--verde);
+}
+
+
+.chamada-contato h2 {
+    font-family: var(--titulo);
+
+    font-size: 30px;
+
+    line-height: 1.05;
+}
+
+
+.chamada-contato h2 span {
+    color: var(--laranja);
+}
+
+
+.frase-chamada {
+    margin-left: auto;
+
+    font-family: var(--titulo);
+
+    font-size: 24px;
+
+    line-height: 1;
+
+    transform: rotate(-3deg);
+}
+
+
+.frase-chamada span {
+    color: var(--laranja);
+}
+
+
+.frase-chamada i {
+    color: var(--laranja);
+
+    margin-left: 10px;
+}
+
+
+/* =========================
+   RODAPÉ
+========================= */
+
+.rodape {
+    background: var(--verde-escuro);
+
+    color: white;
+
+    padding: 50px 7% 20px;
+
+    display: grid;
+
+    grid-template-columns: 1.5fr 0.8fr 1.2fr 0.8fr;
+
+    gap: 40px;
+}
+
+
+.logo-rodape .logo {
+    color: white;
+
+    margin-bottom: 15px;
+}
+
+
+.logo-rodape .logo strong {
+    color: #e3a16d;
+}
+
+
+.logo-rodape p {
+    max-width: 280px;
+
+    font-size: 12px;
+
+    opacity: 0.8;
+}
+
+
+.rodape-coluna {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+
+.rodape-coluna h3 {
+    font-size: 12px;
+
+    margin-bottom: 8px;
+}
+
+
+.rodape-coluna a,
+.rodape-coluna p {
+    font-size: 11px;
+
+    opacity: 0.85;
+
+    transition: 0.3s ease;
+}
+
+
+.rodape-coluna a:hover {
+    color: var(--laranja);
+
+    opacity: 1;
+}
+
+
+.rodape-coluna p i {
+    width: 20px;
+
+    margin-right: 5px;
+}
+
+
+.redes-rodape {
+    display: flex;
+
+    gap: 10px;
+}
+
+
+.redes-rodape a {
+    width: 37px;
+    height: 37px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.12);
+}
+
+
+.redes-rodape a:hover {
+    background: var(--laranja);
+
+    color: white;
+}
+
+
+.direitos {
+    grid-column: 1 / -1;
+
+    text-align: center;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+
+    padding-top: 18px;
+
+    margin-top: 10px;
+
+    font-size: 11px;
+
+    opacity: 0.7;
+}
+
+
+/* =========================
+   ANIMAÇÃO DA PÁGINA
+========================= */
+
+@keyframes entradaPagina {
+
+    from {
+        opacity: 0;
+
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform: translateY(0);
+    }
+
+}
+
+
+body.saindo {
+    animation: saidaPagina 0.35s ease forwards;
+}
+
+
+@keyframes saidaPagina {
+
+    from {
+        opacity: 1;
+
+        transform: translateY(0);
+    }
+
+    to {
+        opacity: 0;
+
+        transform: translateY(-12px);
+    }
+
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+
+    body,
+    body.saindo {
+        animation: none;
+    }
+
+}
+
+
+/* =========================
+   RESPONSIVO
+========================= */
+
+@media (max-width: 1100px) {
+
+    .cabecalho {
+        padding: 0 4%;
+    }
+
+    .navegacao {
+        gap: 20px;
+    }
+
+    .busca {
+        width: 150px;
+    }
+
+    .conteudo-contato {
+        gap: 35px;
+    }
+
+}
+
+
+@media (max-width: 900px) {
+
+    .cabecalho {
+        flex-wrap: wrap;
+
+        padding: 20px 5%;
+    }
+
+    .navegacao {
+        order: 3;
+
+        width: 100%;
+
+        justify-content: center;
+    }
+
+    .acoes-cabecalho {
+        margin-left: auto;
+    }
+
+    .conteudo-contato {
+        grid-template-columns: 1fr;
+    }
+
+    .informacoes {
+        max-width: 700px;
+
+        margin: auto;
+    }
+
+    .formulario-contato {
+        max-width: 700px;
+
+        margin: auto;
+    }
+
+    .rodape {
+        grid-template-columns: 1fr 1fr;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .cabecalho {
+        gap: 15px;
+    }
+
+    .logo {
+        font-size: 21px;
+    }
+
+    .acoes-cabecalho {
+        display: none;
+    }
+
+    .navegacao {
+        gap: 15px;
+    }
+
+    .navegacao a {
+        font-size: 11px;
+    }
+
+    .banner-contato {
+        min-height: 400px;
+
+        padding: 45px 25px;
+
+        background:
+            linear-gradient(
+                90deg,
+                rgba(249, 245, 233, 0.96),
+                rgba(249, 245, 233, 0.75)
+            ),
+            url("../img/cachorro-gato.jpg");
+
+        background-position: center;
+    }
+
+    .conteudo-banner h1 {
+        font-size: 45px;
+    }
+
+    .imagem-banner {
+        opacity: 0.25;
+
+        right: -40px;
+    }
+
+    .conteudo-contato {
+        padding: 50px 20px;
+    }
+
+    .informacoes h2 {
+        font-size: 34px;
+    }
+
+    .formulario-contato {
+        padding: 25px 20px;
+    }
+
+    .linha-form {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .titulo-formulario h2 {
+        font-size: 25px;
+    }
+
+    .chamada-contato {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        padding: 35px 25px;
+    }
+
+    .frase-chamada {
+        margin-left: 0;
+    }
+
+    .rodape {
+        grid-template-columns: 1fr;
+
+        padding: 40px 25px 20px;
+    }
+
+}

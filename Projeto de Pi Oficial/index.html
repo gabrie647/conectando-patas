@@ -1,0 +1,1143 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Conectando Patas</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./css/style.css" />
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+</head>
+
+<body>
+
+    <!-- =====================================================
+         CABEÇALHO
+    ===================================================== -->
+
+    <header class="cabecalho">
+
+        <!-- LOGO -->
+
+        <div class="logo">
+
+            <div class="logotipo">
+
+                <img
+                    src="./img/ChatGPT Image 13 de ago. de 2026, 14_44_37.png"
+                    alt="Conectando Patas"
+                />
+
+            </div>
+
+            <span>
+                Conectando <br>
+                <strong>Patas</strong>
+            </span>
+
+        </div>
+
+
+        <!-- NAVEGAÇÃO -->
+
+        <nav class="navegacao">
+
+            <a href="#inicio" class="ativo">
+                HOME
+            </a>
+
+            <a href="#animais">
+                ANIMAIS
+            </a>
+
+            <!-- PÁGINA DE CADASTRO -->
+
+            <a href="./Pi-formulario/Pi-formulario-inscricao/index.html">
+                CADASTRO
+            </a>
+
+            <a href="#contato">
+                CONTATO
+            </a>
+
+        </nav>
+
+
+        <!-- AÇÕES -->
+
+        <div class="acoes-cabecalho">
+
+            <div class="busca">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <input
+                    type="text"
+                    id="campoBusca"
+                    placeholder="Buscar animais"
+                />
+
+            </div>
+
+
+            <!-- BOTÃO DE CADASTRO -->
+
+            <button
+                id="btnCadastro"
+                class="btn-principal"
+                type="button"
+            >
+                CADASTRE-SE
+            </button>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         BANNER PRINCIPAL
+    ===================================================== -->
+
+    <section
+        class="banner-principal"
+        id="inicio"
+    >
+
+        <img
+            src="./img/ChatGPT Image 6 de jul. de 2026, 16_27_50.png"
+            alt="Cachorros e gatos ao ar livre"
+        />
+
+
+        <div class="conteudo-banner">
+
+            <span class="rotulo">
+                ADOÇÃO RESPONSÁVEL
+            </span>
+
+
+            <h1>
+                Conectando patas <br>
+
+                <span>
+                    a novos lares.
+                </span>
+            </h1>
+
+
+            <p>
+                Ajude um animal a encontrar uma segunda chance.
+                Conheça animais que precisam de um lar, adote com
+                responsabilidade e faça parte dessa rede de amor e cuidado.
+            </p>
+
+
+            <div class="botoes-banner">
+
+                <!-- PÁGINA DE CADASTRO -->
+
+                <button
+                    class="btn-destaque btn-quero-adotar"
+                    type="button"
+                >
+                    QUERO ADOTAR
+
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+
+
+                <!-- ROLA ATÉ OS ANIMAIS -->
+
+                <button
+                    class="btn-secundario"
+                    type="button"
+                    data-scroll-to="animais"
+                >
+                    CONHECER OS ANIMAIS
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         VALORES
+    ===================================================== -->
+
+    <section class="valores">
+
+        <div class="card-valor">
+
+            <div class="icone-valor">
+                <i class="fa-solid fa-heart"></i>
+            </div>
+
+            <h3>
+                Amor primeiro
+            </h3>
+
+            <p>
+                Cada animal aqui é resgatado com carinho e atenção
+                antes de encontrar seu novo lar.
+            </p>
+
+        </div>
+
+
+        <div class="card-valor">
+
+            <div class="icone-valor">
+                <i class="fa-solid fa-shield-halved"></i>
+            </div>
+
+            <h3>
+                Adoção segura
+            </h3>
+
+            <p>
+                Processo transparente, com acompanhamento antes,
+                durante e depois da adoção.
+            </p>
+
+        </div>
+
+
+        <div class="card-valor">
+
+            <div class="icone-valor">
+                <i class="fa-solid fa-people-group"></i>
+            </div>
+
+            <h3>
+                Rede colaborativa
+            </h3>
+
+            <p>
+                Voluntários, protetores e adotantes unidos por uma
+                mesma causa.
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         ANIMAIS DISPONÍVEIS
+    ===================================================== -->
+
+    <section
+        class="animais-disponiveis"
+        id="animais"
+    >
+
+        <div class="cabecalho-secao">
+
+            <span class="rotulo">
+                ADOTE UM AMIGO
+            </span>
+
+            <h2>
+                Animais esperando por uma
+
+                <strong>
+                    segunda chance
+                </strong>
+            </h2>
+
+            <p>
+                Conheça alguns dos animais que estão esperando por
+                uma família. Talvez o seu novo melhor amigo esteja aqui.
+            </p>
+
+        </div>
+
+
+
+        <!-- =================================================
+             CARROSSEL
+        ================================================= -->
+
+        <div class="carrossel-animais">
+
+
+            <!-- SETA ESQUERDA -->
+
+            <button
+                class="seta-carrossel esquerda"
+                id="btnAnterior"
+                aria-label="Animais anteriores"
+                type="button"
+            >
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+
+
+            <!-- ÁREA DOS CARDS -->
+
+            <div class="area-carrossel">
+
+                <div
+                    class="lista-animais"
+                    id="listaAnimais"
+                >
+
+
+                    <!-- THOR -->
+
+                    <div
+                        class="card-animal"
+                        data-pagina="animal-thor.html"
+                    >
+
+                        <div class="imagem-animal">
+
+                            <img
+                                src="./img/Golden Retriever Puppy Cuteness That Instantly Makes Your Day.jpg"
+                                alt="Thor"
+                            />
+
+                            <div class="tags-animal">
+
+                                <span class="tag">
+                                    Castrado
+                                </span>
+
+                                <span class="tag tipo">
+                                    Cão
+                                </span>
+
+                            </div>
+
+                            <button
+                                class="botao-favorito"
+                                type="button"
+                                aria-label="Favoritar Thor"
+                            >
+                                <i class="fa-regular fa-heart"></i>
+                            </button>
+
+                        </div>
+
+
+                        <div class="dados-animal">
+
+                            <div class="nome-idade">
+
+                                <h3>
+                                    Thor
+                                </h3>
+
+                                <span>
+                                    3 anos
+                                </span>
+
+                            </div>
+
+
+                            <p class="localizacao">
+
+                                <i class="fa-solid fa-location-dot"></i>
+
+                                São Paulo, SP
+
+                            </p>
+
+
+                            <p class="descricao-animal">
+                                Brincalhão, dócil e adora crianças.
+                                Vacinado e castrado.
+                            </p>
+
+
+                            <button
+                                class="btn-card"
+                                type="button"
+                            >
+                                VER DETALHES
+
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- LUNA -->
+
+                    <div
+                        class="card-animal"
+                        data-pagina="animal-luna.html"
+                    >
+
+                        <div class="imagem-animal">
+
+                            <img
+                                src="./img/bebe-da-raca-cavalier-king-charles-spaniel-1526332393798_v2_450x450.jpg"
+                                alt="Luna"
+                            />
+
+                            <div class="tags-animal">
+
+                                <span class="tag">
+                                    Vacinada
+                                </span>
+
+                                <span class="tag tipo">
+                                    Gato
+                                </span>
+
+                            </div>
+
+                            <button
+                                class="botao-favorito"
+                                type="button"
+                                aria-label="Favoritar Luna"
+                            >
+                                <i class="fa-regular fa-heart"></i>
+                            </button>
+
+                        </div>
+
+
+                        <div class="dados-animal">
+
+                            <div class="nome-idade">
+
+                                <h3>
+                                    Luna
+                                </h3>
+
+                                <span>
+                                    2 anos
+                                </span>
+
+                            </div>
+
+
+                            <p class="localizacao">
+
+                                <i class="fa-solid fa-location-dot"></i>
+
+                                Campinas, SP
+
+                            </p>
+
+
+                            <p class="descricao-animal">
+                                Curiosa e carinhosa.
+                                Perfeita para apartamento.
+                            </p>
+
+
+                            <button
+                                class="btn-card"
+                                type="button"
+                            >
+                                VER DETALHES
+
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- MEL -->
+
+                    <div
+                        class="card-animal"
+                        data-pagina="animal-mel.html"
+                    >
+
+                        <div class="imagem-animal">
+
+                            <img
+                                src="./img/images (1).jpg"
+                                alt="Mel"
+                            />
+
+                            <div class="tags-animal">
+
+                                <span class="tag">
+                                    Filhote
+                                </span>
+
+                                <span class="tag tipo">
+                                    Cão
+                                </span>
+
+                            </div>
+
+                            <button
+                                class="botao-favorito"
+                                type="button"
+                                aria-label="Favoritar Mel"
+                            >
+                                <i class="fa-regular fa-heart"></i>
+                            </button>
+
+                        </div>
+
+
+                        <div class="dados-animal">
+
+                            <div class="nome-idade">
+
+                                <h3>
+                                    Mel
+                                </h3>
+
+                                <span>
+                                    Filhote
+                                </span>
+
+                            </div>
+
+
+                            <p class="localizacao">
+
+                                <i class="fa-solid fa-location-dot"></i>
+
+                                Rio de Janeiro, RJ
+
+                            </p>
+
+
+                            <p class="descricao-animal">
+                                Filhote cheia de energia,
+                                amorosa e brincalhona.
+                            </p>
+
+
+                            <button
+                                class="btn-card"
+                                type="button"
+                            >
+                                VER DETALHES
+
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- ZEUS -->
+
+                    <div
+                        class="card-animal"
+                        data-pagina="animal-zeus.html"
+                    >
+
+                        <div class="imagem-animal">
+
+                            <img
+                                src="./img/Golden Retriever Puppy Cuteness That Instantly Makes Your Day.jpg"
+                                alt="Zeus"
+                            />
+
+                            <div class="tags-animal">
+
+                                <span class="tag">
+                                    Vacinado
+                                </span>
+
+                                <span class="tag tipo">
+                                    Cão
+                                </span>
+
+                            </div>
+
+                            <button
+                                class="botao-favorito"
+                                type="button"
+                                aria-label="Favoritar Zeus"
+                            >
+                                <i class="fa-regular fa-heart"></i>
+                            </button>
+
+                        </div>
+
+
+                        <div class="dados-animal">
+
+                            <div class="nome-idade">
+
+                                <h3>
+                                    Zeus
+                                </h3>
+
+                                <span>
+                                    4 anos
+                                </span>
+
+                            </div>
+
+
+                            <p class="localizacao">
+
+                                <i class="fa-solid fa-location-dot"></i>
+
+                                Curitiba, PR
+
+                            </p>
+
+
+                            <p class="descricao-animal">
+                                Tranquilo, companheiro e muito carinhoso.
+                            </p>
+
+
+                            <button
+                                class="btn-card"
+                                type="button"
+                            >
+                                VER DETALHES
+
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- NINA -->
+
+                    <div
+                        class="card-animal"
+                        data-pagina="animal-nina.html"
+                    >
+
+                        <div class="imagem-animal">
+
+                            <img
+                                src="./img/bebe-da-raca-cavalier-king-charles-spaniel-1526332393798_v2_450x450.jpg"
+                                alt="Nina"
+                            />
+
+                            <div class="tags-animal">
+
+                                <span class="tag">
+                                    Castrada
+                                </span>
+
+                                <span class="tag tipo">
+                                    Gato
+                                </span>
+
+                            </div>
+
+                            <button
+                                class="botao-favorito"
+                                type="button"
+                                aria-label="Favoritar Nina"
+                            >
+                                <i class="fa-regular fa-heart"></i>
+                            </button>
+
+                        </div>
+
+
+                        <div class="dados-animal">
+
+                            <div class="nome-idade">
+
+                                <h3>
+                                    Nina
+                                </h3>
+
+                                <span>
+                                    1 ano
+                                </span>
+
+                            </div>
+
+
+                            <p class="localizacao">
+
+                                <i class="fa-solid fa-location-dot"></i>
+
+                                Florianópolis, SC
+
+                            </p>
+
+
+                            <p class="descricao-animal">
+                                Muito dócil, brincalhona
+                                e adora carinho.
+                            </p>
+
+
+                            <button
+                                class="btn-card"
+                                type="button"
+                            >
+                                VER DETALHES
+
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- BOB -->
+
+                    <div
+                        class="card-animal"
+                        data-pagina="animal-bob.html"
+                    >
+
+                        <div class="imagem-animal">
+
+                            <img
+                                src="./img/images (1).jpg"
+                                alt="Bob"
+                            />
+
+                            <div class="tags-animal">
+
+                                <span class="tag">
+                                    Filhote
+                                </span>
+
+                                <span class="tag tipo">
+                                    Cão
+                                </span>
+
+                            </div>
+
+                            <button
+                                class="botao-favorito"
+                                type="button"
+                                aria-label="Favoritar Bob"
+                            >
+                                <i class="fa-regular fa-heart"></i>
+                            </button>
+
+                        </div>
+
+
+                        <div class="dados-animal">
+
+                            <div class="nome-idade">
+
+                                <div class="nome-idade">
+
+                                    <h3>
+                                        Bob
+                                    </h3>
+
+                                    <span>
+                                        8 meses
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+
+                            <p class="localizacao">
+
+                                <i class="fa-solid fa-location-dot"></i>
+
+                                Blumenau, SC
+
+                            </p>
+
+
+                            <p class="descricao-animal">
+                                Alegre, brincalhão e cheio de energia.
+                            </p>
+
+
+                            <button
+                                class="btn-card"
+                                type="button"
+                            >
+                                VER DETALHES
+
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- SETA DIREITA -->
+
+            <button
+                class="seta-carrossel direita"
+                id="btnProximo"
+                aria-label="Próximos animais"
+                type="button"
+            >
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+
+        </div>
+
+
+
+        <!-- INDICADORES -->
+
+        <div class="indicadores-carrossel">
+
+            <span
+                class="indicador ativo"
+                data-slide="0"
+            ></span>
+
+            <span
+                class="indicador"
+                data-slide="1"
+            ></span>
+
+        </div>
+
+
+
+        <!-- VER TODOS -->
+
+        <div class="ver-todos">
+
+            <button
+                class="btn-secundario"
+                type="button"
+                onclick="window.location.href='./animais.html'"
+            >
+                VER TODOS
+
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         CITAÇÃO + ADOÇÃO
+    ===================================================== -->
+
+    <section
+        class="citacao-adoção"
+        id="adocao"
+    >
+
+        <div class="bloco-citacao">
+
+            <i class="fa-solid fa-quote-right"></i>
+
+            <p>
+                “Um país pode ser analisado a partir do cuidado aos animais.”
+            </p>
+
+        </div>
+
+
+        <div class="bloco-adoção">
+
+            <div class="imagem-adoção">
+
+                <img
+                    src="./img/211174979148098.jpeg"
+                    alt="Bem com a vida"
+                />
+
+            </div>
+
+
+            <div class="conteudo-adoção">
+
+                <span class="rotulo">
+                    ADOÇÃO RESPONSÁVEL
+                </span>
+
+
+                <h2>
+                    Adotar é transformar uma vida.
+                </h2>
+
+
+                <p>
+                    Quando você adota, oferece mais do que um lar:
+                    oferece segurança, carinho e uma segunda chance
+                    para quem precisa de você.
+                </p>
+
+
+                <!-- PÁGINA DE CADASTRO -->
+
+                <button
+                    class="btn-destaque btn-quero-adotar"
+                    type="button"
+                >
+                    QUERO ADOTAR
+
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         SOBRE
+    ===================================================== -->
+
+    <section class="sobre">
+
+        <div class="cabecalho-secao">
+
+            <span class="rotulo">
+                NOSSA MISSÃO
+            </span>
+
+            <h2>
+                Sobre o Conectando Patas
+            </h2>
+
+        </div>
+
+
+        <div class="conteudo-sobre">
+
+            <p>
+                O Conectando Patas é uma plataforma digital colaborativa
+                criada para auxiliar no resgate, acolhimento e adoção
+                responsável de animais abandonados.
+            </p>
+
+
+            <p>
+                A iniciativa busca conectar voluntários, protetores e
+                adotantes, facilitando a divulgação de informações e
+                tornando mais eficiente o apoio aos animais em situação
+                de abandono.
+            </p>
+
+
+            <p>
+                Por meio da tecnologia, buscamos fortalecer a colaboração
+                entre a comunidade e incentivar a conscientização sobre
+                posse responsável, contribuindo para o bem-estar animal
+                e oferecendo uma nova oportunidade para aqueles que
+                precisam de um lar.
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         RODAPÉ
+    ===================================================== -->
+
+    <footer
+        class="rodape"
+        id="contato"
+    >
+
+        <div class="conteudo-rodape">
+
+
+            <!-- COLUNA 1 -->
+
+            <div class="coluna-rodape">
+
+                <div class="logo-rodape">
+
+                    <i class="fa-solid fa-paw"></i>
+
+                    <span>
+                        Conectando Patas
+                    </span>
+
+                </div>
+
+
+                <p>
+                    Conectando pessoas, transformando vidas e dando
+                    uma segunda chance aos animais.
+                </p>
+
+            </div>
+
+
+
+            <!-- COLUNA 2 -->
+
+            <div class="coluna-rodape">
+
+                <h4>
+                    NAVEGAÇÃO
+                </h4>
+
+
+                <a href="#inicio">
+                    Home
+                </a>
+
+
+                <a href="#animais">
+                    Animais
+                </a>
+
+
+                <!-- PÁGINA DE CADASTRO -->
+
+                <a href="./Pi-formulario/Pi-formulario-inscricao/index.html">
+                    Cadastro
+                </a>
+
+
+                <a href="#contato">
+                    Contato
+                </a>
+
+            </div>
+
+
+
+            <!-- COLUNA 3 -->
+
+            <div class="coluna-rodape">
+
+                <h4>
+                    CONTATO
+                </h4>
+
+
+                <p>
+
+                    <i class="fa-solid fa-envelope"></i>
+
+                    contato@conectandopatas.org
+
+                </p>
+
+
+                <p>
+
+                    <i class="fa-solid fa-phone"></i>
+
+                    (11) 4002-8922
+
+                </p>
+
+
+                <p>
+
+                    <i class="fa-solid fa-location-dot"></i>
+
+                    São Paulo, Brasil
+
+                </p>
+
+            </div>
+
+
+
+            <!-- COLUNA 4 -->
+
+            <div class="coluna-rodape">
+
+                <h4>
+                    SIGA-NOS
+                </h4>
+
+
+                <div class="redes-sociais">
+
+                    <a
+                        href="#"
+                        aria-label="Instagram"
+                    >
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+
+
+                    <a
+                        href="#"
+                        aria-label="Facebook"
+                    >
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+
+
+                    <a
+                        href="#"
+                        aria-label="WhatsApp"
+                    >
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="copyright">
+
+            <p>
+                © 2026 Conectando Patas. Todos os direitos reservados.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ===================================================== -->
+
+    <script src="./js/script.js"></script>
+
+</body>
+
+</html>

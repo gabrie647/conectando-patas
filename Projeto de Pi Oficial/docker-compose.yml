@@ -1,0 +1,29 @@
+services:
+
+  app:
+    build: .
+    ports:
+      - "8080:80"
+    environment:
+      DATABASE_URL: postgresql://conectando:conectando@db:5432/conectando_patas
+    depends_on:
+      - db
+
+  db:
+    image: postgres:17
+
+    environment:
+      POSTGRES_DB: conectando_patas
+      POSTGRES_USER: conectando
+      POSTGRES_PASSWORD: conectando
+
+    ports:
+      - "5432:5432"
+
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./data-base/banco.sql:/docker-entrypoint-initdb.d/banco.sql
+
+volumes:
+
+  postgres_data:
