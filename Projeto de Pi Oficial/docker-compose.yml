@@ -5,7 +5,7 @@ services:
     ports:
       - "8080:80"
     environment:
-      DATABASE_URL: postgresql://conectando:conectando@db:5432/conectando_patas
+      DATABASE_URL: postgresql://conectando_patas_db_user:2lWME2bjFHArDP2vigJ5R7CItt0zmVzh@dpg-db4em060tbcc73e4k1f0-a/conectando_patas_db
     depends_on:
       - db
 
@@ -13,9 +13,9 @@ services:
     image: postgres:17
 
     environment:
-      POSTGRES_DB: conectando_patas
-      POSTGRES_USER: conectando
-      POSTGRES_PASSWORD: conectando
+      POSTGRES_DB: conectando_patas_db
+      POSTGRES_USER: conectando_patas_db_user
+      POSTGRES_PASSWORD: 2lWME2bjFHArDP2vigJ5R7CItt0zmVzh
 
     ports:
       - "5432:5432"
