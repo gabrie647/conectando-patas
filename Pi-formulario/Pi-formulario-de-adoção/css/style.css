@@ -1,0 +1,1356 @@
+/* =====================================================
+   FONTE
+===================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+
+/* =====================================================
+   RESET
+===================================================== */
+
+* {
+
+    margin: 0;
+
+    padding: 0;
+
+    box-sizing: border-box;
+
+}
+
+
+/* =====================================================
+   BODY
+===================================================== */
+
+body {
+
+    min-height: 100vh;
+
+    font-family: 'Poppins', Arial, sans-serif;
+
+    color: #f5f0e7;
+
+    padding: 40px 15px;
+
+
+    /* FUNDO */
+
+    background:
+
+        radial-gradient(
+            circle at 10% 15%,
+            rgba(0, 90, 60, 0.45),
+            transparent 32%
+        ),
+
+        radial-gradient(
+            circle at 90% 85%,
+            rgba(255, 126, 0, 0.35),
+            transparent 35%
+        ),
+
+        linear-gradient(
+            135deg,
+            #061712,
+            #123426,
+            #4b2c0a
+        );
+
+
+    overflow-x: hidden;
+
+}
+
+
+/* =====================================================
+   EFEITO DECORATIVO
+===================================================== */
+
+body::before {
+
+    content: "";
+
+    position: fixed;
+
+    width: 500px;
+
+    height: 500px;
+
+    border-radius: 50%;
+
+    background: rgba(255, 126, 0, 0.08);
+
+    filter: blur(90px);
+
+    top: -250px;
+
+    right: -180px;
+
+    pointer-events: none;
+
+}
+
+
+body::after {
+
+    content: "";
+
+    position: fixed;
+
+    width: 450px;
+
+    height: 450px;
+
+    border-radius: 50%;
+
+    background: rgba(0, 100, 60, 0.12);
+
+    filter: blur(90px);
+
+    bottom: -250px;
+
+    left: -150px;
+
+    pointer-events: none;
+
+}
+
+
+/* =====================================================
+   CONTAINER
+===================================================== */
+
+.container {
+
+    max-width: 1050px;
+
+}
+
+
+/* =====================================================
+   FORMULÁRIO PRINCIPAL
+===================================================== */
+
+.formulario {
+
+    position: relative;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            rgba(5, 29, 22, 0.97),
+            rgba(28, 28, 21, 0.96)
+        );
+
+    padding: 40px;
+
+    border-radius: 30px;
+
+    max-width: 1000px;
+
+    margin: 0 auto;
+
+    border: 1px solid rgba(190, 160, 91, 0.35);
+
+    box-shadow:
+
+        0 30px 80px rgba(0, 0, 0, 0.55),
+
+        inset 0 1px rgba(255, 255, 255, 0.05);
+
+    overflow: hidden;
+
+}
+
+
+/* brilho interno */
+
+.formulario::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 450px;
+
+    height: 450px;
+
+    right: -250px;
+
+    top: 150px;
+
+    background: rgba(255, 126, 0, 0.08);
+
+    filter: blur(80px);
+
+    pointer-events: none;
+
+}
+
+
+/* =====================================================
+   PERFIL
+===================================================== */
+
+.perfil {
+
+    position: relative;
+
+    margin-bottom: 35px;
+
+    z-index: 2;
+
+}
+
+
+/* =====================================================
+   CABEÇALHO
+===================================================== */
+
+.cabecalho {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 22px;
+
+}
+
+
+/* =====================================================
+   LOGO / PATA
+===================================================== */
+
+.icone-logo {
+
+    width: 90px;
+
+    height: 90px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 38px;
+
+    color: #ff941c;
+
+    background:
+
+        radial-gradient(
+            circle,
+            #273b27,
+            #10231b
+        );
+
+    border: 2px solid #b89a5a;
+
+    box-shadow:
+
+        0 10px 30px rgba(0, 0, 0, 0.4),
+
+        inset 0 0 20px rgba(255, 148, 28, 0.08);
+
+    transition: 0.3s ease;
+
+}
+
+
+.icone-logo:hover {
+
+    transform: rotate(-5deg) scale(1.04);
+
+    border-color: #ff941c;
+
+}
+
+
+/* =====================================================
+   TÍTULO
+===================================================== */
+
+.titulo h1 {
+
+    margin: 0 0 6px;
+
+    color: #f8f0df;
+
+    font-size: 32px;
+
+    font-weight: 700;
+
+    letter-spacing: -0.5px;
+
+}
+
+
+.titulo p {
+
+    margin: 0;
+
+    color: #aaa69c;
+
+    font-size: 13px;
+
+}
+
+
+/* =====================================================
+   CORAÇÃO
+===================================================== */
+
+.coracao {
+
+    margin-left: auto;
+
+    color: #b87822;
+
+    font-size: 36px;
+
+    transform: rotate(-10deg);
+
+    transition: 0.3s ease;
+
+}
+
+
+.coracao:hover {
+
+    color: #ff941c;
+
+    transform:
+        rotate(0deg)
+        scale(1.15);
+
+}
+
+
+/* =====================================================
+   CARDS
+===================================================== */
+
+.formulario .card {
+
+    position: relative;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            rgba(11, 31, 24, 0.95),
+            rgba(29, 30, 23, 0.90)
+        );
+
+    border: 1px solid rgba(126, 145, 100, 0.35);
+
+    border-radius: 22px;
+
+    overflow: hidden;
+
+    color: #f5f0e7;
+
+    box-shadow:
+
+        0 10px 30px rgba(0, 0, 0, 0.18);
+
+    transition:
+
+        transform 0.3s ease,
+
+        box-shadow 0.3s ease,
+
+        border-color 0.3s ease;
+
+}
+
+
+.formulario .card:hover {
+
+    transform: translateY(-4px);
+
+    border-color: rgba(255, 148, 28, 0.35);
+
+    box-shadow:
+
+        0 15px 35px rgba(0, 0, 0, 0.30),
+
+        0 0 25px rgba(255, 148, 28, 0.05);
+
+}
+
+
+/* =====================================================
+   CABEÇALHO DOS CARDS
+===================================================== */
+
+.formulario .card-header {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    background: transparent;
+
+    color: #ffffff;
+
+    padding: 22px 24px 12px;
+
+    border: none;
+
+}
+
+
+/* =====================================================
+   ÍCONE DO CARD
+===================================================== */
+
+.icone-campo {
+
+    width: 43px;
+
+    height: 43px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 13px;
+
+    color: #ff941c;
+
+    background: rgba(255, 148, 28, 0.08);
+
+    border: 1px solid rgba(255, 148, 28, 0.4);
+
+    font-size: 19px;
+
+}
+
+
+.card-header h2 {
+
+    margin: 0 0 3px;
+
+    color: #f3eee4;
+
+    font-size: 17px;
+
+    font-weight: 600;
+
+}
+
+
+.card-header span {
+
+    display: block;
+
+    color: #96958c;
+
+    font-size: 11px;
+
+}
+
+
+/* =====================================================
+   CORPO
+===================================================== */
+
+.formulario .card-body {
+
+    padding: 18px 24px 25px;
+
+}
+
+
+/* =====================================================
+   INPUTS
+===================================================== */
+
+.formulario .form-control {
+
+    background: rgba(5, 15, 13, 0.8);
+
+    border: 1px solid rgba(126, 145, 100, 0.7);
+
+    border-radius: 15px;
+
+    color: #eeeeee;
+
+    padding: 12px 16px;
+
+    font-family: inherit;
+
+    box-shadow: none;
+
+    transition:
+
+        border-color 0.3s ease,
+
+        box-shadow 0.3s ease,
+
+        transform 0.2s ease;
+
+}
+
+
+.formulario .form-control::placeholder {
+
+    color: #777870;
+
+    opacity: 1;
+
+}
+
+
+.formulario .form-control:focus {
+
+    background: rgba(5, 15, 13, 0.9);
+
+    color: #ffffff;
+
+    border-color: #ff941c;
+
+    box-shadow:
+
+        0 0 0 3px rgba(255, 148, 28, 0.10);
+
+    outline: none;
+
+    transform: translateY(-1px);
+
+}
+
+
+/* =====================================================
+   TEXTAREA
+===================================================== */
+
+.formulario textarea {
+
+    width: 100%;
+
+    height: 220px;
+
+    min-height: 220px;
+
+    max-height: 220px;
+
+    resize: none;
+
+    line-height: 1.6;
+
+    padding: 20px !important;
+
+    border-radius: 18px !important;
+
+}
+
+
+/* =====================================================
+   PATA DECORATIVA
+===================================================== */
+
+.card-informacoes .card-body {
+
+    position: relative;
+
+}
+
+
+.marca-pata {
+
+    position: absolute;
+
+    right: 40px;
+
+    bottom: 30px;
+
+    color: rgba(255, 255, 255, 0.035);
+
+    font-size: 70px;
+
+    transform: rotate(-20deg);
+
+    pointer-events: none;
+
+}
+
+
+/* =====================================================
+   INPUT DE FOTO
+===================================================== */
+
+#foto {
+
+    display: none;
+
+}
+
+
+/* =====================================================
+   ÁREA DE UPLOAD
+===================================================== */
+
+.upload-area {
+
+    width: 100%;
+
+    height: 190px;
+
+    border-radius: 19px;
+
+    border: 1px dashed #ff941c;
+
+    background: rgba(5, 15, 13, 0.5);
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+
+}
+
+
+.upload-area:hover {
+
+    background: rgba(255, 148, 28, 0.07);
+
+    border-color: #ffb34c;
+
+    transform: translateY(-3px);
+
+}
+
+
+.upload-icone {
+
+    width: 60px;
+
+    height: 60px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    margin-bottom: 12px;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #ffae35,
+            #ed7900
+        );
+
+    color: #172018;
+
+    font-size: 24px;
+
+    box-shadow:
+
+        0 8px 25px rgba(255, 126, 0, 0.25);
+
+}
+
+
+.upload-area strong {
+
+    color: #f5f0e8;
+
+    font-size: 14px;
+
+    margin-bottom: 5px;
+
+}
+
+
+.upload-area span {
+
+    color: #888;
+
+    font-size: 10px;
+
+}
+
+
+/* =====================================================
+   NOME DO ARQUIVO
+===================================================== */
+
+#nomeArquivo {
+
+    text-align: center;
+
+    color: #ffae35;
+
+    font-size: 11px;
+
+    margin-top: 8px;
+
+}
+
+
+/* =====================================================
+   PREVIEW
+===================================================== */
+
+.preview-container {
+
+    display: none;
+
+    width: 100%;
+
+    height: 180px;
+
+    margin-top: 15px;
+
+    border-radius: 18px;
+
+    overflow: hidden;
+
+    border: 1px solid rgba(255, 148, 28, 0.5);
+
+    background: #081713;
+
+}
+
+
+.preview-container img {
+
+    width: 100%;
+
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+}
+
+
+/* =====================================================
+   LABEL
+===================================================== */
+
+.formulario .form-label {
+
+    color: #ddd;
+
+    font-weight: 500;
+
+    font-size: 13px;
+
+    margin-bottom: 8px;
+
+}
+
+
+/* =====================================================
+   BOTÃO LOCALIZAÇÃO
+===================================================== */
+
+.formulario .btn-secondary {
+
+    width: 43px;
+
+    height: 43px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin-top: 12px;
+
+    padding: 0;
+
+    border: none;
+
+    border-radius: 11px;
+
+    background: rgba(255, 148, 28, 0.15);
+
+    color: #ffae35;
+
+    transition:
+
+        transform 0.25s ease,
+
+        background 0.25s ease,
+
+        box-shadow 0.25s ease;
+
+}
+
+
+.formulario .btn-secondary:hover {
+
+    background: #ff941c;
+
+    color: #172018;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+
+        0 6px 15px rgba(255, 148, 28, 0.20);
+
+}
+
+
+/* =====================================================
+   MAPA
+===================================================== */
+
+.mapa {
+
+    position: relative;
+
+    width: 100%;
+
+    height: 100px;
+
+    margin-top: 15px;
+
+    overflow: hidden;
+
+    border-radius: 17px;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #0b3a35,
+            #10302b
+        );
+
+    border: 1px solid rgba(95, 160, 137, 0.3);
+
+}
+
+
+/* linhas */
+
+.linhas-mapa {
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+
+        linear-gradient(
+            35deg,
+            transparent 45%,
+            rgba(100, 150, 135, 0.25) 46%,
+            transparent 48%
+        ),
+
+        linear-gradient(
+            145deg,
+            transparent 45%,
+            rgba(100, 150, 135, 0.20) 46%,
+            transparent 48%
+        );
+
+    background-size: 80px 80px;
+
+}
+
+
+/* marcador */
+
+.mapa i {
+
+    position: absolute;
+
+    left: 50%;
+
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    color: #ff941c;
+
+    font-size: 40px;
+
+    filter:
+
+        drop-shadow(
+            0 5px 8px rgba(0, 0, 0, 0.5)
+        );
+
+}
+
+
+/* =====================================================
+   AÇÕES
+===================================================== */
+
+.acoes {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    margin-top: 30px;
+
+    position: relative;
+
+    z-index: 3;
+
+}
+
+
+/* =====================================================
+   BOTÃO ENVIAR
+===================================================== */
+
+.formulario .btn-success {
+
+    flex: 1;
+
+    min-height: 60px;
+
+    border: none;
+
+    border-radius: 17px;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #ffb33d,
+            #ef7900
+        );
+
+    color: #172018;
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    box-shadow:
+
+        0 12px 35px rgba(239, 121, 0, 0.25);
+
+    transition:
+
+        transform 0.25s ease,
+
+        box-shadow 0.25s ease,
+
+        background 0.25s ease;
+
+}
+
+
+.formulario .btn-success:hover {
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #ffc15d,
+            #f58a0a
+        );
+
+    color: #172018;
+
+    transform: translateY(-3px);
+
+    box-shadow:
+
+        0 18px 40px rgba(239, 121, 0, 0.40);
+
+}
+
+
+.formulario .btn-success:active {
+
+    transform: scale(0.98);
+
+}
+
+
+/* =====================================================
+   BOTÃO LIMPAR
+===================================================== */
+
+.formulario .btn-danger {
+
+    width: 60px;
+
+    height: 60px;
+
+    border: none;
+
+    border-radius: 17px;
+
+    background: #a93627;
+
+    color: white;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 19px;
+
+    transition:
+
+        transform 0.25s ease,
+
+        background 0.25s ease,
+
+        box-shadow 0.25s ease;
+
+}
+
+
+.formulario .btn-danger:hover {
+
+    background: #d34731;
+
+    color: white;
+
+    transform: translateY(-3px);
+
+    box-shadow:
+
+        0 8px 20px rgba(0, 0, 0, 0.25);
+
+}
+
+
+/* =====================================================
+   SEGURANÇA
+===================================================== */
+
+.seguranca {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 7px;
+
+    margin-top: 18px;
+
+    color: #888;
+
+    font-size: 11px;
+
+}
+
+
+.seguranca i {
+
+    color: #9e8960;
+
+    font-size: 15px;
+
+}
+
+
+/* =====================================================
+   ANIMAÇÕES DO JAVASCRIPT
+===================================================== */
+
+.girando {
+
+    animation:
+
+        girar 1s linear infinite;
+
+}
+
+
+@keyframes girar {
+
+    from {
+
+        transform: rotate(0deg);
+
+    }
+
+    to {
+
+        transform: rotate(360deg);
+
+    }
+
+}
+
+
+/* botão enviando */
+
+.btn-success.enviando {
+
+    opacity: 0.8;
+
+    cursor: wait;
+
+    transform: none !important;
+
+}
+
+
+/* botão sucesso */
+
+.btn-success.sucesso {
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #1d9b55,
+            #08752f
+        );
+
+    color: white;
+
+}
+
+
+/* localização encontrada */
+
+.btn-secondary.localizacao-ok {
+
+    background: #159447;
+
+    color: white;
+
+}
+
+
+/* =====================================================
+   RESPONSIVIDADE
+===================================================== */
+
+@media (max-width: 768px) {
+
+
+    body {
+
+        padding: 20px 10px;
+
+        align-items: flex-start;
+
+    }
+
+
+    .formulario {
+
+        padding: 25px 18px;
+
+        border-radius: 24px;
+
+    }
+
+
+    .perfil {
+
+        margin-bottom: 28px;
+
+    }
+
+
+    .icone-logo {
+
+        width: 70px;
+
+        height: 70px;
+
+        font-size: 30px;
+
+    }
+
+
+    .titulo h1 {
+
+        font-size: 27px;
+
+    }
+
+
+    .titulo p {
+
+        font-size: 11px;
+
+    }
+
+
+    .coracao {
+
+        display: none;
+
+    }
+
+
+    .formulario textarea {
+
+        height: 180px;
+
+        min-height: 180px;
+
+        max-height: 180px;
+
+    }
+
+
+    .row.mt-3 {
+
+        row-gap: 1rem;
+
+    }
+
+
+}
+
+
+/* =====================================================
+   CELULAR
+===================================================== */
+
+@media (max-width: 500px) {
+
+
+    body {
+
+        padding: 12px 8px;
+
+    }
+
+
+    .formulario {
+
+        padding: 20px 15px;
+
+        border-radius: 20px;
+
+    }
+
+
+    .cabecalho {
+
+        gap: 13px;
+
+    }
+
+
+    .icone-logo {
+
+        width: 60px;
+
+        height: 60px;
+
+        font-size: 26px;
+
+    }
+
+
+    .titulo h1 {
+
+        font-size: 23px;
+
+    }
+
+
+    .titulo p {
+
+        font-size: 9px;
+
+    }
+
+
+    .card-header {
+
+        padding-left: 18px !important;
+
+        padding-right: 18px !important;
+
+    }
+
+
+    .card-body {
+
+        padding-left: 18px !important;
+
+        padding-right: 18px !important;
+
+    }
+
+
+    .acoes {
+
+        gap: 10px;
+
+    }
+
+
+    .formulario .btn-success {
+
+        min-height: 54px;
+
+        font-size: 12px;
+
+    }
+
+
+    .formulario .btn-danger {
+
+        width: 54px;
+
+        height: 54px;
+
+    }
+
+
+}

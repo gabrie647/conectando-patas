@@ -1,0 +1,827 @@
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=Lexend+Deca:wght@100..900&display=swap');
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   BODY
+========================================================= */
+
+body {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 40px 20px;
+
+    font-family: "Google Sans Flex", sans-serif;
+
+    background:
+        radial-gradient(
+            circle at 85% 20%,
+            rgba(236, 117, 25, 0.25),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 10% 80%,
+            rgba(95, 209, 19, 0.10),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #050806,
+            #0c1d13,
+            #153a24,
+            #2d1a08,
+            #000000
+        );
+
+    color: #ffffff;
+
+    overflow-x: hidden;
+}
+
+
+/* =========================================================
+   FORMULÁRIO
+========================================================= */
+
+.formulario {
+    position: relative;
+
+    width: 800px;
+    max-width: 100%;
+
+    padding: 42px;
+
+    border-radius: 22px;
+
+    /*
+        Fundo escuro transparente.
+        Dá o efeito moderno da imagem.
+    */
+    background:
+        linear-gradient(
+            145deg,
+            rgba(8, 17, 12, 0.96),
+            rgba(15, 29, 20, 0.94),
+            rgba(45, 27, 8, 0.92)
+        );
+
+    /*
+        Borda normal.
+        A borda com gradient será feita pelo pseudo-elemento.
+    */
+    border: 1px solid rgba(236, 117, 25, 0.45);
+
+    box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.55),
+        0 0 40px rgba(236, 117, 25, 0.10);
+
+    backdrop-filter: blur(15px);
+
+    overflow: hidden;
+}
+
+
+/*
+    Brilho laranja na lateral do formulário
+*/
+
+.formulario::before {
+    content: "";
+
+    position: absolute;
+
+    width: 300px;
+    height: 300px;
+
+    right: -150px;
+    bottom: -150px;
+
+    background: rgba(236, 117, 25, 0.18);
+
+    border-radius: 50%;
+
+    filter: blur(80px);
+
+    pointer-events: none;
+}
+
+
+/*
+    Brilho verde
+*/
+
+.formulario::after {
+    content: "";
+
+    position: absolute;
+
+    width: 250px;
+    height: 250px;
+
+    left: -150px;
+    top: -150px;
+
+    background: rgba(95, 209, 19, 0.08);
+
+    border-radius: 50%;
+
+    filter: blur(70px);
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   CONTEÚDO DO FORMULÁRIO
+========================================================= */
+
+.formulario > * {
+    position: relative;
+    z-index: 2;
+}
+
+
+/* =========================================================
+   LABELS
+========================================================= */
+
+.form-label,
+.form-check-label {
+    color: #ffffff;
+
+    font-family: "Lexend Deca", sans-serif;
+
+    font-size: 14px;
+
+    font-weight: 500;
+}
+
+
+.form-label {
+    margin-bottom: 7px;
+}
+
+
+/* =========================================================
+   INPUTS
+========================================================= */
+
+.form-control,
+.form-select {
+    width: 100%;
+
+    min-height: 42px;
+
+    padding: 10px 13px;
+
+    border-radius: 8px;
+
+    /*
+        Campo escuro como na imagem
+    */
+    background: rgba(7, 13, 10, 0.80);
+
+    color: #ffffff;
+
+    border: 1px solid rgba(255, 255, 255, 0.30);
+
+    font-family: "Google Sans Flex", sans-serif;
+
+    transition:
+        border-color 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease,
+        transform 0.25s ease;
+}
+
+
+/*
+    Placeholder
+*/
+
+.form-control::placeholder {
+    color: rgba(255, 255, 255, 0.48);
+}
+
+
+/*
+    Select
+*/
+
+.form-select {
+    color: rgba(255, 255, 255, 0.75);
+
+    cursor: pointer;
+}
+
+
+/*
+    Foco
+*/
+
+.form-control:focus,
+.form-select:focus {
+    background: rgba(12, 23, 16, 0.95);
+
+    color: #ffffff;
+
+    border-color: #ec7519;
+
+    outline: none;
+
+    box-shadow:
+        0 0 0 3px rgba(236, 117, 25, 0.12),
+        0 0 18px rgba(236, 117, 25, 0.10);
+
+    transform: translateY(-1px);
+}
+
+
+/*
+    Quando passa o mouse
+*/
+
+.form-control:hover,
+.form-select:hover {
+    border-color: rgba(236, 117, 25, 0.60);
+}
+
+
+/* =========================================================
+   TÍTULO
+========================================================= */
+
+.titulo {
+    margin-bottom: 28px;
+
+    font-family: "Lexend Deca", sans-serif;
+
+    font-size: 42px;
+
+    line-height: 1.05;
+
+    font-weight: 400;
+
+    letter-spacing: -1px;
+}
+
+
+/*
+    Conectando
+*/
+
+.conectando {
+    display: block;
+
+    color: #ff7f08;
+
+    text-shadow:
+        0 0 20px rgba(255, 127, 8, 0.15);
+}
+
+
+/*
+    Patas
+*/
+
+.patas {
+    display: block;
+
+    color: #ffffff;
+
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.logo-formulario {
+    width: 90px;
+    height: 90px;
+
+    object-fit: contain;
+
+    margin-bottom: 15px;
+
+    /*
+        Deixa a logo branca.
+        Funciona caso a imagem tenha fundo/traços escuros.
+    */
+    filter:
+        brightness(0)
+        invert(1);
+
+    transition:
+        transform 0.3s ease,
+        filter 0.3s ease;
+}
+
+
+/*
+    Animação ao passar o mouse
+*/
+
+.logo-formulario:hover {
+    transform: scale(1.05);
+
+    filter:
+        brightness(0)
+        invert(1)
+        drop-shadow(0 0 8px rgba(255, 255, 255, 0.25));
+}
+
+
+/* =========================================================
+   LINKS
+========================================================= */
+
+.link {
+    display: block;
+
+    width: fit-content;
+
+    margin: 0 auto 15px;
+
+    color: #ff941c;
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    font-weight: 500;
+
+    position: relative;
+
+    transition:
+        color 0.3s ease;
+}
+
+
+/*
+    Linha do link
+*/
+
+.link::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: -4px;
+
+    width: 0;
+    height: 1px;
+
+    background: #ff941c;
+
+    transition: width 0.3s ease;
+}
+
+
+.link:hover {
+    color: #ffb347;
+}
+
+
+.link:hover::after {
+    width: 100%;
+}
+
+
+/* =========================================================
+   CHECKBOX
+========================================================= */
+
+.form-check {
+    margin-top: 12px;
+}
+
+
+.form-check-input {
+    width: 17px;
+    height: 17px;
+
+    background-color: transparent;
+
+    border: 1px solid rgba(255, 255, 255, 0.55);
+
+    cursor: pointer;
+}
+
+
+.form-check-input:checked {
+    background-color: #5fd113;
+
+    border-color: #5fd113;
+
+    box-shadow:
+        0 0 10px rgba(95, 209, 19, 0.25);
+}
+
+
+.form-check-label {
+    font-size: 12px;
+
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   BOTÃO
+========================================================= */
+
+.formulario .btn {
+    display: inline-flex;
+
+    justify-content: center;
+    align-items: center;
+
+    min-width: 170px;
+
+    padding: 11px 35px;
+
+    border: none;
+
+    border-radius: 9px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff9d00,
+            #ff7f08,
+            #ec4d08
+        );
+
+    color: #ffffff;
+
+    font-family: "Lexend Deca", sans-serif;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 20px rgba(236, 117, 25, 0.22);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        filter 0.25s ease;
+}
+
+
+/*
+    Hover
+*/
+
+.formulario .btn:hover {
+    color: #ffffff;
+
+    transform: translateY(-3px);
+
+    filter: brightness(1.08);
+
+    box-shadow:
+        0 12px 28px rgba(236, 117, 25, 0.35);
+}
+
+
+/*
+    Clique
+*/
+
+.formulario .btn:active {
+    transform: translateY(0);
+
+    box-shadow:
+        0 5px 12px rgba(236, 117, 25, 0.20);
+}
+
+
+/* =========================================================
+   BOTÃO VERDE
+   Caso você queira manter o botão verde atual
+========================================================= */
+
+.formulario .btn-success {
+    background:
+        linear-gradient(
+            135deg,
+            #72df20,
+            #5fd113,
+            #43a90a
+        );
+}
+
+
+/*
+    Hover botão verde
+*/
+
+.formulario .btn-success:hover {
+    background:
+        linear-gradient(
+            135deg,
+            #8bea3c,
+            #5fd113,
+            #43a90a
+        );
+
+    box-shadow:
+        0 12px 28px rgba(95, 209, 19, 0.30);
+}
+
+
+/* =========================================================
+   BOTÃO DANGER
+========================================================= */
+
+.formulario .btn-danger {
+    background:
+        linear-gradient(
+            135deg,
+            #a92c20,
+            #7e1e17
+        );
+
+    color: #ffffff;
+}
+
+
+.formulario .btn-danger:hover {
+    background:
+        linear-gradient(
+            135deg,
+            #c83b2c,
+            #91251c
+        );
+}
+
+
+/* =========================================================
+   ORGANIZAÇÃO DAS LINHAS
+========================================================= */
+
+.formulario .row {
+    display: flex;
+
+    flex-wrap: nowrap;
+
+    gap:  5 px;
+
+    margin-bottom: 12px;
+}
+
+
+/*
+    Duas colunas
+*/
+
+.formulario .row .col-md-6 {
+    width: 50%;
+}
+
+
+/*
+    Cidade
+*/
+
+.formulario .row .col-md-4 {
+    width: 33.33%;
+}
+
+
+/*
+    Número da casa
+*/
+
+.formulario .row .col-md-2 {
+    width: 16.67%;
+}
+
+
+/* =========================================================
+   ESPAÇAMENTO ENTRE CAMPOS
+========================================================= */
+
+.formulario .mb-3 {
+    margin-bottom: 18px !important;
+}
+
+
+/* =========================================================
+   TEXTO DOS TERMOS
+========================================================= */
+
+.form-check-label a {
+    color: #ff941c;
+
+    font-weight: 600;
+
+    text-decoration: none;
+
+    transition: color 0.25s ease;
+}
+
+
+.form-check-label a:hover {
+    color: #ffb347;
+
+    text-decoration: underline;
+}
+
+
+/* =========================================================
+   EFEITO DE DIGITAÇÃO
+========================================================= */
+
+.form-control:valid {
+    border-color: rgba(95, 209, 19, 0.25);
+}
+
+
+/* =========================================================
+   RESPONSIVO
+========================================================= */
+
+@media (max-width: 768px) {
+
+    body {
+        padding: 20px 12px;
+
+        align-items: flex-start;
+    }
+
+
+    .formulario {
+        width: 100%;
+
+        padding: 28px 22px;
+
+        border-radius: 18px;
+    }
+
+
+    .logo-formulario {
+        width: 75px;
+        height: 75px;
+    }
+
+
+    .titulo {
+        font-size: 34px;
+
+        margin-bottom: 22px;
+    }
+
+
+    /*
+        Faz as colunas ficarem uma abaixo da outra
+    */
+
+    .formulario .row {
+        flex-wrap: wrap;
+
+        gap: 0;
+    }
+
+
+    .formulario .row .col-md-6,
+    .formulario .row .col-md-4,
+    .formulario .row .col-md-2 {
+        width: 100%;
+    }
+
+
+    /*
+        Espaçamento entre campos no celular
+    */
+
+    .formulario .row > div {
+        margin-bottom: 15px;
+    }
+
+
+    .formulario .btn {
+        width: 100%;
+
+        min-width: unset;
+    }
+}
+
+
+/* =========================================================
+   CELULARES PEQUENOS
+========================================================= */
+
+@media (max-width: 500px) {
+
+    body {
+        padding: 10px;
+    }
+
+
+    .formulario {
+        padding: 24px 17px;
+    }
+
+
+    .logo-formulario {
+        width: 65px;
+        height: 65px;
+    }
+
+
+    .titulo {
+        font-size: 30px;
+    }
+
+
+    .form-label {
+        font-size: 13px;
+    }
+
+
+    .form-control,
+    .form-select {
+        min-height: 40px;
+
+        font-size: 13px;
+    }
+
+
+    .form-check-label {
+        font-size: 11px;
+    }
+}
+
+
+/* =========================================================
+   ANIMAÇÃO DO FORMULÁRIO
+========================================================= */
+
+@keyframes aparecerFormulario {
+
+    from {
+        opacity: 0;
+
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform: translateY(0);
+    }
+}
+
+
+.formulario {
+    animation: aparecerFormulario 0.7s ease forwards;
+}
+
+
+/* =========================================================
+   ANIMAÇÃO DO BOTÃO
+========================================================= */
+
+@keyframes pulsar {
+
+    0% {
+        box-shadow:
+            0 8px 20px rgba(236, 117, 25, 0.20);
+    }
+
+    50% {
+        box-shadow:
+            0 8px 28px rgba(236, 117, 25, 0.35);
+    }
+
+    100% {
+        box-shadow:
+            0 8px 20px rgba(236, 117, 25, 0.20);
+    }
+}
+
+
+.formulario .btn-success {
+    animation: pulsar 3s infinite;
+}

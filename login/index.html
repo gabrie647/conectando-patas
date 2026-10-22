@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conectando Patas - Login</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <div class="container min-vh-100 d-flex justify-content-center align-items-center">
+        <form class="formulario" id="formLogin">
+            <img class="logo-formulario" src="./img/ChatGPT Image 23 de ago. de 2026, 23_07_10.png" alt="Logo">
+            
+            <div class="area-formulario">
+                <h1 class="titulo">
+                    <span class="conectando">Conectando</span>
+                    <span class="patas">Patas</span>
+                </h1>
+
+                <div class="form-field">
+                    <label for="email">E-mail:</label>
+                    <input type="email" id="email" name="email" placeholder="Digite seu e-mail" required>
+                </div>
+
+                <div class="form-field senha-campo">
+                    <label for="senha">Senha:</label>
+                    <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required>
+                    <button type="button" id="btnOlhoSenha" class="btn-olho" aria-label="Mostrar senha">👁️</button>
+                </div>
+
+                <div class="linha-inferior">
+                    <div class="remember-me">
+                        <input type="checkbox" id="lembrar" name="lembrar">
+                        <label for="lembrar">Lembrar de mim</label>
+                    </div>
+                    <div class="forgot-link">
+                        <a href="#" id="linkEsqueci">Esqueci minha senha</a>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-login" id="btnEntrar">Entrar</button>
+
+                <div class="divisor">
+                    <span>ou</span>
+                </div>
+
+                <button type="button" class="btn-google" id="btnGoogle">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 48 48">
+                        <path fill="#4285F4" d="M24 9.5c3.54 0 6.71 1.22 9.26 3.6l6.75-6.75C35.72 2.2 30.1 0 24 0 14.73 0 6.83 5.38 2.68 13.23l7.9 6.14C12.42 12.1 17.8 9.5 24 9.5z"/>
+                        <path fill="#34A853" d="M46.98 24.54c0-1.57-.14-3.08-.4-4.54H24v9.09h12.92c-.57 2.91-2.26 5.37-4.82 7.03l7.45 5.77c4.34-4.01 6.83-9.92 6.83-17.35z"/>
+                        <path fill="#FBBC05" d="M10.58 28.46c-.48 1.44-.75 2.96-.75 4.54s.27 3.1.75 4.54l-7.9-6.14C1.47 28.47 0 24.94 0 21s1.47-7.47 2.68-10.86l7.9 6.14c-.48 1.44-.75 2.96-.75 4.54s.27 3.1.75 4.54z"/>
+                        <path fill="#EA4335" d="M24 48c6.08 0 11.23-2.01 14.97-5.42l-7.45-5.77c-2.04 1.38-4.63 2.2-7.52 2.2-6.18 0-11.4-4.18-13.23-9.8l-7.9 6.14C6.83 42.62 14.73 48 24 48z"/>
+                    </svg>
+                    Entrar com Google
+                </button>
+
+                <div class="signup-link">
+                    Não tem conta? <a href="../Pi-formulario/Pi-formulario-inscricao/index.html">Cadastre-se</a>
+                </div>
+
+                <div id="mensagem" class="mensagem"></div>
+            </div>
+        </form>
+    </div>
+    <script src="./js/script.js"></script>
+</body>
+</html>

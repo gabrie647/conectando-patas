@@ -1,0 +1,24 @@
+INTEGRACAO DO LOGIN - CONECTANDO PATAS
+
+O que foi integrado:
+- O formulário de login envia e-mail/senha para backend/login.php.
+- O PHP consulta a tabela usuarios do PostgreSQL configurado por DATABASE_URL no Render.
+- A senha é validada com password_verify, pois backend/cadastro.php a grava com password_hash.
+- O servidor cria uma sessão PHP e oferece backend/sessao.php e backend/logout.php.
+- O visual CSS existente foi mantido.
+
+IMPORTANTE PARA O RENDER:
+1. O serviço deve ser um Web Service Docker usando o Dockerfile do projeto.
+2. Configure DATABASE_URL nas Environment Variables com a URL interna/externa adequada do PostgreSQL do Render, incluindo sslmode=require quando exigido.
+3. O init.sh executa data-base/banco.sql na inicialização. A tabela usuarios deve conter os campos definidos nesse arquivo.
+4. Publique o projeto e teste primeiro o cadastro de um usuário; depois entre usando exatamente o e-mail e a senha cadastrados.
+5. Os endpoints usam caminhos relativos no mesmo domínio, portanto não precisam de CORS quando a página é servida pelo próprio Render.
+
+AINDA NÃO CONFIGURADO (não simulado):
+- Entrar com Google: exige criar OAuth Client ID/Secret no Google Cloud e implementar o fluxo OAuth no servidor. O botão informa isso sem criar uma sessão falsa.
+- Esqueci minha senha: exige um serviço de e-mail, token de uso único com expiração e página segura para definir nova senha. O botão informa que esse fluxo ainda não foi configurado.
+
+SEGURANÇA E LIMITES:
+- Este pacote implementa autenticação por e-mail/senha com sessão PHP, mas ainda não protege páginas inteiras contra acesso direto; para isso, cada página/API privada deve validar a sessão no servidor.
+- O “Lembrar de mim” salva apenas o e-mail no navegador, nunca a senha.
+- Teste o serviço e consulte os logs do Render antes de usar em produção.
