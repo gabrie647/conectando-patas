@@ -21,18 +21,28 @@ if (formEsqueci) {
     formEsqueci.addEventListener('submit', async (evento) => {
         evento.preventDefault();
         mensagemDiv.style.display = 'none';
+        const email = document.getElementById('email').value.trim();
+        const confirmarEmail = document.getElementById('confirmarEmail').value.trim();
+        if (email.toLowerCase() !== confirmarEmail.toLowerCase()) {
+            mostrarMensagem('Os endereços de e-mail não coincidem. Confira os dois campos.', 'erro');
+            return;
+        }
+        if (!document.getElementById('confirmacaoEmail').checked) {
+            mostrarMensagem('Confirme que você tem acesso ao endereço de e-mail informado.', 'erro');
+            return;
+        }
         botao.disabled = true;
         botao.textContent = 'Enviando...';
         try {
             const dados = new FormData();
-            dados.append('email', document.getElementById('email').value.trim());
+            dados.append('email', email);
             const resultado = await enviar('/backend/esqueci-senha.php', dados);
             mostrarMensagem(resultado.mensagem, 'sucesso');
         } catch (erro) {
             mostrarMensagem(erro.message || 'Não foi possível conectar ao servidor.', 'erro');
         } finally {
             botao.disabled = false;
-            botao.textContent = 'Enviar link';
+            botao.textContent = 'Enviar link de recuperação';
         }
     });
 }
