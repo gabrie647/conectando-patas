@@ -11,6 +11,10 @@ RUN docker-php-ext-install pdo pdo_pgsql
 
 COPY . . 
 
+# Bloqueia .git, banco.sql e arquivos internos no navegador
+RUN cp /var/www/html/apache-protecao.conf /etc/apache2/conf-available/protecao.conf \
+    && a2enconf protecao
+
 RUN mkdir -p /var/www/html/uploads/pets \
     && chown -R www-data:www-data /var/www/html \
     && chmod -R 755 /var/www/html/uploads

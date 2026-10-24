@@ -9,11 +9,30 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css">
+<style>
+.cabecalho{width:100%;box-sizing:border-box;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:16px clamp(18px,5vw,70px);background:#141414;border-bottom:2px solid #5fd113;position:relative;z-index:10;font-family:Poppins,Arial,sans-serif}
+.cabecalho .logo{display:flex;flex-direction:column;text-decoration:none!important;color:#fff!important;font-size:22px;font-weight:500;line-height:1.05;white-space:nowrap}
+.cabecalho .logo strong{color:#5fd113;font-weight:700}
+.cabecalho .navegacao{display:flex;align-items:center;justify-content:flex-end;gap:clamp(12px,2vw,28px);flex-wrap:wrap}
+.cabecalho .navegacao a{color:#fff;text-decoration:none!important;font-size:13px;font-weight:600;letter-spacing:.4px;transition:color .2s}
+.cabecalho .navegacao a:hover,.cabecalho .navegacao a.ativo{color:#5fd113}
+.botao-voltar-home{display:inline-flex;align-items:center;justify-content:center;gap:8px;margin:0 0 18px;padding:10px 16px;border:1px solid #5fd113;border-radius:8px;background:transparent;color:#5fd113;text-decoration:none;font-weight:600;font-family:inherit;transition:background .2s,color .2s}
+.botao-voltar-home:hover{background:#5fd113;color:#141414}
+@media(max-width:700px){.cabecalho{align-items:flex-start;flex-direction:column;gap:14px}.cabecalho .navegacao{justify-content:flex-start;gap:12px}.cabecalho .navegacao a{font-size:12px}}
+</style>
 </head>
 
 <body>
+<header class="cabecalho">
+<a href="../../index.html#inicio" class="logo"><span>Conectando</span><strong>Patas</strong></a>
+<nav class="navegacao">
+<a href="../../index.html#inicio">HOME</a>
+<a href="../../animais.html">ANIMAIS</a>
 
-    <div class="container min-vh-100 d-flex justify-content-center align-items-center">
+<a href="../../login/index.html">CADASTRO / LOGIN</a>
+<a href="../../Contatos/index.html">CONTATO</a>
+</nav></header>
+<div class="container min-vh-100 d-flex justify-content-center align-items-center">
 
         <form class="formulario">
 
@@ -61,7 +80,7 @@
                         Senha:
                     </label>
 
-                    <input type="password" class="form-control" id="inputSenha" placeholder="Digite" required>
+                    <input type="password" class="form-control" id="inputSenha" placeholder="Digite (mín. 8 caracteres)" minlength="8" required>
                 </div>
 
                 <div class="mb-3">

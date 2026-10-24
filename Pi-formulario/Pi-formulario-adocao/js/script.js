@@ -294,6 +294,7 @@ formulario.addEventListener("submit", async function (evento) {
     dados.append("mensagem", texto);
     dados.append("localizacao", local);
     dados.append("foto", arquivo);
+    dados.append("website", document.getElementById("website").value);
 
     const textoOriginal = btnEnviar.innerHTML;
     btnEnviar.disabled = true;

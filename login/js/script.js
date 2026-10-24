@@ -3,9 +3,7 @@ const emailInput = document.getElementById('email');
 const senhaInput = document.getElementById('senha');
 const lembrarCheck = document.getElementById('lembrar');
 const btnEntrar = document.getElementById('btnEntrar');
-const btnGoogle = document.getElementById('btnGoogle');
 const btnOlhoSenha = document.getElementById('btnOlhoSenha');
-const linkEsqueci = document.getElementById('linkEsqueci');
 const mensagemDiv = document.getElementById('mensagem');
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -64,21 +62,14 @@ formLogin.addEventListener('submit', async (event) => {
         else localStorage.removeItem('emailLembrado');
 
         mostrarMensagem('Login realizado com sucesso!', 'sucesso');
-        window.setTimeout(() => { window.location.href = '../index.html'; }, 700);
+        const proximo = new URLSearchParams(window.location.search).get('next');
+        const destino = proximo && /^\/(?!\/)[\w\-./]*$/.test(proximo) ? proximo : '../index.html';
+        window.setTimeout(() => { window.location.href = destino; }, 700);
     } catch (erro) {
         mostrarMensagem(erro.message || 'Não foi possível conectar ao servidor.', 'erro');
         btnEntrar.disabled = false;
         btnEntrar.textContent = 'Entrar';
     }
-});
-
-btnGoogle?.addEventListener('click', () => {
-    mostrarMensagem('O acesso com Google precisa ser configurado com credenciais OAuth do projeto. Nenhuma sessão foi criada.', 'erro');
-});
-
-linkEsqueci?.addEventListener('click', (event) => {
-    event.preventDefault();
-    mostrarMensagem('A recuperação por e-mail ainda precisa de um serviço de envio de e-mails e de um fluxo seguro de redefinição de senha.', 'erro');
 });
 
 function validarEmail(email) {

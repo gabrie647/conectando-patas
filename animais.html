@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animais | Conectando Patas</title>
+    <link rel="stylesheet" href="./css/paginas.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style id="cp-header-shared">.cp-cabecalho{position:sticky;top:0;z-index:9999;display:flex;align-items:center;justify-content:space-between;gap:24px;box-sizing:border-box;width:100%;padding:10px max(5%,calc((100% - 1430px)/2));background:#f9f5e9;border-bottom:1px solid #ded9ca;font-family:Poppins,Arial,sans-serif;min-height:80px}.cp-logo{display:flex;align-items:center;gap:12px;flex-shrink:0;text-decoration:none!important;color:#153a24!important;font-family:Georgia,serif;font-size:18px;font-weight:bold;line-height:1.05}.cp-logo img{width:55px;height:55px;object-fit:contain}.cp-logo strong{color:#b65b22}.cp-nav{display:flex;align-items:center;justify-content:center;gap:clamp(12px,2.2vw,34px)}.cp-nav a{color:#153a24!important;text-decoration:none!important;font-size:13px;font-weight:700;letter-spacing:.4px;white-space:nowrap}.cp-nav a:hover{color:#d46a2d!important}.cp-cadastrar{display:inline-block;background:#153a24;color:white!important;text-decoration:none!important;border-radius:28px;padding:15px 24px;font-size:13px;font-weight:bold;white-space:nowrap}.cp-cadastrar:hover{background:#245638}.cp-cabecalho a:visited{text-decoration:none!important}@media(max-width:1000px){.cp-cabecalho{flex-wrap:wrap;justify-content:center}.cp-nav{order:3;width:100%;flex-wrap:wrap;gap:16px}.cp-acoes{margin-left:auto}}@media(max-width:560px){.cp-cabecalho{padding:10px}.cp-logo{margin-right:auto}.cp-logo img{width:43px;height:43px}.cp-nav{gap:12px}.cp-nav a{font-size:11px}.cp-cadastrar{padding:11px 14px;font-size:11px}}</style>
+</head>
+<body data-raiz="./">
+<header class="cp-cabecalho"><a class="cp-logo" href="index.html#inicio" aria-label="Conectando Patas - Home"><img src="img/ChatGPT%20Image%2013%20de%20ago.%20de%202026,%2014_44_37.png" alt=""><span>Conectando<br><strong>Patas</strong></span></a><nav class="cp-nav"><a href="index.html#inicio">HOME</a><a href="animais.html">ANIMAIS</a><a href="login/index.html">CADASTRO / LOGIN</a><a href="Contatos/index.html">CONTATO</a></nav><div class="cp-acoes"><a class="cp-cadastrar" href="login/index.html">CADASTRE-SE</a></div></header>
+
+<section class="pagina-banner">
+        <div class="interno">
+            <span class="rotulo">ANIMAIS</span>
+            <h1>Encontre um amigo<br><span>para chamar de seu</span></h1>
+            <p>Estes são os animais registrados pela comunidade. Viu algum que combina com você? Fale com a gente!</p>
+        </div>
+    </section>
+
+    <main class="secao">
+        <div class="barra-filtros">
+            <label class="campo-busca">
+                <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+                <input type="search" id="campoBusca" placeholder="Buscar por descrição ou local" maxlength="80" aria-label="Buscar animais">
+            </label>
+            <a class="btn btn-contorno" href="./Pi-formulario/Pi-formulario-adocao/index.html">
+                <i class="fa-solid fa-plus"></i> Registrar um animal
+            </a>
+        </div>
+
+        <div id="grade" class="grade-animais" aria-live="polite"></div>
+
+        <div id="vazio" class="estado-vazio" hidden>
+            <i class="fa-solid fa-paw" aria-hidden="true"></i>
+            <h2 id="vazioTitulo">Nenhum animal por aqui ainda</h2>
+            <p id="vazioTexto">Assim que a equipe aprovar os primeiros registros, eles aparecerão aqui.</p>
+            <a class="btn btn-laranja" href="./Pi-formulario/Pi-formulario-adocao/index.html">Registrar um animal</a>
+        </div>
+
+        <div class="rodar-mais">
+            <button type="button" id="btnMais" class="btn btn-contorno" hidden>Carregar mais</button>
+        </div>
+
+        <section class="chamada-pagina">
+            <div>
+                <h2>Viu um animal que<br><span>precisa de ajuda?</span></h2>
+                <p>Registre com foto e localização. Nossa equipe analisa e publica aqui.</p>
+            </div>
+            <a class="btn btn-laranja" href="./Pi-formulario/Pi-formulario-adocao/index.html">
+                <i class="fa-solid fa-camera"></i> Registrar agora
+            </a>
+        </section>
+    </main>
+
+    <footer class="rodape">
+        <div class="rodape-coluna logo-rodape">
+            <a href="./index.html#inicio" class="logo">
+                <span>Conectando</span>
+                <strong>Patas</strong>
+            </a>
+            <p>Conectando pessoas, transformando vidas e dando uma segunda chance aos animais.</p>
+        </div>
+        <div class="rodape-coluna">
+            <h3>NAVEGAÇÃO</h3>
+            <a href="./index.html#inicio">Home</a>
+            <a href="./animais.html">Animais</a>
+            
+            <a href="./Contatos/index.html">Contato</a>
+        </div>
+        <div class="rodape-coluna">
+            <h3>CONTATO</h3>
+            <p><i class="fa-solid fa-envelope"></i> contato@conectandopatas.org</p>
+            <p><i class="fa-solid fa-phone"></i> (49) 4002-8922</p>
+            <p><i class="fa-solid fa-location-dot"></i> Caçador, SC</p>
+        </div>
+        <div class="rodape-coluna">
+            <h3>SIGA-NOS</h3>
+            <div class="redes-rodape">
+                <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+            </div>
+        </div>
+        <div class="direitos">© 2026 Conectando Patas. Todos os direitos reservados.</div>
+    </footer>
+
+    <script src="./js/comum.js"></script>
+    <script src="./js/animais.js"></script>
+</body>
+</html>

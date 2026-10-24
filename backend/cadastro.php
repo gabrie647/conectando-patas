@@ -15,6 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
 }
 
 require_once __DIR__ . "/conexao.php";
+require_once __DIR__ . "/protecao.php";
 
 $nome = trim($_POST["nome"] ?? "");
 $sobrenome = trim($_POST["sobrenome"] ?? "");
@@ -87,6 +88,19 @@ if ($senha !== $confirmarSenha) {
 }
 
 
+if (strlen($senha) < 8) {
+
+    http_response_code(400);
+
+    echo json_encode([
+        "sucesso" => false,
+        "mensagem" => "A senha precisa ter pelo menos 8 caracteres."
+    ]);
+
+    exit;
+}
+
+
 /* ==============================
    TERMOS
 ============================== */
@@ -119,6 +133,13 @@ $senhaHash = password_hash(
 ============================== */
 
 try {
+
+    if (limite_excedido($pdo, "cadastro", 10, 60)) {
+        http_response_code(429);
+        echo json_encode(["sucesso" => false, "mensagem" => "Muitos cadastros em pouco tempo. Tente novamente mais tarde."]);
+        exit;
+    }
+    registrar_tentativa($pdo, "cadastro");
 
     $sql = "
         INSERT INTO usuarios (

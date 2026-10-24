@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conectando Patas - Esqueci minha senha</title>
+    <link rel="stylesheet" href="./css/style.css">
+<style>
+.cabecalho{width:100%;box-sizing:border-box;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:16px clamp(18px,5vw,70px);background:#141414;border-bottom:2px solid #5fd113;position:relative;z-index:10;font-family:Poppins,Arial,sans-serif}
+.cabecalho .logo{display:flex;flex-direction:column;text-decoration:none!important;color:#fff!important;font-size:22px;font-weight:500;line-height:1.05;white-space:nowrap}
+.cabecalho .logo strong{color:#5fd113;font-weight:700}
+.cabecalho .navegacao{display:flex;align-items:center;justify-content:flex-end;gap:clamp(12px,2vw,28px);flex-wrap:wrap}
+.cabecalho .navegacao a{color:#fff;text-decoration:none!important;font-size:13px;font-weight:600;letter-spacing:.4px;transition:color .2s}
+.cabecalho .navegacao a:hover,.cabecalho .navegacao a.ativo{color:#5fd113}
+.botao-voltar-home{display:inline-flex;align-items:center;justify-content:center;gap:8px;margin:0 0 18px;padding:10px 16px;border:1px solid #5fd113;border-radius:8px;background:transparent;color:#5fd113;text-decoration:none;font-weight:600;font-family:inherit;transition:background .2s,color .2s}
+.botao-voltar-home:hover{background:#5fd113;color:#141414}
+@media(max-width:700px){.cabecalho{align-items:flex-start;flex-direction:column;gap:14px}.cabecalho .navegacao{justify-content:flex-start;gap:12px}.cabecalho .navegacao a{font-size:12px}}
+</style>
+<style id="cp-header-shared">.cp-cabecalho{position:sticky;top:0;z-index:9999;display:flex;align-items:center;justify-content:space-between;gap:24px;box-sizing:border-box;width:100%;padding:10px max(5%,calc((100% - 1430px)/2));background:#f9f5e9;border-bottom:1px solid #ded9ca;font-family:Poppins,Arial,sans-serif;min-height:80px}.cp-logo{display:flex;align-items:center;gap:12px;flex-shrink:0;text-decoration:none!important;color:#153a24!important;font-family:Georgia,serif;font-size:18px;font-weight:bold;line-height:1.05}.cp-logo img{width:55px;height:55px;object-fit:contain}.cp-logo strong{color:#b65b22}.cp-nav{display:flex;align-items:center;justify-content:center;gap:clamp(12px,2.2vw,34px)}.cp-nav a{color:#153a24!important;text-decoration:none!important;font-size:13px;font-weight:700;letter-spacing:.4px;white-space:nowrap}.cp-nav a:hover{color:#d46a2d!important}.cp-cadastrar{display:inline-block;background:#153a24;color:white!important;text-decoration:none!important;border-radius:28px;padding:15px 24px;font-size:13px;font-weight:bold;white-space:nowrap}.cp-cadastrar:hover{background:#245638}.cp-cabecalho a:visited{text-decoration:none!important}@media(max-width:1000px){.cp-cabecalho{flex-wrap:wrap;justify-content:center}.cp-nav{order:3;width:100%;flex-wrap:wrap;gap:16px}.cp-acoes{margin-left:auto}}@media(max-width:560px){.cp-cabecalho{padding:10px}.cp-logo{margin-right:auto}.cp-logo img{width:43px;height:43px}.cp-nav{gap:12px}.cp-nav a{font-size:11px}.cp-cadastrar{padding:11px 14px;font-size:11px}}</style>
+</head>
+<body>
+<header class="cp-cabecalho"><a class="cp-logo" href="../index.html#inicio" aria-label="Conectando Patas - Home"><img src="../img/ChatGPT%20Image%2013%20de%20ago.%20de%202026,%2014_44_37.png" alt=""><span>Conectando<br><strong>Patas</strong></span></a><nav class="cp-nav"><a href="../index.html#inicio">HOME</a><a href="../animais.html">ANIMAIS</a><a href="../login/index.html">CADASTRO / LOGIN</a><a href="../Contatos/index.html">CONTATO</a></nav><div class="cp-acoes"><a class="cp-cadastrar" href="../login/index.html">CADASTRE-SE</a></div></header>
+<div class="container min-vh-100 d-flex justify-content-center align-items-center">
+        <form class="formulario" id="formEsqueci">
+            <img class="logo-formulario" src="./img/ChatGPT Image 23 de ago. de 2026, 23_07_10.png" alt="Logo">
+
+            <div class="area-formulario">
+                <h1 class="titulo">
+                    <span class="conectando">Conectando</span>
+                    <span class="patas">Patas</span>
+                </h1>
+
+                <p class="texto-ajuda">Digite o e-mail da sua conta e enviaremos um link para criar uma nova senha.</p>
+
+                <div class="form-field">
+                    <label for="email">E-mail:</label>
+                    <input type="email" id="email" name="email" placeholder="Digite seu e-mail" required>
+                </div>
+
+                <button type="submit" class="btn-login" id="btnEnviar">Enviar link</button>
+
+                <div class="signup-link">
+                    <a href="./index.html">Voltar para o login</a>
+                </div>
+
+                <div id="mensagem" class="mensagem"></div>
+            </div>
+        </form>
+    </div>
+    <script src="./js/recuperar.js"></script>
+</body>
+</html>

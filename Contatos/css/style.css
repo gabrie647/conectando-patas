@@ -1243,3 +1243,12 @@ body { background: var(--creme); }
     background: var(--laranja);
     color: var(--verde-escuro);
 }
+
+/* Campo isca contra robôs: fica fora da tela e não é lido por leitores de tela */
+.campo-armadilha {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}

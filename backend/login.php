@@ -9,6 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 }
 
 require_once __DIR__ . '/conexao.php';
+require_once __DIR__ . '/protecao.php';
 
 $email = trim($_POST['email'] ?? '');
 $senha = $_POST['senha'] ?? '';
@@ -19,11 +20,18 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL) || $senha === '') {
 }
 
 try {
+    if (limite_excedido($pdo, 'login_falha', 10, 15)) {
+        http_response_code(429);
+        echo json_encode(['sucesso' => false, 'mensagem' => 'Muitas tentativas erradas. Aguarde alguns minutos e tente de novo.']);
+        exit;
+    }
+
     $stmt = $pdo->prepare('SELECT id, nome, sobrenome, email, senha FROM usuarios WHERE LOWER(email) = LOWER(:email) LIMIT 1');
     $stmt->execute([':email' => $email]);
     $usuario = $stmt->fetch();
 
     if (!$usuario || !password_verify($senha, $usuario['senha'])) {
+        registrar_tentativa($pdo, 'login_falha');
         http_response_code(401);
         echo json_encode(['sucesso' => false, 'mensagem' => 'E-mail ou senha incorretos.']);
         exit;

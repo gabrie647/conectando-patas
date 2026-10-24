@@ -1,10 +1,11 @@
 <?php
 header('Content-Type: application/json; charset=UTF-8');
 header('Cache-Control: no-store');
-if (session_status() !== PHP_SESSION_ACTIVE) {
-    session_start();
-}
+require_once __DIR__ . '/auth.php';
+
+$usuario = usuario_atual();
 echo json_encode([
-    'logado' => isset($_SESSION['usuario']),
-    'usuario' => $_SESSION['usuario'] ?? null
+    'logado' => $usuario !== null,
+    'usuario' => $usuario,
+    'admin' => eh_admin($usuario)
 ]);
