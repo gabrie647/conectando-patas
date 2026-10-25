@@ -156,6 +156,24 @@ body.saindo { animation: sairPagina 0.35s ease forwards; }
 /* =====================================================
    BOTÕES (um único comportamento para todos)
 ===================================================== */
+.cp-login {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 22px;
+    border: 1px solid #ec8005;
+    border-radius: 30px;
+    color: #fd8105;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.cp-login:hover {
+    background-color: #f89500;
+    color: #ffffff;
+}
+
 .btn-principal,
 .btn-destaque,
 .btn-secundario,

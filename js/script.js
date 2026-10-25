@@ -622,59 +622,17 @@ window.addEventListener(
 
 
 // ======================================================
-// VINCULAÇÃO DA PÁGINA DE CADASTRO
+// VINCULAÇÃO DOS BOTÕES DE CADASTRO E ADOÇÃO
 // ======================================================
 
-// Caminho da página de cadastro
-const paginaCadastro =
-    window.location.pathname.includes('/Contatos/')
-        ? '../login/index.html'
-        : './login/index.html';
+const caminhoAtual = window.location.pathname;
+const prefixoRaiz = caminhoAtual.includes('/Contatos/') ? '../' : './';
+const paginaCadastro = prefixoRaiz + 'Pi-formulario/Pi-formulario-inscricao/index.html';
+const paginaAdocao = prefixoRaiz + 'Pi-formulario/Pi-formulario-adocao/index.html';
 
+const btnCadastro = document.getElementById('btnCadastro');
+btnCadastro?.addEventListener('click', () => navegarComTransicao(paginaCadastro));
 
-// ======================================================
-// BOTÃO "CADASTRE-SE"
-// ======================================================
-
-const btnCadastro =
-    document.getElementById(
-        "btnCadastro"
-    );
-
-btnCadastro?.addEventListener(
-    "click",
-    function () {
-
-        navegarComTransicao(
-            paginaCadastro
-        );
-
-    }
-);
-
-
-// ======================================================
-// BOTÕES "QUERO ADOTAR"
-// ======================================================
-
-const botoesQueroAdotar =
-    document.querySelectorAll(
-        ".btn-quero-adotar"
-    );
-
-botoesQueroAdotar.forEach(
-    function (botao) {
-
-        botao.addEventListener(
-            "click",
-            function () {
-
-                navegarComTransicao(
-                    paginaCadastro
-                );
-
-            }
-        );
-
-    }
-);
+document.querySelectorAll('.btn-quero-adotar').forEach(botao => {
+    botao.addEventListener('click', () => navegarComTransicao(paginaAdocao));
+});

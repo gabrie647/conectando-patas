@@ -28,9 +28,14 @@
 .pagina-recuperacao .signup-link a:hover { text-decoration:underline; }
 @media(max-width:600px) { .pagina-recuperacao .formulario { padding:28px 22px; } .pagina-recuperacao .conectando,.pagina-recuperacao .patas { font-size:30px; } .pagina-recuperacao .logo-formulario { height:80px; } }
 </style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style id="cp-header-unificado">
+.cp-cabecalho{position:sticky;top:0;z-index:9999;display:flex;align-items:center;justify-content:space-between;gap:18px;box-sizing:border-box;width:100%;padding:9px max(3%,calc((100% - 1430px)/2));background:rgba(249,245,233,.94);backdrop-filter:blur(14px);border-bottom:1px solid #ded9ca;font-family:Poppins,Arial,sans-serif;min-height:76px;box-shadow:0 4px 18px #153a2408}.cp-logo{display:flex;align-items:center;gap:9px;flex-shrink:0;text-decoration:none!important;color:#153a24!important;font-family:Georgia,serif;font-size:17px;font-weight:bold;line-height:1.05}.cp-logo img{width:49px;height:49px;object-fit:contain}.cp-logo strong{color:#a85a1f}.cp-nav{display:flex;align-items:center;justify-content:center;gap:clamp(10px,1.5vw,23px)}.cp-nav a{color:#153a24!important;text-decoration:none!important;font-size:12px;font-weight:700;letter-spacing:.35px;white-space:nowrap;position:relative;padding:8px 0}.cp-nav a:after{content:"";position:absolute;left:0;bottom:1px;height:2px;width:100%;background:#d48b54;transform:scaleX(0);transform-origin:left;transition:transform .2s}.cp-nav a:hover{color:#a85a1f!important}.cp-nav a:hover:after{transform:scaleX(1)}.cp-acoes{display:flex;align-items:center;gap:9px}.cp-busca{display:flex;align-items:center;gap:8px;padding:9px 13px;border:1px solid #ded9ca;background:#fff;border-radius:24px;transition:.2s;min-width:155px}.cp-busca:focus-within{border-color:#d48b54;box-shadow:0 0 0 3px #d48b542b}.cp-busca input{width:115px;min-width:0;border:0;outline:0;background:transparent;color:#153a24;font:12px Poppins,Arial,sans-serif}.cp-busca i{color:#657566;font-size:12px}.cp-cadastrar{display:inline-block;background:#153a24;color:#fff!important;text-decoration:none!important;border-radius:28px;padding:12px 17px;font-size:11px;font-weight:bold;white-space:nowrap;transition:background .2s}.cp-cadastrar:hover{background:#245638}.cp-cabecalho a:visited{text-decoration:none!important}@media(max-width:1100px){.cp-cabecalho{flex-wrap:wrap;justify-content:center}.cp-nav{order:3;width:100%;flex-wrap:wrap;gap:17px}.cp-acoes{margin-left:auto}}@media(max-width:600px){.cp-cabecalho{padding:9px 12px;gap:10px}.cp-logo{margin-right:auto}.cp-logo img{width:40px;height:40px}.cp-nav{gap:12px}.cp-nav a{font-size:10px}.cp-acoes{width:100%;margin:0;justify-content:center}.cp-busca{flex:1}.cp-busca input{width:100%}.cp-cadastrar{padding:10px 13px}}
+</style>
 </head>
 <body class="pagina-recuperacao">
-<header class="cp-cabecalho"><a class="cp-logo" href="../index.html#inicio" aria-label="Conectando Patas - Home"><img src="../img/ChatGPT%20Image%2013%20de%20ago.%20de%202026,%2014_44_37.png" alt=""><span>Conectando<br><strong>Patas</strong></span></a><nav class="cp-nav"><a href="../index.html#inicio">HOME</a><a href="../animais.html">ANIMAIS</a><a href="../login/index.html">CADASTRO / LOGIN</a><a href="../Contatos/index.html">CONTATO</a></nav><div class="cp-acoes"><a class="cp-cadastrar" href="../login/index.html">CADASTRE-SE</a></div></header>
+<header class="cp-cabecalho"><a class="cp-logo" href="../index.html#inicio" aria-label="Conectando Patas - Home"><img src="../img/ChatGPT%20Image%2013%20de%20ago.%20de%202026,%2014_44_37.png" alt=""><span>Conectando<br><strong>Patas</strong></span></a><nav class="cp-nav" aria-label="Navegação principal"><a href="../index.html#inicio">HOME</a><a href="../animais.html">ANIMAIS</a><a href="../Pi-formulario/Pi-formulario-inscricao/index.html">CADASTRO</a><a href="../Contatos/index.html">CONTATO</a></nav><div class="cp-acoes"><label class="cp-busca"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i><input class="cp-campo-busca" type="search" placeholder="Buscar animais" aria-label="Buscar animais"></label><a class="cp-cadastrar" href="../Pi-formulario/Pi-formulario-inscricao/index.html">CADASTRE-SE</a></div></header>
 <div class="container min-vh-100 d-flex justify-content-center align-items-center">
         <form class="formulario" id="formEsqueci">
             <img class="logo-formulario" src="./img/ChatGPT Image 23 de ago. de 2026, 23_07_10.png" alt="Logo">
@@ -72,5 +77,49 @@
         </form>
     </div>
     <script src="./js/recuperar.js"></script>
+<script id="cp-busca-global">
+(function () {
+    const campos = document.querySelectorAll('.cp-campo-busca');
+    const caminho = location.pathname;
+    const prefixo = caminho.includes('/Pi-formulario/') ? '../../' :
+        (caminho.includes('/Contatos/') || caminho.includes('/login/') ? '../' : './');
+    const paginaHome = !!document.getElementById('listaAnimais');
+    const parametros = new URLSearchParams(location.search);
+    const termoInicial = parametros.get('busca') || '';
+
+    campos.forEach(campo => {
+        campo.value = termoInicial;
+        campo.addEventListener('keydown', evento => {
+            if (evento.key !== 'Enter') return;
+            evento.preventDefault();
+            const termo = campo.value.trim();
+            if (paginaHome) {
+                filtrar(termo);
+            } else {
+                location.href = prefixo + 'index.html' +
+                    (termo ? '?busca=' + encodeURIComponent(termo) : '') + '#animais';
+            }
+        });
+        campo.addEventListener('input', () => {
+            if (paginaHome) filtrar(campo.value.trim());
+        });
+    });
+
+    function filtrar(termo) {
+        const cards = document.querySelectorAll('.card-animal');
+        cards.forEach(card => {
+            card.hidden = !card.textContent.toLocaleLowerCase('pt-BR')
+                .includes(termo.toLocaleLowerCase('pt-BR'));
+        });
+        const lista = document.getElementById('listaAnimais');
+        if (lista) {
+            lista.style.transform = 'translateX(0)';
+            lista.style.transition = 'none';
+        }
+    }
+
+    if (paginaHome && termoInicial) filtrar(termoInicial);
+})();
+</script>
 </body>
 </html>
