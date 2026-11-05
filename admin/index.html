@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Painel | Conectando Patas</title>
+    <link rel="stylesheet" href="../css/paginas.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body data-raiz="../">
+    <header class="cabecalho">
+        <a href="../index.html#inicio" class="logo">
+            <span>Conectando</span>
+            <strong>Patas</strong>
+        </a>
+        <nav class="navegacao">
+            <a href="../index.html#inicio">HOME</a>
+            <a href="../animais.html">ANIMAIS</a>
+            
+            <a href="../Contatos/index.html">CONTATO</a>
+            <a href="../admin/index.html" class="ativo">PAINEL</a>
+        </nav>
+        <div class="acoes-cabecalho">
+            <button class="btn-principal" type="button">CADASTRE-SE</button>
+        </div>
+    </header>
+
+    <section class="pagina-banner">
+        <div class="interno">
+            <span class="rotulo">ÁREA DA EQUIPE</span>
+            <h1>Painel<br><span>de gerenciamento</span></h1>
+            <p>Leia as mensagens de contato e aprove os animais registrados antes de aparecerem no site.</p>
+        </div>
+    </section>
+
+    <main class="secao">
+        <div id="aviso" class="aviso-painel" role="alert" hidden></div>
+
+        <div id="conteudo" hidden>
+            <div class="resumo-painel" id="resumo"></div>
+
+            <div class="abas" role="tablist" id="abas">
+                <button type="button" role="tab" data-aba="mensagens" aria-selected="true">Mensagens</button>
+                <button type="button" role="tab" data-aba="pendente" aria-selected="false">Pets pendentes</button>
+                <button type="button" role="tab" data-aba="aprovado" aria-selected="false">Pets publicados</button>
+                <button type="button" role="tab" data-aba="recusado" aria-selected="false">Pets recusados</button>
+            </div>
+
+            <div class="lista-painel" id="lista" aria-live="polite"></div>
+
+            <div class="rodar-mais">
+                <button type="button" id="btnMais" class="btn btn-contorno" hidden>Carregar mais</button>
+            </div>
+        </div>
+    </main>
+
+    <footer class="rodape">
+        <div class="rodape-coluna logo-rodape">
+            <a href="../index.html#inicio" class="logo"><span>Conectando</span><strong>Patas</strong></a>
+            <p>Conectando pessoas, transformando vidas e dando uma segunda chance aos animais.</p>
+        </div>
+        <div class="direitos">© 2026 Conectando Patas. Todos os direitos reservados.</div>
+    </footer>
+
+    <script src="../js/comum.js"></script>
+    <script src="./admin.js"></script>
+</body>
+</html>

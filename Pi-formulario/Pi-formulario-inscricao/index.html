@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Formulário</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+<style>
+.cabecalho{width:100%;box-sizing:border-box;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:16px clamp(18px,5vw,70px);background:#141414;border-bottom:2px solid #5fd113;position:relative;z-index:10;font-family:Poppins,Arial,sans-serif}
+.cabecalho .logo{display:flex;flex-direction:column;text-decoration:none!important;color:#fff!important;font-size:22px;font-weight:500;line-height:1.05;white-space:nowrap}
+.cabecalho .logo strong{color:#5fd113;font-weight:700}
+.cabecalho .navegacao{display:flex;align-items:center;justify-content:flex-end;gap:clamp(12px,2vw,28px);flex-wrap:wrap}
+.cabecalho .navegacao a{color:#fff;text-decoration:none!important;font-size:13px;font-weight:600;letter-spacing:.4px;transition:color .2s}
+.cabecalho .navegacao a:hover,.cabecalho .navegacao a.ativo{color:#5fd113}
+.botao-voltar-home{display:inline-flex;align-items:center;justify-content:center;gap:8px;margin:0 0 18px;padding:10px 16px;border:1px solid #5fd113;border-radius:8px;background:transparent;color:#5fd113;text-decoration:none;font-weight:600;font-family:inherit;transition:background .2s,color .2s}
+.botao-voltar-home:hover{background:#5fd113;color:#141414}
+@media(max-width:700px){.cabecalho{align-items:flex-start;flex-direction:column;gap:14px}.cabecalho .navegacao{justify-content:flex-start;gap:12px}.cabecalho .navegacao a{font-size:12px}}
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style id="cp-header-unificado">
+.cp-cabecalho{position:sticky;top:0;z-index:9999;display:flex;align-items:center;justify-content:space-between;gap:18px;box-sizing:border-box;width:100%;padding:9px max(3%,calc((100% - 1430px)/2));background:rgba(249,245,233,.94);backdrop-filter:blur(14px);border-bottom:1px solid #ded9ca;font-family:Poppins,Arial,sans-serif;min-height:76px;box-shadow:0 4px 18px #153a2408}.cp-logo{display:flex;align-items:center;gap:9px;flex-shrink:0;text-decoration:none!important;color:#153a24!important;font-family:Georgia,serif;font-size:17px;font-weight:bold;line-height:1.05}.cp-logo img{width:49px;height:49px;object-fit:contain}.cp-logo strong{color:#a85a1f}.cp-nav{display:flex;align-items:center;justify-content:center;gap:clamp(10px,1.5vw,23px)}.cp-nav a{color:#153a24!important;text-decoration:none!important;font-size:12px;font-weight:700;letter-spacing:.35px;white-space:nowrap;position:relative;padding:8px 0}.cp-nav a:after{content:"";position:absolute;left:0;bottom:1px;height:2px;width:100%;background:#d48b54;transform:scaleX(0);transform-origin:left;transition:transform .2s}.cp-nav a:hover{color:#a85a1f!important}.cp-nav a:hover:after{transform:scaleX(1)}.cp-acoes{display:flex;align-items:center;gap:9px}.cp-busca{display:flex;align-items:center;gap:8px;padding:9px 13px;border:1px solid #ded9ca;background:#fff;border-radius:24px;transition:.2s;min-width:155px}.cp-busca:focus-within{border-color:#d48b54;box-shadow:0 0 0 3px #d48b542b}.cp-busca input{width:115px;min-width:0;border:0;outline:0;background:transparent;color:#153a24;font:12px Poppins,Arial,sans-serif}.cp-busca i{color:#657566;font-size:12px}.cp-cadastrar{display:inline-block;background:#153a24;color:#fff!important;text-decoration:none!important;border-radius:28px;padding:12px 17px;font-size:11px;font-weight:bold;white-space:nowrap;transition:background .2s}.cp-cadastrar:hover{background:#245638}.cp-cabecalho a:visited{text-decoration:none!important}@media(max-width:1100px){.cp-cabecalho{flex-wrap:wrap;justify-content:center}.cp-nav{order:3;width:100%;flex-wrap:wrap;gap:17px}.cp-acoes{margin-left:auto}}@media(max-width:600px){.cp-cabecalho{padding:9px 12px;gap:10px}.cp-logo{margin-right:auto}.cp-logo img{width:40px;height:40px}.cp-nav{gap:12px}.cp-nav a{font-size:10px}.cp-acoes{width:100%;margin:0;justify-content:center}.cp-busca{flex:1}.cp-busca input{width:100%}.cp-cadastrar{padding:10px 13px}}
+</style>
+</head>
+
+<body>
+
+<div class="container min-vh-100 d-flex justify-content-center align-items-center">
+
+        <form class="formulario">
+
+            <img class="logo-formulario" src="./img/ChatGPT Image 23 de ago. de 2026, 23_07_10.png" alt="Logo">
+
+            <div class="area-formulario">
+
+                <h1 class="titulo">
+                    <span class="conectando">Conectando</span>
+                    <span class="patas">Patas</span>
+                </h1>
+
+
+
+                <div class="row">
+
+                    <div class="col-md-6 mb-3">
+                        <label for="inputNome" class="form-label">
+                            Nome:
+                        </label>
+
+                        <input type="text" class="form-control" id="inputNome" placeholder="Digite" required>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label for="inputSobrenome" class="form-label">
+                            Sobrenome:
+                        </label>
+
+                        <input type="text" class="form-control" id="inputSobrenome" placeholder="Digite" required>
+                    </div>
+
+                </div>
+
+                <div class="mb-3">
+                    <label for="inputEmail" class="form-label">
+                        E-mail:
+                    </label>
+
+                    <input type="email" class="form-control" id="inputEmail" placeholder="Digite" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="inputSenha" class="form-label">
+                        Senha:
+                    </label>
+
+                    <input type="password" class="form-control" id="inputSenha" placeholder="Digite (mín. 8 caracteres)" minlength="8" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="inputConfirmarSenha" class="form-label">
+                        Senha (CONFIRMAR):
+                    </label>
+
+                    <input type="password" class="form-control" id="inputConfirmarSenha"
+                        placeholder="Digite sua senha novamente" required>
+                </div>
+
+                <div class="row">
+
+
+                    <div class="col-md-6 mb-3">
+
+                        <label for="inputCidade" class="form-label">
+                            Cidade:
+                        </label>
+
+                        <select id="inputCidade" class="form-select" required>
+
+                            <option value="" selected disabled>
+                                Selecione ...
+                            </option>
+
+                            <option value="cacador">
+                                Caçador
+                            </option>
+
+                            <option value="rio-das-antas">
+                                Rio das Antas - Sul
+                            </option>
+
+                            <option value="videira">
+                                Videira - Sul
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="col-md-4 mb-3">
+
+                        <label for="inputBairro" class="form-label">
+                            Bairro:
+                        </label>
+
+                        <select id="inputBairro" class="form-select" required disabled>
+
+                            <option value="" selected>
+                                Selecione ...
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="col-md-2 mb-3">
+
+                        <label for="inputNumero" class="form-label">
+                            N. Casa:
+                        </label>
+
+                        <input type="text" class="form-control" id="inputNumero" placeholder="Nº" required>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="link">
+                <a href="../../termos-de-uso.html">Termos de uso</a>
+            </div>
+
+
+            <div class="mb-3">
+
+                <div class="form-check">
+
+                    <input class="form-check-input" type="checkbox" id="gridCheck" required>
+
+                    <label class="form-check-label" for="gridCheck">
+
+                        Li e aceito os termos.
+
+                    </label>
+
+                </div>
+
+            </div>
+
+            <div class="text-center">
+
+                <button type="submit" class="btn btn-primary">
+
+                    Inscreva-se
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+    </div>
+
+    <script src="./js/script.js"></script>
+
+<script id="cp-busca-global">
+(function () {
+    const campos = document.querySelectorAll('.cp-campo-busca');
+    const caminho = location.pathname;
+    const prefixo = caminho.includes('/Pi-formulario/') ? '../../' :
+        (caminho.includes('/Contatos/') || caminho.includes('/login/') ? '../' : './');
+    const paginaHome = !!document.getElementById('listaAnimais');
+    const parametros = new URLSearchParams(location.search);
+    const termoInicial = parametros.get('busca') || '';
+
+    campos.forEach(campo => {
+        campo.value = termoInicial;
+        campo.addEventListener('keydown', evento => {
+            if (evento.key !== 'Enter') return;
+            evento.preventDefault();
+            const termo = campo.value.trim();
+            if (paginaHome) {
+                filtrar(termo);
+            } else {
+                location.href = prefixo + 'index.html' +
+                    (termo ? '?busca=' + encodeURIComponent(termo) : '') + '#animais';
+            }
+        });
+        campo.addEventListener('input', () => {
+            if (paginaHome) filtrar(campo.value.trim());
+        });
+    });
+
+    function filtrar(termo) {
+        const cards = document.querySelectorAll('.card-animal');
+        cards.forEach(card => {
+            card.hidden = !card.textContent.toLocaleLowerCase('pt-BR')
+                .includes(termo.toLocaleLowerCase('pt-BR'));
+        });
+        const lista = document.getElementById('listaAnimais');
+        if (lista) {
+            lista.style.transform = 'translateX(0)';
+            lista.style.transition = 'none';
+        }
+    }
+
+    if (paginaHome && termoInicial) filtrar(termoInicial);
+})();
+</script>
+</body>
+
+
+</html>

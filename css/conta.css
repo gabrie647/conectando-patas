@@ -1,0 +1,105 @@
+/* =====================================================
+   PÁGINA DA CONTA — Conectando Patas
+   Usa os tokens e componentes de paginas.css.
+===================================================== */
+.conta-grade {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 28px;
+    align-items: start;
+}
+
+/* ---------- Resumo lateral ---------- */
+.conta-resumo {
+    position: sticky; top: 100px;
+    display: flex; flex-direction: column; gap: 12px;
+    padding: 32px 26px;
+    background: var(--branco);
+    border: 1px solid var(--borda);
+    border-radius: var(--raio-g);
+    box-shadow: var(--sombra-p);
+    text-align: center;
+}
+.conta-resumo .avatar {
+    width: 92px; height: 92px; margin: 0 auto 6px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--laranja), var(--laranja-forte));
+    color: var(--branco);
+    font-family: var(--fonte-titulo); font-size: 34px; font-weight: 700;
+    box-shadow: 0 10px 24px rgba(168, 90, 31, .35);
+}
+.conta-resumo h2 { font-family: var(--fonte-titulo); font-size: 24px; line-height: 1.2; overflow-wrap: anywhere; }
+.conta-resumo .email { font-size: 13px; color: var(--texto-suave); overflow-wrap: anywhere; }
+.conta-resumo .desde { font-size: 12px; color: var(--texto-suave); }
+.conta-resumo .numeros {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px;
+    margin: 10px 0 8px; padding: 16px 0;
+    border-block: 1px solid var(--borda);
+}
+.conta-resumo .numeros strong { display: block; font-family: var(--fonte-titulo); font-size: 28px; line-height: 1.1; color: var(--verde); }
+.conta-resumo .numeros span { font-size: 11px; color: var(--texto-suave); }
+
+/* ---------- Blocos ---------- */
+.conta-principal { display: flex; flex-direction: column; gap: 24px; min-width: 0; }
+.conta-bloco {
+    padding: 30px;
+    background: var(--branco);
+    border: 1px solid var(--borda);
+    border-radius: var(--raio-g);
+    box-shadow: var(--sombra-p);
+}
+.conta-bloco > h2 {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 22px;
+    font-family: var(--fonte-titulo); font-size: 24px;
+}
+.conta-bloco > h2 i { color: var(--laranja-forte); font-size: 18px; }
+
+/* ---------- Formulários ---------- */
+.linha-campos { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+.linha-campos.tres { grid-template-columns: 2fr 2fr 1fr; }
+.campo-form { display: flex; flex-direction: column; gap: 6px; margin-bottom: 18px; min-width: 0; }
+.campo-form label { font-size: 13px; font-weight: 600; }
+.campo-form input {
+    width: 100%; height: 48px; padding: 0 16px;
+    background: var(--creme);
+    border: 1px solid var(--borda);
+    border-radius: var(--raio-p);
+    font-size: 14px; color: var(--texto);
+    transition: border-color .2s, box-shadow .2s, background .2s;
+}
+.campo-form input:focus { outline: none; border-color: var(--laranja); box-shadow: 0 0 0 3px rgba(212, 139, 84, .25); background: var(--branco); }
+.campo-form input[readonly] { background: var(--areia); color: var(--texto-suave); cursor: not-allowed; }
+.campo-form input.invalido { border-color: var(--erro); }
+.campo-form small { font-size: 12px; color: var(--texto-suave); }
+.campo-form small a { text-decoration: underline; color: var(--laranja-forte); }
+
+/* ---------- Registros de animais ---------- */
+.conta-bloco .item-painel .miniatura { width: 96px; height: 96px; }
+.item-painel .sem-foto {
+    width: 96px; height: 96px; border-radius: var(--raio-p);
+    display: flex; align-items: center; justify-content: center;
+    background: var(--verde-suave); color: var(--verde); font-size: 28px;
+}
+.selo.aprovado { background: #D4EBDD; color: var(--sucesso); }
+.conta-vazio { padding: 28px; text-align: center; background: var(--creme); border: 1px dashed var(--borda); border-radius: var(--raio-m); }
+.conta-vazio p { margin-bottom: 14px; color: var(--texto-suave); font-size: 14px; }
+
+/* ---------- Zona de perigo ---------- */
+.conta-bloco.perigo { border-color: rgba(179, 64, 47, .35); }
+.conta-bloco.perigo > h2 i { color: var(--erro); }
+.conta-bloco.perigo > p { margin-bottom: 14px; font-size: 14px; color: var(--texto-suave); }
+.conta-bloco.perigo summary { cursor: pointer; font-weight: 600; font-size: 14px; color: var(--erro); padding: 6px 0; }
+.conta-bloco.perigo form { margin-top: 16px; max-width: 420px; }
+
+/* ---------- Responsivo ---------- */
+@media (max-width: 960px) {
+    .conta-grade { grid-template-columns: 1fr; }
+    .conta-resumo { position: static; }
+}
+@media (max-width: 600px) {
+    .conta-bloco { padding: 22px 18px; }
+    .linha-campos, .linha-campos.tres { grid-template-columns: 1fr; gap: 0; }
+    .conta-bloco .item-painel { grid-template-columns: 1fr; }
+}

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conectando Patas - Esqueci minha senha</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../css/cabecalho.css">
+</head>
+<body class="pagina-recuperacao">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+        <symbol id="i-pata" viewBox="0 0 64 64">
+            <ellipse cx="13" cy="27" rx="6" ry="8" transform="rotate(-22 13 27)"/>
+            <ellipse cx="25.5" cy="14.5" rx="6.5" ry="9" transform="rotate(-8 25.5 14.5)"/>
+            <ellipse cx="40.5" cy="14.5" rx="6.5" ry="9" transform="rotate(8 40.5 14.5)"/>
+            <ellipse cx="53" cy="27" rx="6" ry="8" transform="rotate(22 53 27)"/>
+            <path d="M32 30c-9.5 0-18 8.5-18 17.5 0 6.5 5 9.5 10.5 8.5 3-.6 4.8-2 7.500-2s4.500 1.400 7.500 2C45 57 50 54 50 47.500 50 38.500 41.500 30 32 30z"/>
+        </symbol>
+        <symbol id="i-email" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 8 8 6 8-6"/></g></symbol>
+        <symbol id="i-cadeado" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="10.5" width="15" height="10" rx="3"/><path d="M8 10.500V8a4 4 0 0 1 8 0v2.500"/><path d="M12 14.500v2"/></g></symbol>
+        <symbol id="i-olho" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.600-7 10-7 10 7 10 7-3.600 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></g></symbol>
+        <symbol id="i-olho-cortado" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.600-7 10-7c2 0 3.700.7 5.100 1.600M22 12s-3.600 7-10 7c-2 0-3.700-.7-5.100-1.600"/><path d="M9.900 9.900a3 3 0 0 0 4.200 4.200"/><path d="m4 4 16 16"/></g></symbol>
+        <symbol id="i-ok" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8 12.500 2.700 2.700L16 9.500"/></g></symbol>
+    </defs>
+</svg>
+
+<header class="cp-cabecalho">
+    <a class="cp-logo" href="../index.html#inicio" aria-label="Conectando Patas - Home"><img src="../img/ChatGPT%20Image%2013%20de%20ago.%20de%202026,%2014_44_37.png" alt="">
+        <span>Conectando<br><strong>Patas</strong></span></a>
+
+    <nav class="cp-nav" aria-label="Navegação principal">
+        <a href="../index.html#inicio">HOME</a>
+        <a href="../animais.html">ANIMAIS</a>
+        <a href="../Contatos/index.html">CONTATO</a>
+        <a href="../Pi-formulario/Pi-formulario-inscricao/index.html">CADASTRO</a>
+    </nav>
+
+    <div class="cp-acoes">
+        <label class="cp-busca">
+            <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+            <input class="cp-campo-busca" type="search" placeholder="Buscar animais" aria-label="Buscar animais">
+        </label>
+
+        <a class="cp-login" href="../login/index.html">LOGIN</a>
+
+        <a class="cp-cadastrar" href="../Pi-formulario/Pi-formulario-inscricao/index.html">CADASTRE-SE</a>
+    </div>
+</header>
+
+<main class="cena">
+    <section class="hero" aria-label="Conectando Patas">
+        <img class="hero-foto" src="../img/ChatGPT Image 6 de jul. de 2026, 16_27_50.png" alt="" width="1893" height="831" fetchpriority="high">
+        <div class="hero-veu"></div>
+        <div class="hero-brilho"></div>
+        <div class="patinhas" aria-hidden="true">
+            <svg class="patinha" style="--x:6%;--t:26px;--d:15s;--a:-2s" fill="currentColor"><use href="#i-pata"/></svg>
+            <svg class="patinha" style="--x:18%;--t:40px;--d:19s;--a:-9s" fill="currentColor"><use href="#i-pata"/></svg>
+            <svg class="patinha" style="--x:33%;--t:22px;--d:13s;--a:-5s" fill="currentColor"><use href="#i-pata"/></svg>
+            <svg class="patinha" style="--x:48%;--t:34px;--d:17s;--a:-12s" fill="currentColor"><use href="#i-pata"/></svg>
+            <svg class="patinha" style="--x:62%;--t:28px;--d:14s;--a:-1s" fill="currentColor"><use href="#i-pata"/></svg>
+            <svg class="patinha" style="--x:76%;--t:44px;--d:21s;--a:-7s" fill="currentColor"><use href="#i-pata"/></svg>
+            <svg class="patinha" style="--x:90%;--t:24px;--d:16s;--a:-11s" fill="currentColor"><use href="#i-pata"/></svg>
+        </div>
+
+        <span class="hero-selo"><svg fill="currentColor" aria-hidden="true"><use href="#i-pata"/></svg>Sem estresse</span>
+        <p class="hero-frase">Acontece com todo mundo. <em>Vamos recuperar</em> seu acesso.</p>
+        <p class="hero-texto">Em poucos minutos você volta a acompanhar seus pets favoritos.</p>
+        <ul class="hero-chips">
+            <li><svg aria-hidden="true"><use href="#i-ok"/></svg>Pets aprovados pela equipe</li>
+            <li><svg aria-hidden="true"><use href="#i-ok"/></svg>Adoção responsável</li>
+        </ul>
+    </section>
+
+    <section class="painel">
+        <form class="formulario" id="formEsqueci">
+            <div class="selo" aria-hidden="true"><svg fill="currentColor"><use href="#i-pata"/></svg></div>
+            <div class="area-formulario">
+                <p class="sobretitulo">Recuperar acesso</p>
+                <h1 class="titulo">
+                    <span class="conectando">Esqueceu</span>
+                    <span class="patas">a senha?</span>
+                </h1>
+
+                <p class="texto-ajuda">Informe o e-mail cadastrado e confirme-o. Enviaremos uma mensagem com um link seguro para criar uma nova senha.</p>
+
+                    <div class="form-field">
+                        <label for="email">E-mail</label>
+                        <div class="campo">
+                            <svg class="campo-icone" aria-hidden="true"><use href="#i-email"/></svg>
+                            <input type="email" id="email" name="email" placeholder="voce@email.com" autocomplete="email" required>
+                        </div>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="confirmarEmail">Confirmar e-mail</label>
+                        <div class="campo">
+                            <svg class="campo-icone" aria-hidden="true"><use href="#i-email"/></svg>
+                            <input type="email" id="confirmarEmail" name="confirmarEmail" placeholder="Digite o e-mail novamente" autocomplete="email" required>
+                        </div>
+                    </div>
+
+                <label class="confirmacao-email" for="confirmacaoEmail">
+                    <input type="checkbox" id="confirmacaoEmail" required>
+                    <span>Confirmo que tenho acesso a esse endereço de e-mail.</span>
+                </label>
+
+                <button type="submit" class="btn-login" id="btnEnviar">Enviar link de recuperação</button>
+
+                <div class="signup-link">
+                    Não tem uma conta? <a href="../Pi-formulario/Pi-formulario-inscricao/index.html">Inscreva-se</a>
+                </div>
+                <div class="signup-link link-login">
+                    <a href="./index.html">Voltar para o login</a>
+                </div>
+
+                <div id="mensagem" class="mensagem" role="alert" aria-live="polite"></div>
+            </div>
+        </form>
+    </section>
+</main>
+<script src="./js/recuperar.js"></script>
+<script src="../js/cabecalho.js"></script>
+<script src="../js/conta-link.js" defer></script>
+</body>
+</html>

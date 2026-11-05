@@ -1,0 +1,663 @@
+/* =====================================================
+   REGISTRO PET (adoção) — Conectando Patas
+   Design ousado: foto do site ao fundo, cartões de vidro numerados,
+   títulos grandes em Playfair e botão laranja com brilho.
+   Mesma paleta e fontes da home (css/tokens.css).
+   A barra do site vem de ../../css/cabecalho.css (não é estilizada aqui).
+   Bootstrap só fornece a grade (.row/.col-md-6) e os ícones (.bi).
+===================================================== */
+
+:root {
+    --verde:          #153A24;
+    --verde-escuro:   #0D2A19;
+    --creme:          #F9F5E9;
+    --areia:          #F1E8D4;
+    --laranja:        #D48B54;
+    --laranja-claro:  #F0B988;
+    --laranja-forte:  #A85A1F;
+    --fonte-titulo:   'Playfair Display', Georgia, serif;
+    --fonte-texto:    'Poppins', system-ui, sans-serif;
+}
+
+/* =====================================================
+   BASE E FUNDO (a foto do banner da home, com véu verde)
+===================================================== */
+body.pagina-adocao {
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    font-family: var(--fonte-texto);
+    color: var(--creme);
+    background: var(--verde-escuro);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* foto fixa */
+body.pagina-adocao::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -3;
+    background:
+        radial-gradient(900px 600px at 85% 8%, rgba(212, 139, 84, .30), transparent 65%),
+        linear-gradient(180deg, rgba(6, 23, 18, .40), rgba(6, 23, 18, .80)),
+        url("../../../img/ChatGPT Image 6 de jul. de 2026, 16_27_50.png") 22% center / cover no-repeat;
+}
+
+/* brilho laranja que respira */
+body.pagina-adocao::after {
+    content: "";
+    position: fixed;
+    right: -15%;
+    bottom: -25%;
+    z-index: -2;
+    width: 65vw;
+    max-width: 900px;
+    aspect-ratio: 1;
+    background: radial-gradient(circle, rgba(212, 139, 84, .35), transparent 65%);
+    filter: blur(30px);
+    pointer-events: none;
+    animation: pulsar 7s ease-in-out infinite;
+}
+@keyframes pulsar { 50% { transform: scale(1.25); opacity: .6; } }
+
+/* patinhas flutuando */
+.pagina-adocao .patinhas { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
+.pagina-adocao .patinha {
+    position: absolute;
+    bottom: -70px;
+    left: var(--x);
+    width: var(--t);
+    height: var(--t);
+    color: rgba(255, 255, 255, .16);
+    animation: flutuar var(--d) linear infinite;
+    animation-delay: var(--a);
+}
+@keyframes flutuar {
+    from { transform: translateY(0) rotate(0); opacity: 0; }
+    12%  { opacity: 1; }
+    to   { transform: translateY(-115vh) rotate(40deg); opacity: 0; }
+}
+
+a:focus-visible, button:focus-visible, .upload-area:focus-within {
+    outline: 3px solid var(--laranja);
+    outline-offset: 3px;
+}
+
+/* =====================================================
+   CONTAINER (sobrepõe o do Bootstrap)
+===================================================== */
+.pagina-adocao .container {
+    max-width: 1080px;
+    padding: clamp(28px, 5vw, 64px) clamp(16px, 4vw, 28px) 80px;
+}
+
+.pagina-adocao .formulario {
+    position: relative;
+    max-width: none;
+    margin: 0 auto;
+    padding: 0;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+    overflow: visible;
+}
+
+/* =====================================================
+   TÍTULO
+===================================================== */
+.perfil { margin-bottom: clamp(28px, 4vw, 48px); }
+
+.selo-pagina {
+    display: inline-flex;
+    align-items: center;
+    gap: .55rem;
+    margin-bottom: 1.1rem;
+    padding: .45rem 1rem .45rem .8rem;
+    border: 1px solid rgba(255, 255, 255, .35);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, .12);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    font-size: .78rem;
+    font-weight: 600;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    animation: subir .8s cubic-bezier(.2, .8, .2, 1) both;
+}
+.selo-pagina svg { width: 18px; height: 18px; color: var(--laranja-claro); }
+
+.cabecalho-pagina {
+    display: flex;
+    align-items: center;
+    gap: clamp(16px, 3vw, 32px);
+}
+
+.icone-logo {
+    position: relative;
+    width: clamp(78px, 11vw, 112px);
+    height: clamp(78px, 11vw, 112px);
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    margin: 9px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #E39A58, #A85A1F);
+    color: #fff;
+    font-size: clamp(34px, 5vw, 50px);
+    box-shadow: 0 18px 40px rgba(168, 90, 31, .5);
+    transition: transform .4s cubic-bezier(.3, 1.6, .5, 1);
+    animation: subir .8s .1s cubic-bezier(.2, .8, .2, 1) both;
+}
+.icone-logo:hover { transform: rotate(-10deg) scale(1.08); }
+.icone-logo::after {
+    content: "";
+    position: absolute;
+    inset: -9px;
+    border: 2px solid rgba(240, 185, 136, .6);
+    border-radius: 50%;
+    animation: onda 2.8s ease-out infinite;
+}
+@keyframes onda { from { transform: scale(.88); opacity: 1; } to { transform: scale(1.5); opacity: 0; } }
+
+.pagina-adocao .titulo { min-width: 0; animation: subir .8s .2s cubic-bezier(.2, .8, .2, 1) both; }
+
+.pagina-adocao .titulo h1 {
+    margin: 0 0 .35rem;
+    color: #fff;
+    font-family: var(--fonte-titulo);
+    font-size: clamp(2.7rem, 8vw, 5.4rem);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -.03em;
+    text-shadow: 0 6px 30px rgba(0, 0, 0, .4);
+}
+.pagina-adocao .titulo h1 span {
+    background: linear-gradient(100deg, #F0B988, #FFD9B0, #F0B988);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: var(--laranja-claro);
+    animation: brilhoTexto 5s linear infinite;
+}
+@keyframes brilhoTexto { to { background-position: 200% center; } }
+
+.pagina-adocao .titulo p {
+    margin: 0;
+    max-width: 44ch;
+    color: rgba(255, 255, 255, .86);
+    font-size: clamp(.95rem, 1.6vw, 1.15rem);
+}
+
+.coracao {
+    margin-left: auto;
+    flex-shrink: 0;
+    color: var(--laranja);
+    font-size: clamp(44px, 6vw, 72px);
+    transform: rotate(-10deg);
+    filter: drop-shadow(0 10px 20px rgba(212, 139, 84, .45));
+    animation: batimento 1.8s ease-in-out infinite;
+}
+@keyframes batimento {
+    0%, 100% { transform: rotate(-10deg) scale(1); }
+    15% { transform: rotate(-10deg) scale(1.2); }
+    30% { transform: rotate(-10deg) scale(1); }
+    45% { transform: rotate(-10deg) scale(1.14); }
+}
+
+@keyframes subir { from { opacity: 0; transform: translateY(32px); } to { opacity: 1; transform: none; } }
+
+/* =====================================================
+   CARTÕES DE VIDRO, NUMERADOS 01 / 02 / 03
+===================================================== */
+.pagina-adocao #formulario { counter-reset: passo; }
+
+.formulario .card {
+    --bs-card-bg: transparent;
+    position: relative;
+    counter-increment: passo;
+    height: auto;
+    overflow: hidden;
+    color: var(--creme);
+    background: rgba(8, 28, 20, .52);
+    border: 1px solid rgba(255, 255, 255, .20);
+    border-radius: 28px;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, .35), inset 0 1px 0 rgba(255, 255, 255, .10);
+    -webkit-backdrop-filter: blur(16px) saturate(1.2);
+    backdrop-filter: blur(16px) saturate(1.2);
+    transition: transform .35s ease, border-color .35s ease, box-shadow .35s ease;
+    animation: subir .8s cubic-bezier(.2, .8, .2, 1) both;
+}
+.formulario .card-informacoes { animation-delay: .30s; }
+.formulario .col-md-6:nth-child(1) .card { animation-delay: .42s; }
+.formulario .col-md-6:nth-child(2) .card { animation-delay: .54s; }
+
+.formulario .col-md-6 > .card { height: 100%; }
+
+.formulario .card:hover,
+.formulario .card:focus-within {
+    transform: translateY(-5px);
+    border-color: rgba(240, 185, 136, .55);
+    box-shadow: 0 30px 70px rgba(0, 0, 0, .42), 0 0 40px rgba(212, 139, 84, .12), inset 0 1px 0 rgba(255, 255, 255, .12);
+}
+
+/* barra laranja que cresce no topo */
+.formulario .card::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 5px;
+    background: linear-gradient(90deg, #F0B988, #D48B54, #A85A1F);
+    transform: scaleX(.18);
+    transform-origin: left;
+    transition: transform .6s ease;
+}
+.formulario .card:hover::before,
+.formulario .card:focus-within::before { transform: scaleX(1); }
+
+/* número grande do passo */
+.formulario .card::after {
+    content: counter(passo, decimal-leading-zero);
+    position: absolute;
+    top: 14px;
+    right: 24px;
+    color: rgba(255, 255, 255, .09);
+    font-family: var(--fonte-titulo);
+    font-size: clamp(3.6rem, 7vw, 5.2rem);
+    font-weight: 700;
+    line-height: 1;
+    pointer-events: none;
+}
+
+.formulario .card-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 26px 28px 8px;
+    background: transparent;
+    border: 0;
+    color: #fff;
+}
+
+.icone-campo {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(240, 185, 136, .55);
+    border-radius: 15px;
+    background: rgba(212, 139, 84, .16);
+    color: var(--laranja-claro);
+    font-size: 21px;
+    transition: transform .5s cubic-bezier(.3, 1.6, .5, 1), background .3s, color .3s;
+}
+.formulario .card:hover .icone-campo { transform: rotate(-10deg) scale(1.12); background: var(--laranja); color: var(--verde-escuro); }
+
+.formulario .card-header h2 {
+    margin: 0 0 2px;
+    color: #fff;
+    font-family: var(--fonte-titulo);
+    font-size: 1.45rem;
+    font-weight: 700;
+    letter-spacing: -.01em;
+}
+.formulario .card-header span { display: block; color: rgba(255, 255, 255, .72); font-size: .8rem; }
+
+.formulario .card-body { position: relative; padding: 16px 28px 28px; }
+
+/* =====================================================
+   CAMPOS
+===================================================== */
+.formulario .form-label {
+    margin-bottom: .45rem;
+    color: var(--creme);
+    font-size: .74rem;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+}
+
+.formulario .form-control {
+    padding: 14px 18px;
+    background: rgba(255, 255, 255, .10);
+    border: 1.5px solid rgba(255, 255, 255, .28);
+    border-radius: 16px;
+    color: #fff;
+    font-family: inherit;
+    font-size: 1rem;
+    box-shadow: none;
+    transition: background .25s, border-color .25s, box-shadow .25s, transform .25s;
+}
+.formulario .form-control::placeholder { color: rgba(255, 255, 255, .55); opacity: 1; }
+.formulario .form-control:hover { border-color: rgba(240, 185, 136, .6); }
+.formulario .form-control:focus {
+    background: rgba(255, 255, 255, .17);
+    border-color: var(--laranja);
+    color: #fff;
+    box-shadow: 0 0 0 5px rgba(212, 139, 84, .25), 0 12px 28px rgba(0, 0, 0, .22);
+    outline: none;
+    transform: translateY(-1px);
+}
+.formulario .form-control:-webkit-autofill {
+    -webkit-text-fill-color: #fff;
+    box-shadow: 0 0 0 40px #234433 inset;
+}
+
+.formulario textarea.form-control {
+    width: 100%;
+    height: 210px;
+    min-height: 210px;
+    max-height: 210px;
+    padding: 18px 20px;
+    border-radius: 20px;
+    resize: none;
+    line-height: 1.6;
+}
+
+.card-informacoes .card-body { position: relative; }
+.marca-pata {
+    position: absolute;
+    right: 30px;
+    bottom: 26px;
+    color: rgba(255, 255, 255, .06);
+    font-size: 78px;
+    transform: rotate(-20deg);
+    pointer-events: none;
+}
+
+/* =====================================================
+   UPLOAD DA FOTO
+===================================================== */
+#foto { display: none; }
+
+.corpo-upload { display: flex; flex-direction: column; }
+
+.upload-area {
+    width: 100%;
+    flex: 1;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: rgba(255, 255, 255, .06);
+    border: 2px dashed rgba(240, 185, 136, .8);
+    border-radius: 22px;
+    cursor: pointer;
+    transition: background .3s, border-color .3s, transform .3s;
+}
+.upload-area:hover { background: rgba(212, 139, 84, .14); border-color: var(--laranja-claro); transform: translateY(-3px); }
+
+.upload-icone {
+    position: relative;
+    width: 64px;
+    height: 64px;
+    display: grid;
+    place-items: center;
+    margin-bottom: 12px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #F0B988, #D48B54);
+    color: var(--verde-escuro);
+    font-size: 27px;
+    box-shadow: 0 10px 28px rgba(212, 139, 84, .45);
+    animation: flutuarSuave 3.2s ease-in-out infinite;
+}
+.upload-icone::after {
+    content: "";
+    position: absolute;
+    inset: -7px;
+    border: 2px solid rgba(240, 185, 136, .55);
+    border-radius: 50%;
+    animation: onda 2.6s ease-out infinite;
+}
+@keyframes flutuarSuave { 50% { transform: translateY(-7px); } }
+
+.upload-area strong { margin-bottom: 4px; color: #fff; font-size: 1rem; }
+.upload-area span { color: rgba(255, 255, 255, .72); font-size: .8rem; }
+
+#nomeArquivo { margin-top: 10px; color: var(--laranja-claro); font-size: .82rem; font-weight: 600; text-align: center; word-break: break-all; }
+
+/* o script mostra/oculta com style.display */
+.preview-container {
+    display: none;
+    width: 100%;
+    height: 190px;
+    margin-top: 14px;
+    overflow: hidden;
+    background: rgba(5, 15, 13, .5);
+    border: 2px solid rgba(240, 185, 136, .7);
+    border-radius: 20px;
+}
+.preview-container img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+/* =====================================================
+   LOCALIZAÇÃO
+===================================================== */
+.formulario .btn-secondary {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 14px;
+    padding: 0;
+    border: 1px solid rgba(240, 185, 136, .55);
+    border-radius: 14px;
+    background: rgba(212, 139, 84, .18);
+    color: var(--laranja-claro);
+    font-size: 1.15rem;
+    transition: transform .25s ease, background .25s ease, box-shadow .25s ease, color .25s;
+}
+.formulario .btn-secondary:active { background: #B9733A; border-color: #B9733A; color: var(--verde-escuro); }
+.formulario .btn-secondary:hover {
+    background: var(--laranja);
+    border-color: var(--laranja);
+    color: var(--verde-escuro);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 22px rgba(212, 139, 84, .35);
+}
+
+.mapa {
+    position: relative;
+    width: 100%;
+    height: 112px;
+    margin-top: 16px;
+    overflow: hidden;
+    background: linear-gradient(135deg, rgba(14, 70, 62, .75), rgba(12, 48, 43, .75));
+    border: 1px solid rgba(120, 190, 165, .4);
+    border-radius: 20px;
+}
+.linhas-mapa {
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(35deg, transparent 45%, rgba(140, 200, 180, .28) 46%, transparent 48%),
+        linear-gradient(145deg, transparent 45%, rgba(140, 200, 180, .22) 46%, transparent 48%);
+    background-size: 80px 80px;
+}
+.mapa i {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 1;
+    color: var(--laranja);
+    font-size: 42px;
+    transform: translate(-50%, -58%);
+    filter: drop-shadow(0 6px 10px rgba(0, 0, 0, .5));
+    animation: pular 2.2s ease-in-out infinite;
+}
+.mapa::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 44px;
+    height: 44px;
+    margin: -22px 0 0 -22px;
+    border: 2px solid rgba(240, 185, 136, .7);
+    border-radius: 50%;
+    animation: onda 2.2s ease-out infinite;
+}
+@keyframes pular { 50% { transform: translate(-50%, -78%); } }
+
+/* =====================================================
+   AÇÕES
+===================================================== */
+.acoes {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 34px;
+    animation: subir .8s .66s cubic-bezier(.2, .8, .2, 1) both;
+}
+
+.formulario .btn-success {
+    position: relative;
+    overflow: hidden;
+    flex: 1;
+    min-height: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    border: 0;
+    border-radius: 999px;
+    background: linear-gradient(100deg, #F0B988, #E39A58 55%, #D48B54);
+    color: var(--verde-escuro);
+    font-family: inherit;
+    font-size: 1.1rem;
+    font-weight: 800;
+    letter-spacing: .04em;
+    box-shadow: 0 16px 40px rgba(212, 139, 84, .45);
+    transition: transform .25s ease, box-shadow .25s ease, background .25s ease;
+    animation: respirar 3.2s ease-in-out infinite;
+}
+@keyframes respirar {
+    0%, 100% { box-shadow: 0 16px 40px rgba(212, 139, 84, .45), 0 0 0 0 rgba(240, 185, 136, .6); }
+    50%      { box-shadow: 0 16px 40px rgba(212, 139, 84, .45), 0 0 0 16px rgba(240, 185, 136, 0); }
+}
+.formulario .btn-success::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -80%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(100deg, transparent, rgba(255, 255, 255, .6), transparent);
+    transform: skewX(-20deg);
+    transition: left .7s ease;
+}
+.formulario .btn-success:hover {
+    background: linear-gradient(100deg, #FFD0A0, #F0A862 55%, #E39A58);
+    color: var(--verde-escuro);
+    transform: translateY(-4px);
+    box-shadow: 0 22px 50px rgba(212, 139, 84, .6);
+}
+.formulario .btn-success:hover::before { left: 130%; }
+.formulario .btn-success i { font-size: 1.25rem; transition: transform .3s ease; }
+.formulario .btn-success:hover i { transform: translateX(7px) rotate(-8deg); }
+.formulario .btn-success:active {
+    background: linear-gradient(100deg, #E39A58, #D48B54);
+    border-color: transparent;
+    color: var(--verde-escuro);
+    transform: scale(.98);
+}
+
+.formulario .btn-danger {
+    width: 68px;
+    height: 68px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: 1px solid rgba(255, 255, 255, .25);
+    border-radius: 50%;
+    background: rgba(179, 64, 47, .85);
+    color: #fff;
+    font-size: 1.3rem;
+    transition: transform .25s ease, background .25s ease, box-shadow .25s ease;
+}
+.formulario .btn-danger:active { background: #8F2E20; border-color: #8F2E20; color: #fff; }
+.formulario .btn-danger:hover {
+    background: #D34731;
+    border-color: #D34731;
+    color: #fff;
+    transform: translateY(-4px) rotate(-8deg);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, .35);
+}
+
+/* =====================================================
+   SEGURANÇA
+===================================================== */
+.seguranca {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: fit-content;
+    margin: 26px auto 0;
+    padding: .55rem 1.2rem;
+    border: 1px solid rgba(255, 255, 255, .22);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, .08);
+    color: rgba(255, 255, 255, .85);
+    font-size: .82rem;
+    text-align: center;
+}
+.seguranca i { color: var(--laranja-claro); font-size: 1.1rem; }
+
+/* =====================================================
+   ESTADOS QUE O SCRIPT LIGA E DESLIGA
+===================================================== */
+.girando { animation: girar 1s linear infinite; }
+@keyframes girar { to { transform: rotate(360deg); } }
+
+.formulario .btn-success.enviando { opacity: .8; cursor: wait; transform: none !important; animation: none; }
+.formulario .btn-success.sucesso { background: linear-gradient(135deg, #22A862, #0D7A38); color: #fff; }
+.formulario .btn-secondary.localizacao-ok { background: #159447; border-color: #159447; color: #fff; }
+
+/* Campo isca contra robôs */
+.campo-armadilha { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+/* =====================================================
+   RESPONSIVO
+===================================================== */
+@media (max-width: 768px) {
+    .formulario .card-header { padding: 22px 20px 6px; }
+    .formulario .card-body { padding: 14px 20px 22px; }
+    .formulario .card { border-radius: 24px; }
+    .formulario textarea.form-control { height: 180px; min-height: 180px; max-height: 180px; }
+    .coracao { display: none; }
+}
+
+@media (max-width: 560px) {
+    .cabecalho-pagina { align-items: flex-start; flex-direction: column; gap: 14px; }
+    .formulario .card::after { font-size: 3.2rem; right: 18px; }
+    .upload-area { min-height: 180px; }
+    .acoes { gap: 10px; }
+    .formulario .btn-success { min-height: 60px; font-size: 1rem; }
+    .formulario .btn-danger { width: 60px; height: 60px; }
+    .seguranca { font-size: .76rem; }
+}
+
+/* Linha dos dois cartões menores: espaçamento igual ao do cartão de cima */
+.pagina-adocao .row.mt-3 { --bs-gutter-x: 1.25rem; --bs-gutter-y: 1.25rem; margin-top: 0 !important; }
+
+/* =====================================================
+   ACESSIBILIDADE: sem movimento
+===================================================== */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+    }
+    .pagina-adocao .patinhas { display: none; }
+}

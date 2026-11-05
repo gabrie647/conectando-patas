@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha conta | Conectando Patas</title>
+    <link rel="stylesheet" href="./css/paginas.css">
+    <link rel="stylesheet" href="./css/conta.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <link rel="stylesheet" href="./css/animacoes.css">
+<link rel="stylesheet" href="./css/cabecalho.css">
+</head>
+<body data-raiz="./">
+<header class="cp-cabecalho">
+    <a class="cp-logo" href="./index.html#inicio" aria-label="Conectando Patas - Home"><img src="./img/ChatGPT%20Image%2013%20de%20ago.%20de%202026,%2014_44_37.png" alt="">
+        <span>Conectando<br><strong>Patas</strong></span></a>
+
+    <nav class="cp-nav" aria-label="Navegação principal">
+        <a href="./index.html#inicio">HOME</a>
+        <a href="./animais.html">ANIMAIS</a>
+        <a href="./Contatos/index.html">CONTATO</a>
+        <a href="./Pi-formulario/Pi-formulario-inscricao/index.html">CADASTRO</a>
+    </nav>
+
+    <div class="cp-acoes">
+        <label class="cp-busca">
+            <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+            <input class="cp-campo-busca" type="search" placeholder="Buscar animais" aria-label="Buscar animais">
+        </label>
+
+        <a class="cp-login" href="./login/index.html">LOGIN</a>
+
+        <a class="cp-cadastrar" href="./Pi-formulario/Pi-formulario-inscricao/index.html">CADASTRE-SE</a>
+    </div>
+</header>
+
+<section class="pagina-banner">
+        <div class="interno">
+            <span class="rotulo">MINHA CONTA</span>
+            <h1>Olá, <span id="nomeBanner">tutor(a)</span></h1>
+            <p>Veja e atualize seus dados, acompanhe os animais que você registrou e cuide da segurança da sua conta.</p>
+        </div>
+    </section>
+
+    <main class="secao">
+        <div id="aviso" class="aviso-painel" role="status" aria-live="polite" hidden></div>
+
+        <div id="carregandoConta" class="estado-vazio">
+            <i class="fa-solid fa-paw" aria-hidden="true"></i>
+            <h2>Carregando sua conta...</h2>
+            <p>Só um instante.</p>
+        </div>
+
+        <div id="conteudoConta" class="conta-grade" hidden>
+
+            <aside class="conta-resumo">
+                <div class="avatar" id="avatar" aria-hidden="true">?</div>
+                <h2 id="nomeCompleto"></h2>
+                <p class="email" id="emailConta"></p>
+                <p class="desde" id="desdeConta"></p>
+
+                <div class="numeros">
+                    <div><strong id="totalPets">0</strong><span>Registros</span></div>
+                    <div><strong id="totalAprovados">0</strong><span>Publicados</span></div>
+                    <div><strong id="totalPendentes">0</strong><span>Em análise</span></div>
+                </div>
+
+                <a class="btn btn-laranja" href="./Pi-formulario/Pi-formulario-adocao/index.html">
+                    <i class="fa-solid fa-camera"></i> Registrar um animal
+                </a>
+                <a class="btn btn-contorno" id="linkPainel" href="./admin/index.html" hidden>
+                    <i class="fa-solid fa-gauge"></i> Abrir painel
+                </a>
+                <button type="button" class="btn btn-contorno" id="btnSair">
+                    <i class="fa-solid fa-right-from-bracket"></i> Sair
+                </button>
+            </aside>
+
+            <div class="conta-principal">
+
+                <section class="conta-bloco" aria-labelledby="tituloDados">
+                    <h2 id="tituloDados"><i class="fa-solid fa-user"></i> Dados pessoais</h2>
+                    <form id="formPerfil" novalidate>
+                        <div class="linha-campos">
+                            <div class="campo-form">
+                                <label for="nome">Nome</label>
+                                <input type="text" id="nome" name="nome" maxlength="100" autocomplete="given-name" required>
+                            </div>
+                            <div class="campo-form">
+                                <label for="sobrenome">Sobrenome</label>
+                                <input type="text" id="sobrenome" name="sobrenome" maxlength="100" autocomplete="family-name" required>
+                            </div>
+                        </div>
+                        <div class="campo-form">
+                            <label for="email">E-mail</label>
+                            <input type="email" id="email" name="email" readonly aria-describedby="dicaEmail">
+                            <small id="dicaEmail">O e-mail identifica sua conta e não pode ser alterado aqui. Para trocá-lo, <a href="./Contatos/index.html">fale com a gente</a>.</small>
+                        </div>
+                        <div class="linha-campos tres">
+                            <div class="campo-form">
+                                <label for="cidade">Cidade</label>
+                                <input type="text" id="cidade" name="cidade" maxlength="100" autocomplete="address-level2" required>
+                            </div>
+                            <div class="campo-form">
+                                <label for="bairro">Bairro</label>
+                                <input type="text" id="bairro" name="bairro" maxlength="100" required>
+                            </div>
+                            <div class="campo-form">
+                                <label for="numero">Número</label>
+                                <input type="text" id="numero" name="numero" maxlength="20" required>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-laranja" id="btnSalvarPerfil">
+                            <i class="fa-solid fa-floppy-disk"></i> Salvar alterações
+                        </button>
+                    </form>
+                </section>
+
+                <section class="conta-bloco" aria-labelledby="tituloSenha">
+                    <h2 id="tituloSenha"><i class="fa-solid fa-lock"></i> Alterar senha</h2>
+                    <form id="formSenha" novalidate>
+                        <div class="campo-form">
+                            <label for="senhaAtual">Senha atual</label>
+                            <input type="password" id="senhaAtual" name="senha_atual" autocomplete="current-password" required>
+                        </div>
+                        <div class="linha-campos">
+                            <div class="campo-form">
+                                <label for="novaSenha">Nova senha</label>
+                                <input type="password" id="novaSenha" name="nova_senha" minlength="8" autocomplete="new-password" required>
+                                <small>Mínimo de 8 caracteres.</small>
+                            </div>
+                            <div class="campo-form">
+                                <label for="confirmarSenha">Confirmar nova senha</label>
+                                <input type="password" id="confirmarSenha" name="confirmar_senha" minlength="8" autocomplete="new-password" required>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-contorno" id="btnSalvarSenha">
+                            <i class="fa-solid fa-key"></i> Alterar senha
+                        </button>
+                    </form>
+                </section>
+
+                <section class="conta-bloco" aria-labelledby="tituloPets">
+                    <h2 id="tituloPets"><i class="fa-solid fa-paw"></i> Animais que eu registrei</h2>
+                    <div id="listaPets" class="lista-painel"></div>
+                    <div id="semPets" class="conta-vazio" hidden>
+                        <p>Você ainda não registrou nenhum animal. Quando registrar, ele aparece aqui com o andamento da análise.</p>
+                        <a class="btn btn-laranja btn-pequeno" href="./Pi-formulario/Pi-formulario-adocao/index.html">Registrar agora</a>
+                    </div>
+                </section>
+
+                <section class="conta-bloco perigo" aria-labelledby="tituloExcluir">
+                    <h2 id="tituloExcluir"><i class="fa-solid fa-triangle-exclamation"></i> Excluir conta</h2>
+                    <p>Esta ação é permanente. Seus dados de cadastro e <strong>todos os animais que você registrou</strong> (inclusive os já publicados) serão removidos.</p>
+                    <details>
+                        <summary>Quero excluir minha conta</summary>
+                        <form id="formExcluir" novalidate>
+                            <div class="campo-form">
+                                <label for="senhaExcluir">Digite sua senha para confirmar</label>
+                                <input type="password" id="senhaExcluir" name="senha_atual" autocomplete="current-password" required>
+                            </div>
+                            <button type="submit" class="btn btn-perigo" id="btnExcluir">
+                                <i class="fa-solid fa-trash"></i> Excluir minha conta para sempre
+                            </button>
+                        </form>
+                    </details>
+                </section>
+
+            </div>
+        </div>
+    </main>
+
+    <footer class="rodape">
+        <div class="rodape-coluna logo-rodape">
+            <a href="./index.html#inicio" class="logo">
+                <span>Conectando</span>
+                <strong>Patas</strong>
+            </a>
+            <p>Conectando pessoas, transformando vidas e dando uma segunda chance aos animais.</p>
+        </div>
+        <div class="rodape-coluna">
+            <h3>NAVEGAÇÃO</h3>
+            <a href="./index.html#inicio">Home</a>
+            <a href="./animais.html">Animais</a>
+            
+            <a href="./Contatos/index.html">Contato</a>
+        </div>
+        <div class="rodape-coluna">
+            <h3>CONTATO</h3>
+            <p><i class="fa-solid fa-envelope"></i> contato@conectandopatas.org</p>
+            <p><i class="fa-solid fa-phone"></i> (49) 4002-8922</p>
+            <p><i class="fa-solid fa-location-dot"></i> Caçador, SC</p>
+        </div>
+        <div class="rodape-coluna">
+            <h3>SIGA-NOS</h3>
+            <div class="redes-rodape">
+                <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+            </div>
+        </div>
+        <div class="direitos">© 2026 Conectando Patas. Todos os direitos reservados.</div>
+    </footer>
+    <script src="./js/conta.js"></script>
+    <script src="./js/animacoes.js" defer></script>
+    <script src="./js/conta-link.js" defer></script>
+<script src="./js/cabecalho.js"></script>
+</body>
+</html>

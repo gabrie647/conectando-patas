@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro Pet | Conectando Patas</title>
+
+    <!-- BOOTSTRAP (grade e campos) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- BOOTSTRAP ICONS (ícones dos cartões e botões; o script também usa) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- FONTES -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- CSS DA PÁGINA -->
+    <link rel="stylesheet" href="./css/style.css">
+
+    <!-- Font Awesome (usado pela barra do site) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- BARRA PADRÃO DO SITE -->
+    <link rel="stylesheet" href="../../css/cabecalho.css">
+</head>
+
+<body class="pagina-adocao">
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+        <symbol id="i-pata" viewBox="0 0 64 64">
+            <ellipse cx="13" cy="27" rx="6" ry="8" transform="rotate(-22 13 27)"/>
+            <ellipse cx="25.5" cy="14.5" rx="6.5" ry="9" transform="rotate(-8 25.5 14.5)"/>
+            <ellipse cx="40.5" cy="14.5" rx="6.5" ry="9" transform="rotate(8 40.5 14.5)"/>
+            <ellipse cx="53" cy="27" rx="6" ry="8" transform="rotate(22 53 27)"/>
+            <path d="M32 30c-9.5 0-18 8.5-18 17.5 0 6.5 5 9.5 10.5 8.5 3-.6 4.8-2 7.5-2s4.5 1.4 7.5 2C45 57 50 54 50 47.5 50 38.5 41.5 30 32 30z"/>
+        </symbol>
+    </defs>
+</svg>
+
+<header class="cp-cabecalho">
+    <a class="cp-logo" href="../../index.html#inicio" aria-label="Conectando Patas - Home"><img src="../../img/ChatGPT%20Image%2013%20de%20ago.%20de%202026,%2014_44_37.png" alt="">
+        <span>Conectando<br><strong>Patas</strong></span></a>
+
+    <nav class="cp-nav" aria-label="Navegação principal">
+        <a href="../../index.html#inicio">HOME</a>
+        <a href="../../animais.html">ANIMAIS</a>
+        <a href="../../Contatos/index.html">CONTATO</a>
+        <a href="../../Pi-formulario/Pi-formulario-inscricao/index.html">CADASTRO</a>
+    </nav>
+
+    <div class="cp-acoes">
+        <label class="cp-busca">
+            <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+            <input class="cp-campo-busca" type="search" placeholder="Buscar animais" aria-label="Buscar animais">
+        </label>
+
+        <a class="cp-login" href="../../login/index.html">LOGIN</a>
+
+        <a class="cp-cadastrar" href="../../Pi-formulario/Pi-formulario-inscricao/index.html">CADASTRE-SE</a>
+    </div>
+</header>
+
+<!-- Patinhas flutuando ao fundo (só decoração) -->
+<div class="patinhas" aria-hidden="true">
+        <svg class="patinha" style="--x:5%;--t:28px;--d:16s;--a:-3s" fill="currentColor"><use href="#i-pata"/></svg>
+        <svg class="patinha" style="--x:16%;--t:46px;--d:21s;--a:-10s" fill="currentColor"><use href="#i-pata"/></svg>
+        <svg class="patinha" style="--x:30%;--t:24px;--d:14s;--a:-6s" fill="currentColor"><use href="#i-pata"/></svg>
+        <svg class="patinha" style="--x:44%;--t:36px;--d:18s;--a:-13s" fill="currentColor"><use href="#i-pata"/></svg>
+        <svg class="patinha" style="--x:58%;--t:30px;--d:15s;--a:-1s" fill="currentColor"><use href="#i-pata"/></svg>
+        <svg class="patinha" style="--x:70%;--t:50px;--d:23s;--a:-8s" fill="currentColor"><use href="#i-pata"/></svg>
+        <svg class="patinha" style="--x:83%;--t:26px;--d:17s;--a:-12s" fill="currentColor"><use href="#i-pata"/></svg>
+        <svg class="patinha" style="--x:93%;--t:38px;--d:19s;--a:-5s" fill="currentColor"><use href="#i-pata"/></svg>
+</div>
+
+<main class="container">
+
+    <div class="formulario">
+
+        <!-- =================================================
+             TÍTULO
+        ================================================== -->
+        <div class="perfil">
+            <span class="selo-pagina">
+                <svg fill="currentColor" aria-hidden="true"><use href="#i-pata"/></svg>
+                Adote · Resgate · Ame
+            </span>
+
+            <div class="cabecalho-pagina">
+                <div class="icone-logo">
+                    <i class="bi bi-paw-fill"></i>
+                </div>
+
+                <div class="titulo">
+                    <h1>Registro <span>Pet</span></h1>
+                    <p>Conte a história do seu amigo de quatro patas.</p>
+                </div>
+
+                <i class="bi bi-heart-fill coracao" aria-hidden="true"></i>
+            </div>
+        </div>
+
+        <!-- =================================================
+             FORMULÁRIO
+        ================================================== -->
+        <form id="formulario">
+
+                <div class="campo-armadilha" aria-hidden="true">
+                    <label for="website">Não preencha este campo</label>
+                    <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+                </div>
+
+
+                <!-- =================================================
+                     INFORMAÇÕES
+                ================================================== -->
+
+                <div class="card card-informacoes">
+
+
+                    <!-- CABEÇALHO -->
+
+                    <div class="card-header">
+
+
+                        <div class="icone-campo">
+
+                            <i class="bi bi-chat-square-text"></i>
+
+                        </div>
+
+
+                        <div>
+
+                            <h2>
+                                Informações
+                            </h2>
+
+                            <span>
+                                Fale sobre seu pet
+                            </span>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <!-- CORPO -->
+
+                    <div class="card-body">
+
+                        <div class="mb-3">
+                            <label for="nomeResponsavel" class="form-label">Seu nome</label>
+                            <input type="text" id="nomeResponsavel" class="form-control" placeholder="Nome do responsável" required maxlength="150">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="emailResponsavel" class="form-label">E-mail</label>
+                            <input type="email" id="emailResponsavel" class="form-control" placeholder="seu@email.com" required maxlength="150">
+                        </div>
+
+                        <textarea
+                            id="mensagem"
+                            class="form-control"
+                            placeholder="Conte sobre o pet: personalidade, hábitos, necessidades especiais..."
+                        ></textarea>
+
+
+                        <!-- PATA DECORATIVA -->
+
+                        <i class="bi bi-paw-fill marca-pata"></i>
+
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     FOTO E LOCALIZAÇÃO
+                ================================================== -->
+
+                <div class="row mt-3">
+
+
+                    <!-- =================================================
+                         FOTO
+                    ================================================== -->
+
+                    <div class="col-md-6">
+
+
+                        <div class="card card-pequeno">
+
+
+                            <!-- CABEÇALHO -->
+
+                            <div class="card-header">
+
+
+                                <div class="icone-campo">
+
+                                    <i class="bi bi-camera"></i>
+
+                                </div>
+
+
+                                <div>
+
+                                    <h2>
+                                        Foto do Pet
+                                    </h2>
+
+                                    <span>
+                                        Uma foto vale mais que mil latidos!
+                                    </span>
+
+                                </div>
+
+
+                            </div>
+
+
+
+                            <!-- CORPO -->
+
+                            <div class="card-body corpo-upload">
+
+
+                                <label
+                                    for="foto"
+                                    class="upload-area"
+                                >
+
+
+                                    <div class="upload-icone">
+
+                                        <i class="bi bi-cloud-arrow-up"></i>
+
+                                    </div>
+
+
+                                    <strong>
+                                        Clique para enviar
+                                    </strong>
+
+
+                                    <span>
+                                        ou escolha uma imagem do seu computador
+                                    </span>
+
+
+                                </label>
+
+
+                                <!-- INPUT REAL -->
+
+                                <input
+                                    type="file"
+                                    id="foto"
+                                    accept="image/*"
+                                >
+
+
+                                <!-- NOME DO ARQUIVO -->
+
+                                <div id="nomeArquivo"></div>
+
+
+                                <!-- PREVIEW -->
+
+                                <div class="preview-container">
+
+                                    <img
+                                        id="preview"
+                                        src=""
+                                        alt="Pré-visualização da foto"
+                                    >
+
+                                </div>
+
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- =================================================
+                         LOCALIZAÇÃO
+                    ================================================== -->
+
+                    <div class="col-md-6">
+
+
+                        <div class="card card-pequeno">
+
+
+                            <!-- CABEÇALHO -->
+
+                            <div class="card-header">
+
+
+                                <div class="icone-campo">
+
+                                    <i class="bi bi-geo-alt"></i>
+
+                                </div>
+
+
+                                <div>
+
+                                    <h2>
+                                        Localização
+                                    </h2>
+
+                                    <span>
+                                        Onde seu pet pode ser encontrado?
+                                    </span>
+
+                                </div>
+
+
+                            </div>
+
+
+
+                            <!-- CORPO -->
+
+                            <div class="card-body">
+
+
+                                <label
+                                    for="localizacao"
+                                    class="form-label"
+                                >
+                                    Localização
+                                </label>
+
+
+                                <input
+                                    type="text"
+                                    id="localizacao"
+                                    class="form-control"
+                                    placeholder="Digite a cidade ou bairro"
+                                >
+
+
+                                <!-- BOTÃO LOCALIZAÇÃO -->
+
+                                <button
+                                    type="button"
+                                    id="btnLocalizacao"
+                                    class="btn btn-secondary"
+                                    title="Usar minha localização"
+                                >
+
+                                    <i class="bi bi-geo-alt"></i>
+
+                                </button>
+
+
+                                <!-- MAPA VISUAL -->
+
+                                <div class="mapa">
+
+                                    <div class="linhas-mapa"></div>
+
+                                    <i class="bi bi-geo-alt-fill"></i>
+
+                                </div>
+
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- =================================================
+                     BOTÕES
+                ================================================== -->
+
+                <div class="acoes">
+
+
+                    <!-- ENVIAR -->
+
+                    <button
+                        type="submit"
+                        class="btn btn-success"
+                    >
+
+                        <i class="bi bi-send"></i>
+
+                        <span>
+                            Enviar Registro
+                        </span>
+
+                    </button>
+
+
+                    <!-- LIMPAR -->
+
+                    <button
+                        type="reset"
+                        class="btn btn-danger"
+                        title="Limpar formulário"
+                    >
+
+                        <i class="bi bi-trash"></i>
+
+                    </button>
+
+
+                </div>
+
+
+            </form>
+
+        <!-- =================================================
+             SEGURANÇA
+        ================================================== -->
+        <div class="seguranca">
+
+                <i class="bi bi-shield-check"></i>
+
+                <span>
+                    Suas informações estão seguras com a gente.
+                </span>
+
+            </div>
+
+    </div>
+
+</main>
+
+<script src="./js/script.js"></script>
+<script src="../../js/cabecalho.js"></script>
+<script src="../../js/conta-link.js" defer></script>
+</body>
+
+</html>

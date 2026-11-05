@@ -1,0 +1,69 @@
+/* =====================================================
+   TOKENS COMPARTILHADOS — Conectando Patas
+   Importado por todas as páginas (home, contatos, formulários).
+   Para mudar a identidade do site, mude apenas este arquivo.
+===================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+    /* Cores base */
+    --verde:          #153A24;
+    --verde-escuro:   #0D2A19;
+    --verde-suave:    #E3EBE4;
+    --creme:          #F9F5E9;
+    --areia:          #F1E8D4;
+    --branco:         #FFFFFF;
+
+    /* Laranja: um para decoração, outro para texto e botões (contraste ~5:1 com branco) */
+    --laranja:        #D48B54;
+    --laranja-forte:  #A85A1F;
+    --laranja-hover:  #8F4C19;
+
+    /* Texto e bordas */
+    --texto:          #153A24;
+    --texto-suave:    #4A5F52;
+    --borda:          rgba(21, 58, 36, 0.12);
+    --erro:           #B3402F;
+    --sucesso:        #1E7A46;
+
+    /* Tipografia */
+    --fonte-titulo:   'Playfair Display', Georgia, serif;
+    --fonte-texto:    'Poppins', system-ui, sans-serif;
+
+    /* Formas e sombras */
+    --raio-p:   10px;
+    --raio-m:   16px;
+    --raio-g:   24px;
+    --sombra-p: 0 1px 3px rgba(21, 58, 36, 0.08);
+    --sombra-m: 0 12px 32px rgba(21, 58, 36, 0.12);
+
+    /* Layout */
+    --largura:  1280px;
+}
+
+/* Base comum */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 96px; }
+
+/* Foco visível para teclado */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+summary:focus-visible {
+    outline: 3px solid var(--laranja);
+    outline-offset: 3px;
+}
+
+/* Respeita quem prefere menos movimento */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
