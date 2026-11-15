@@ -1,0 +1,38 @@
+CONECTANDO PATAS - GUIA DE PUBLICAÇÃO (GitHub + Render)
+
+COMO PUBLICAR
+1. Suba tudo para o GitHub (git add -A, commit, push).
+2. No Render, o serviço deve ser um Web Service Docker. O init.sh cria/atualiza
+   as tabelas sozinho a cada deploy (data-base/banco.sql).
+3. Em Environment Variables do serviço, configure:
+
+   DATABASE_URL          obrigatória - URL do PostgreSQL do Render (sslmode=require)
+   ADMIN_EMAILS          e-mails que podem abrir o painel /admin/ (separados por vírgula).
+                         A pessoa precisa ter conta cadastrada com esse e-mail.
+   APP_URL               endereço público do site, ex.: https://seu-site.onrender.com
+   APP_SALT              qualquer texto aleatório (deixa o hash dos IPs mais seguro)
+   RESEND_API_KEY        opcional - chave da API do Resend (resend.com)
+   MAIL_FROM             opcional - remetente verificado no Resend, ex.: Conectando Patas <contato@seudominio.com>
+   CONTACT_NOTIFY_EMAIL  opcional - e-mail que recebe aviso a cada mensagem de contato
+
+O QUE FUNCIONA
+- Cadastro e login por e-mail/senha (senha mínima de 8 caracteres).
+- Contato: salva no banco; ler no painel /admin/ (e por e-mail, se configurado).
+- Registro de pet: foto guardada no banco; só aparece em /animais.html depois de
+  aprovado no painel (aba "Pets pendentes").
+- Minha conta (/conta.html): a pessoa logada vê e edita nome, endereço e senha, acompanha
+  seus registros de animais (em análise / publicado / não aprovado) e pode excluir a conta.
+  O e-mail não é editável. Sem login, a página leva para a tela de login e volta depois.
+- Painel /admin/: mensagens (lida/não lida/excluir/responder) e moderação de pets.
+- Esqueci minha senha: só funciona com RESEND_API_KEY e MAIL_FROM configurados.
+  Sem eles, a tela avisa que a recuperação não foi configurada.
+- Proteção: campo isca anti-robô e limite de envios por IP (contato e pet: 5 por hora;
+  cadastro: 10 por hora; login: 10 erros em 15 minutos).
+- O Apache bloqueia no navegador .git, data-base, Dockerfile e arquivos internos.
+
+LIMITES
+- "Entrar com Google" foi removido (exigia Google Cloud).
+- O plano gratuito do PostgreSQL do Render tem limite de espaço; fotos de até 5 MB
+  ocupam o banco.
+- O link de nova senha vale 1 hora e só pode ser usado uma vez.
+- "Lembrar de mim" salva só o e-mail no navegador, nunca a senha.

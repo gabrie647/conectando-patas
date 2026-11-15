@@ -1,0 +1,75 @@
+/* =====================================================
+   BARRA DO SITE (cabeçalho padrão) — Conectando Patas
+   Fonte única da barra usada em TODAS as páginas.
+   Para mudar a barra do site inteiro, mude só este arquivo.
+   Carregue DEPOIS do CSS da página.
+===================================================== */
+
+.cp-cabecalho { position:sticky; top:0; z-index:9999; display:flex; align-items:center; justify-content:space-between; gap:18px; box-sizing:border-box; width:100%; padding:9px max(3%,calc((100% - 1430px)/2)); background:rgba(249,245,233,.94); backdrop-filter:blur(14px); border-bottom:1px solid #ded9ca; font-family:Poppins,Arial,sans-serif; min-height:76px; box-shadow:0 4px 18px #153a2408; }
+.cp-logo { display:flex; align-items:center; gap:9px; flex-shrink:0; text-decoration:none!important; color:#153a24!important; font-family:Georgia,serif; font-size:17px; font-weight:bold; line-height:1.05; }
+.cp-logo img { width:49px; height:49px; object-fit:contain; }
+.cp-logo strong { color:#a85a1f; }
+.cp-nav { display:flex; align-items:center; justify-content:center; gap:clamp(10px,1.5vw,23px); }
+.cp-nav a { color:#153a24!important; text-decoration:none!important; font-size:12px; font-weight:700; letter-spacing:.35px; white-space:nowrap; position:relative; padding:8px 0; }
+.cp-nav a:after { content:""; position:absolute; left:0; bottom:1px; height:2px; width:100%; background:#d48b54; transform:scaleX(0); transform-origin:left; transition:transform .2s; }
+.cp-nav a:hover { color:#a85a1f!important; }
+.cp-nav a:hover:after { transform:scaleX(1); }
+.cp-acoes { display:flex; align-items:center; gap:9px; }
+.cp-busca { display:flex; align-items:center; gap:8px; padding:9px 13px; border:1px solid #ded9ca; background:#fff; border-radius:24px; transition:.2s; min-width:155px; }
+.cp-busca:focus-within { border-color:#d48b54; box-shadow:0 0 0 3px #d48b542b; }
+.cp-busca input { width:115px; min-width:0; border:0; outline:0; background:transparent; color:#153a24; font:12px Poppins,Arial,sans-serif; }
+.cp-busca i { color:#657566; font-size:12px; }
+.cp-cadastrar { display:inline-block; background:#153a24; color:#fff!important; text-decoration:none!important; border-radius:28px; padding:12px 17px; font-size:11px; font-weight:bold; white-space:nowrap; transition:background .2s; }
+.cp-cadastrar:hover { background:#245638; }
+.cp-cabecalho a:visited { text-decoration:none!important; }
+@media(max-width:1100px) {
+  .cp-cabecalho { flex-wrap:wrap; justify-content:center; }
+  .cp-nav { order:3; width:100%; flex-wrap:wrap; gap:17px; }
+  .cp-acoes { margin-left:auto; }
+}
+@media(max-width:600px) {
+  .cp-cabecalho { padding:9px 12px; gap:10px; }
+  .cp-logo { margin-right:auto; }
+  .cp-logo img { width:40px; height:40px; }
+  .cp-nav { gap:12px; }
+  .cp-nav a { font-size:10px; }
+  .cp-acoes { width:100%; margin:0; justify-content:center; }
+  .cp-busca { flex:1; min-width:0; }
+  .cp-busca input { width:100%; }
+  .cp-login { padding:8px 14px; font-size:13px; white-space:nowrap; }
+  .cp-cadastrar { padding:10px 13px; }
+}
+
+/* Botão LOGIN (contornado, laranja) */
+.cp-login {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 8px 22px;
+  border: 1px solid #ec8005; border-radius: 30px;
+  color: #fd8105; text-decoration: none;
+  font-weight: bold; transition: 0.3s;
+}
+.cp-login:hover { background-color: #f89500; color: #ffffff; }
+
+/* Conta do usuário no lugar do "CADASTRE-SE" (inserida por conta-link.js) */
+.cp-conta-usuario {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 6px 18px 6px 6px;
+  background: #153a24; color: #fff !important;
+  border-radius: 28px; text-decoration: none !important;
+  font-family: Poppins, Arial, sans-serif; font-size: 13px; font-weight: 700;
+  white-space: nowrap;
+  transition: background .2s, transform .2s, box-shadow .2s;
+}
+.cp-conta-usuario:hover { background: #245638; transform: translateY(-1px); box-shadow: 0 8px 18px rgba(21,58,36,.25); }
+.cp-conta-usuario .cp-avatar {
+  width: 34px; height: 34px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #d48b54, #a85a1f);
+  font-size: 12px; font-weight: 700; letter-spacing: .5px;
+}
+.cp-conta-usuario .cp-conta-nome { max-width: 130px; overflow: hidden; text-overflow: ellipsis; }
+@media (max-width: 560px) {
+  .cp-conta-usuario { padding-right: 6px; }
+  .cp-conta-usuario .cp-conta-nome { display: none; }
+}
