@@ -1,0 +1,21 @@
+CONECTANDO PATAS — PUBLICAÇÃO AUTOMÁTICA DE ANIMAIS
+
+O que mudou:
+- Todo novo cadastro de animal é salvo com status "aprovado" por padrão.
+- A página pública /animais.html lista os animais aprovados e suas fotos.
+- A API da listagem agora envia cabeçalhos sem cache.
+- A página verifica a lista a cada 20 segundos enquanto estiver aberta e visível.
+- Os cards usam a foto, nome, espécie, idade, localização e descrição salvos no PostgreSQL.
+- O botão do card abre a página de detalhes/solicitação de adoção do animal.
+
+Render:
+1. Envie esta versão ao GitHub e aguarde o deploy.
+2. DATABASE_URL deve continuar configurada como antes.
+3. AUTO_APROVAR não é mais obrigatório: o padrão é publicar automaticamente.
+4. Para voltar temporariamente à aprovação manual, configure AUTO_APROVAR=0.
+
+Importante:
+- Cadastros antigos que já estão com status "pendente" continuam pendentes. Para publicá-los, aprove-os no painel administrativo.
+- A página de animais é pública. O formulário de cadastro continua exigindo login.
+- Não é criado conteúdo fictício: cada card vem de um registro real salvo no banco e com foto válida.
+- Para testar: entre com uma conta, cadastre um pet com foto, conclua o envio e abra /animais.html em uma janela anônima. O card deverá aparecer. Se a página já estiver aberta, a lista será verificada em até 20 segundos.

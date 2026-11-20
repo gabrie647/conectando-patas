@@ -16,7 +16,7 @@ COMO PUBLICAR
    CONTACT_NOTIFY_EMAIL  opcional - e-mail que recebe aviso a cada mensagem de contato
 
 O QUE FUNCIONA
-- Cadastro e login por e-mail/senha (senha mínima de 8 caracteres).
+- Cadastro e login por e-mail/senha (senha mínima de 10 caracteres, com letras e números).
 - Contato: salva no banco; ler no painel /admin/ (e por e-mail, se configurado).
 - Registro de pet: foto guardada no banco; só aparece em /animais.html depois de
   aprovado no painel (aba "Pets pendentes").

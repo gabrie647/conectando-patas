@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Conheça os animais disponíveis para adoção no Conectando Patas.">
+    <title>Detalhes do animal | Conectando Patas</title>
+    <link rel="stylesheet" href="./css/paginas.css">
+    <link rel="stylesheet" href="./css/cabecalho.css">
+    <link rel="stylesheet" href="./css/detalhe-animal.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body data-raiz="./">
+<header class="cp-cabecalho">
+    <a class="cp-logo" href="./index.html#inicio" aria-label="Conectando Patas - Home">
+        <img src="./img/ChatGPT%20Image%2013%20de%20ago.%20de%202026,%2014_44_37.png" alt="">
+        <span>Conectando<br><strong>Patas</strong></span>
+    </a>
+    <nav class="cp-nav" aria-label="Navegação principal">
+        <a href="./index.html#inicio">HOME</a>
+        <a href="./animais.html">ANIMAIS</a>
+        <a href="./Contatos/index.html">CONTATO</a>
+    </nav>
+    <div class="cp-acoes">
+        <a class="cp-login" href="./login/index.html">LOGIN</a>
+        <a class="cp-cadastrar" href="./Pi-formulario/Pi-formulario-inscricao/index.html">CADASTRE-SE</a>
+    </div>
+</header>
+
+<section class="pagina-banner">
+    <div class="interno">
+        <span class="rotulo">CONHEÇA NOSSO AMIGUINHO</span>
+        <h1>Um novo começo<br><span>pode começar aqui</span></h1>
+        <p>Veja as informações do animal e, se sentir que é uma boa combinação, solicite a adoção.</p>
+    </div>
+</section>
+
+<main class="secao detalhe-secao">
+    <a class="voltar-animais" href="./animais.html"><i class="fa-solid fa-arrow-left"></i> Voltar para os animais</a>
+    <div id="estadoAnimal" class="estado-detalhe" role="status" aria-live="polite">Carregando informações do animal...</div>
+    <article id="conteudoAnimal" class="detalhe-card" hidden>
+        <div class="detalhe-foto"><img id="fotoAnimal" alt=""></div>
+        <div class="detalhe-conteudo">
+            <div class="detalhe-etiquetas">
+                <span id="idadeAnimal" class="detalhe-tag"></span>
+                <span id="especieAnimal" class="detalhe-tag tipo"></span>
+            </div>
+            <h2 id="nomeAnimal"></h2>
+            <p id="localAnimal" class="detalhe-local"></p>
+            <p id="descricaoAnimal" class="detalhe-descricao"></p>
+            <p id="dataAnimal" class="detalhe-data"></p>
+            <a id="btnAdotar" class="btn btn-laranja" href="#">Quero adotar este animal <i class="fa-solid fa-heart"></i></a>
+            <p class="aviso-login">Para enviar uma solicitação de adoção, será necessário entrar na sua conta.</p>
+        </div>
+    </article>
+</main>
+
+<footer class="rodape">
+    <div class="rodape-coluna logo-rodape">
+        <a href="./index.html#inicio" class="logo"><span>Conectando</span><strong>Patas</strong></a>
+        <p>Conectando pessoas, transformando vidas e dando uma segunda chance aos animais.</p>
+    </div>
+    <div class="rodape-coluna">
+        <h3>NAVEGAÇÃO</h3>
+        <a href="./index.html#inicio">Home</a>
+        <a href="./animais.html">Animais</a>
+        <a href="./Contatos/index.html">Contato</a>
+    </div>
+    <div class="rodape-coluna">
+        <h3>CONTATO</h3>
+        <p><i class="fa-solid fa-envelope"></i> contato@conectandopatas.org</p>
+        <p><i class="fa-solid fa-phone"></i> (49) 4002-8922</p>
+        <p><i class="fa-solid fa-location-dot"></i> Caçador, SC</p>
+    </div>
+    <div class="direitos">© 2026 Conectando Patas. Todos os direitos reservados.</div>
+</footer>
+<script src="./js/detalhe-animal.js"></script>
+<script src="./js/cabecalho.js"></script>
+</body>
+</html>

@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <link rel="stylesheet" href="./css/animacoes.css">
+    <link rel="stylesheet" href="./css/cards-animais.css">
 <link rel="stylesheet" href="./css/cabecalho.css">
 </head>
 <body data-raiz="./">
@@ -59,7 +60,7 @@
         <div id="vazio" class="estado-vazio" hidden>
             <i class="fa-solid fa-paw" aria-hidden="true"></i>
             <h2 id="vazioTitulo">Nenhum animal por aqui ainda</h2>
-            <p id="vazioTexto">Assim que a equipe aprovar os primeiros registros, eles aparecerão aqui.</p>
+            <p id="vazioTexto">Assim que um animal for cadastrado, seu card aparecerá aqui para todos os visitantes.</p>
             <a class="btn btn-laranja" href="./Pi-formulario/Pi-formulario-adocao/index.html">Registrar um animal</a>
         </div>
 
@@ -70,7 +71,7 @@
         <section class="chamada-pagina">
             <div>
                 <h2>Viu um animal que<br><span>precisa de ajuda?</span></h2>
-                <p>Registre com foto e localização. Nossa equipe analisa e publica aqui.</p>
+                <p>Registre com foto e localização. Depois do cadastro, o animal aparece automaticamente nesta página.</p>
             </div>
             <a class="btn btn-laranja" href="./Pi-formulario/Pi-formulario-adocao/index.html">
                 <i class="fa-solid fa-camera"></i> Registrar agora
@@ -111,6 +112,7 @@
     </footer>
 
     <script src="./js/comum.js"></script>
+    <script src="./js/favoritos.js"></script>
     <script src="./js/animais.js"></script>
 <script src="./js/cabecalho.js"></script>
     <script src="./js/animacoes.js" defer></script>

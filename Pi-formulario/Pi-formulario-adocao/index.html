@@ -160,6 +160,32 @@
                     <div class="card-body">
 
                         <div class="mb-3">
+                            <label for="nomeAnimal" class="form-label">Nome do animal <small>(opcional)</small></label>
+                            <input type="text" id="nomeAnimal" class="form-control" placeholder="Ex.: Thor, Mel..." maxlength="100">
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="especie" class="form-label">Espécie</label>
+                                <select id="especie" class="form-select" required>
+                                    <option value="" selected disabled>Selecione...</option>
+                                    <option value="cao">Cão</option>
+                                    <option value="gato">Gato</option>
+                                    <option value="outro">Outro</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="idade" class="form-label">Idade</label>
+                                <select id="idade" class="form-select" required>
+                                    <option value="" selected disabled>Selecione...</option>
+                                    <option value="filhote">Filhote</option>
+                                    <option value="adulto">Adulto</option>
+                                    <option value="idoso">Idoso</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
                             <label for="nomeResponsavel" class="form-label">Seu nome</label>
                             <input type="text" id="nomeResponsavel" class="form-control" placeholder="Nome do responsável" required maxlength="150">
                         </div>

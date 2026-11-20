@@ -342,6 +342,12 @@ formulario.addEventListener("submit", async function (evento) {
         mostrarErro(localizacao, "Por favor, informe a localização.");
         return;
     }
+    const especie = document.getElementById("especie").value;
+    const idade = document.getElementById("idade").value;
+    if (!especie || !idade) {
+        alert("Informe a espécie e a idade do pet.");
+        return;
+    }
     if (!arquivo) {
         alert("Por favor, selecione uma foto do pet.");
         foto.click();
@@ -349,6 +355,9 @@ formulario.addEventListener("submit", async function (evento) {
     }
 
     const dados = new FormData();
+    dados.append("nome_animal", document.getElementById("nomeAnimal").value.trim());
+    dados.append("especie", especie);
+    dados.append("idade", idade);
     dados.append("nome", campoNome.value.trim());
     dados.append("email", campoEmail.value.trim());
     dados.append("mensagem", texto);

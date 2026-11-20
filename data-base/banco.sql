@@ -39,7 +39,8 @@ ALTER TABLE registros_pets ADD COLUMN IF NOT EXISTS foto_dados BYTEA;
 
 
 -- Moderação: pets só aparecem no site depois de aprovados no painel
-ALTER TABLE registros_pets ADD COLUMN IF NOT EXISTS status VARCHAR(20) NOT NULL DEFAULT 'pendente';
+ALTER TABLE registros_pets ADD COLUMN IF NOT EXISTS status VARCHAR(20) NOT NULL DEFAULT 'aprovado';
+ALTER TABLE registros_pets ALTER COLUMN status SET DEFAULT 'aprovado';
 CREATE INDEX IF NOT EXISTS idx_registros_pets_status ON registros_pets(status);
 
 -- Painel: marcar mensagens de contato como lidas
@@ -110,3 +111,17 @@ CREATE TABLE IF NOT EXISTS solicitacoes_adocao (
 CREATE UNIQUE INDEX IF NOT EXISTS uq_solicitacao_pendente
     ON solicitacoes_adocao(registro_pet_id, usuario_id) WHERE status = 'pendente';
 CREATE INDEX IF NOT EXISTS idx_solicitacoes_pet ON solicitacoes_adocao(registro_pet_id);
+
+-- Informações do animal preenchidas no cadastro (usadas no card da página de animais)
+ALTER TABLE registros_pets ADD COLUMN IF NOT EXISTS nome_animal VARCHAR(100);
+ALTER TABLE registros_pets ADD COLUMN IF NOT EXISTS especie VARCHAR(10);
+ALTER TABLE registros_pets ADD COLUMN IF NOT EXISTS idade VARCHAR(10);
+
+-- Favoritos salvos na conta (um registro por conta e animal)
+CREATE TABLE IF NOT EXISTS favoritos (
+    usuario_id INTEGER NOT NULL REFERENCES usuarios(id) ON DELETE CASCADE,
+    registro_pet_id INTEGER NOT NULL REFERENCES registros_pets(id) ON DELETE CASCADE,
+    criado_em TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (usuario_id, registro_pet_id)
+);
+CREATE INDEX IF NOT EXISTS idx_favoritos_pet ON favoritos(registro_pet_id);

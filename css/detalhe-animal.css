@@ -1,0 +1,18 @@
+.detalhe-secao { padding-top: 28px; padding-bottom: 64px; }
+.voltar-animais { display: inline-flex; gap: 9px; align-items: center; margin-bottom: 22px; color: #153A24; font-weight: 600; text-decoration: none; }
+.voltar-animais:hover { color: #A85A1F; }
+.estado-detalhe { padding: 28px; text-align: center; color: #4A5F52; background: #fff; border: 1px solid rgba(21,58,36,.12); border-radius: 18px; }
+.detalhe-card { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(24px, 4vw, 52px); padding: clamp(18px, 3vw, 34px); background: #fff; border: 1px solid rgba(21,58,36,.12); border-radius: 22px; box-shadow: 0 12px 32px rgba(21,58,36,.08); }
+.detalhe-foto { min-height: 320px; overflow: hidden; border-radius: 16px; background: #F1E8D4; }
+.detalhe-foto img { display: block; width: 100%; height: 100%; min-height: 320px; max-height: 560px; object-fit: cover; }
+.detalhe-conteudo { align-self: center; }
+.detalhe-etiquetas { display: flex; flex-wrap: wrap; gap: 9px; margin-bottom: 14px; }
+.detalhe-tag { padding: 6px 12px; border-radius: 999px; background: #F1E8D4; color: #153A24; font-size: .78rem; font-weight: 700; }
+.detalhe-tag.tipo { background: #153A24; color: #fff; }
+.detalhe-conteudo h2 { margin: 0 0 12px; color: #153A24; font: 600 clamp(2rem, 4vw, 3rem)/1.1 'Playfair Display', Georgia, serif; }
+.detalhe-local { color: #4A5F52; font-weight: 600; }
+.detalhe-local i { color: #A85A1F; margin-right: 7px; }
+.detalhe-descricao { margin: 22px 0; line-height: 1.8; white-space: pre-wrap; overflow-wrap: anywhere; }
+.detalhe-data, .aviso-login { color: #64756A; font-size: .85rem; }
+.detalhe-conteudo .btn { display: inline-flex; align-items: center; gap: 10px; margin-top: 12px; text-decoration: none; }
+@media (max-width: 760px) { .detalhe-card { grid-template-columns: 1fr; } .detalhe-foto, .detalhe-foto img { min-height: 240px; max-height: 420px; } }

@@ -768,3 +768,15 @@ body.saindo { animation: sairPagina 0.35s ease forwards; }
     .bloco-adoção { padding: 1.25rem; gap: 1.5rem; }
     .ver-todos { text-align: center; }
 }
+
+/* Estado vazio/erro da vitrine dinâmica da HOME */
+.vitrine-vazia {
+    flex: 1 0 100%;
+    padding: 2rem;
+    border: 1px dashed var(--borda);
+    border-radius: var(--raio-g);
+    color: var(--texto-suave);
+    background: var(--branco);
+    text-align: center;
+    font-family: var(--fonte-texto);
+}

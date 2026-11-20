@@ -41,35 +41,70 @@ function conteudoLocal(localizacao) {
     return link;
 }
 
+const ROTULO_ESPECIE = { cao: "Cão", gato: "Gato", outro: "Outro" };
+const ROTULO_IDADE = { filhote: "Filhote", adulto: "Adulto", idoso: "Idoso" };
+
+function resumir(texto, limite) {
+    return texto.length > limite ? texto.slice(0, limite - 1).trimEnd() + "…" : texto;
+}
+
 function criarCartao(pet) {
-    const cartao = criar('article', 'cartao-animal');
+    // Mesma estrutura dos cards da home (.card-animal), preenchida com o que o usuário cadastrou.
+    // Cadastros antigos (sem nome, espécie ou idade) usam um texto de apoio.
+    const titulo = pet.nome_animal || resumir(pet.descricao, 40);
+    const card = criar("article", "card-animal");
 
-    const foto = criar('div', 'foto');
-    const img = document.createElement('img');
+    const imagem = criar("div", "imagem-animal");
+    const img = document.createElement("img");
     img.src = pet.foto;
-    img.alt = 'Foto do animal registrado em ' + formatarData(pet.criado_em);
-    img.loading = 'lazy';
-    foto.appendChild(img);
+    img.alt = titulo;
+    img.loading = "lazy";
+    imagem.appendChild(img);
 
-    const corpo = criar('div', 'corpo');
-    corpo.appendChild(criar('p', 'descricao', pet.descricao));
+    const etiquetas = criar("div", "tags-animal");
+    if (ROTULO_IDADE[pet.idade]) etiquetas.appendChild(criar("span", "tag", ROTULO_IDADE[pet.idade]));
+    if (ROTULO_ESPECIE[pet.especie]) etiquetas.appendChild(criar("span", "tag tipo", ROTULO_ESPECIE[pet.especie]));
+    if (etiquetas.childNodes.length) imagem.appendChild(etiquetas);
 
-    const meta = criar('div', 'meta');
-    meta.appendChild(linhaMeta('fa-location-dot', conteudoLocal(pet.localizacao)));
-    meta.appendChild(linhaMeta('fa-calendar', 'Registrado em ' + formatarData(pet.criado_em)));
-    corpo.appendChild(meta);
+    const favorito = criar("button", "botao-favorito");
+    favorito.type = "button";
+    favorito.setAttribute("aria-label", "Favoritar " + titulo);
+    favorito.setAttribute("aria-pressed", "false");
+    const icone = criar("i", "fa-regular fa-heart");
+    icone.setAttribute("aria-hidden", "true");
+    favorito.appendChild(icone);
+    window.Favoritos.ligarBotao(favorito, pet.id);
+    imagem.appendChild(favorito);
 
-    const botao = criar('a', 'btn btn-laranja btn-pequeno');
-    botao.href = './solicitar-adocao.html?animal=' + encodeURIComponent(pet.id);
-    const coracao = criar('i', 'fa-regular fa-heart');
-    coracao.setAttribute('aria-hidden', 'true');
-    botao.appendChild(coracao);
-    botao.appendChild(document.createTextNode(' Tenho interesse'));
-    corpo.appendChild(botao);
+    const dados = criar("div", "dados-animal");
 
-    cartao.appendChild(foto);
-    cartao.appendChild(corpo);
-    return cartao;
+    const nomeIdade = criar("div", "nome-idade");
+    nomeIdade.appendChild(criar("h3", "", titulo));
+    nomeIdade.appendChild(criar("span", "", ROTULO_IDADE[pet.idade] || ""));
+    dados.appendChild(nomeIdade);
+
+    const local = criar("p", "localizacao");
+    const iconeLocal = criar("i", "fa-solid fa-location-dot");
+    iconeLocal.setAttribute("aria-hidden", "true");
+    local.appendChild(iconeLocal);
+    const conteudo = conteudoLocal(pet.localizacao);
+    local.appendChild(conteudo instanceof Node ? conteudo : document.createTextNode(conteudo));
+    dados.appendChild(local);
+
+    // A descrição escrita pelo usuário
+    dados.appendChild(criar("p", "descricao-animal", resumir(pet.descricao, 160)));
+
+    const botao = criar("a", "btn-card");
+    botao.href = "./animal.html?id=" + encodeURIComponent(pet.id);
+    botao.appendChild(document.createTextNode("VER DETALHES "));
+    const seta = criar("i", "fa-solid fa-arrow-right");
+    seta.setAttribute("aria-hidden", "true");
+    botao.appendChild(seta);
+    dados.appendChild(botao);
+
+    card.appendChild(imagem);
+    card.appendChild(dados);
+    return card;
 }
 
 function mostrarEsqueletos() {
@@ -99,7 +134,7 @@ async function carregar(reiniciar) {
     try {
         const parametros = new URLSearchParams({ pagina: String(pagina) });
         if (termo) parametros.set('q', termo);
-        const resposta = await fetch('/backend/animais.php?' + parametros.toString());
+        const resposta = await fetch('/backend/animais.php?' + parametros.toString(), { cache: 'no-store' });
         const dados = await resposta.json();
         if (meuPedido !== pedidoAtual) return;
         if (!resposta.ok || !dados.sucesso) throw new Error(dados.mensagem || 'Falha ao carregar.');
@@ -109,7 +144,7 @@ async function carregar(reiniciar) {
 
         if (!grade.children.length) {
             if (termo) mostrarVazio('Nada encontrado', 'Tente buscar com outras palavras.');
-            else mostrarVazio('Nenhum animal por aqui ainda', 'Assim que a equipe aprovar os primeiros registros, eles aparecerão aqui.');
+            else mostrarVazio('Nenhum animal por aqui ainda', 'Assim que um animal for cadastrado, seu card aparecerá aqui para todos os visitantes.');
         }
         btnMais.hidden = !dados.tem_mais;
     } catch (erro) {
@@ -140,3 +175,12 @@ campoBusca.addEventListener('input', () => {
 });
 
 carregar(true);
+
+// Mantém a vitrine atualizada para quem já está com a página aberta.
+// A API não usa cache; a cada 20 segundos verificamos se entrou algum animal novo.
+document.addEventListener('visibilitychange', () => {
+    if (!document.hidden && pagina === 1 && !termo) carregar(true);
+});
+window.setInterval(() => {
+    if (!document.hidden && pagina === 1 && !termo && !carregando) carregar(true);
+}, 20000);

@@ -1,7 +1,8 @@
 <?php
 // Lista pública dos pets aprovados: /backend/animais.php?pagina=1&q=texto
 header("Content-Type: application/json; charset=UTF-8");
-header("Cache-Control: public, max-age=60");
+header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+header("Pragma: no-cache");
 
 if ($_SERVER["REQUEST_METHOD"] !== "GET") {
     http_response_code(405);
@@ -15,7 +16,7 @@ require_once __DIR__ . "/conexao.php";
 if (isset($_GET["id"])) {
     $idAnimal = filter_var($_GET["id"], FILTER_VALIDATE_INT);
     try {
-        $stmt = $pdo->prepare("SELECT id, descricao, localizacao, criado_em FROM registros_pets
+        $stmt = $pdo->prepare("SELECT id, descricao, localizacao, criado_em, nome_animal, especie, idade FROM registros_pets
                                WHERE id = :id AND status = 'aprovado' AND foto_dados IS NOT NULL");
         $stmt->bindValue(":id", $idAnimal ?: 0, PDO::PARAM_INT);
         $stmt->execute();
@@ -35,6 +36,9 @@ if (isset($_GET["id"])) {
         "id" => (int)$linha["id"],
         "descricao" => $linha["descricao"],
         "localizacao" => $linha["localizacao"],
+        "nome_animal" => $linha["nome_animal"],
+        "especie" => $linha["especie"],
+        "idade" => $linha["idade"],
         "criado_em" => $linha["criado_em"],
         "foto" => "/backend/foto.php?id=" . (int)$linha["id"]
     ]]);
@@ -48,13 +52,16 @@ $busca = mb_substr(trim($_GET["q"] ?? ""), 0, 80);
 $where = "status = 'aprovado' AND foto_dados IS NOT NULL";
 $params = [];
 if ($busca !== "") {
-    $where .= " AND (descricao ILIKE :q OR localizacao ILIKE :q)";
-    $params[":q"] = "%" . addcslashes($busca, "%_\\") . "%";
+    $where .= " AND (descricao ILIKE :q_descricao OR localizacao ILIKE :q_localizacao OR nome_animal ILIKE :q_nome)";
+    $termoBusca = "%" . addcslashes($busca, "%_\\\\") . "%";
+    $params[":q_descricao"] = $termoBusca;
+    $params[":q_localizacao"] = $termoBusca;
+    $params[":q_nome"] = $termoBusca;
 }
 
 try {
     $stmt = $pdo->prepare(
-        "SELECT id, descricao, localizacao, criado_em FROM registros_pets
+        "SELECT id, descricao, localizacao, criado_em, nome_animal, especie, idade FROM registros_pets
          WHERE $where ORDER BY criado_em DESC, id DESC LIMIT :limite OFFSET :deslocamento"
     );
     foreach ($params as $chave => $valor) {
@@ -72,6 +79,9 @@ try {
         "id" => (int)$l["id"],
         "descricao" => $l["descricao"],
         "localizacao" => $l["localizacao"],
+        "nome_animal" => $l["nome_animal"],
+        "especie" => $l["especie"],
+        "idade" => $l["idade"],
         "criado_em" => $l["criado_em"],
         "foto" => "/backend/foto.php?id=" . (int)$l["id"]
     ], $linhas);
