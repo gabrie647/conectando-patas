@@ -1,0 +1,51 @@
+/* =====================================================
+   RESPONSIVIDADE PARA CELULARES — camada final
+   Só ajusta telas pequenas (até 768px e 480px).
+   Não remove nem altera regras existentes: é carregada por último.
+   ===================================================== */
+
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+img, video, iframe { max-width: 100%; }
+
+@media (max-width: 768px) {
+  /* Campos com 16px: o iPhone não dá zoom automático ao tocar */
+  input:not([type="checkbox"]):not([type="radio"]), select, textarea { font-size: 16px; }
+  .cp-busca input { font-size: 16px; }
+
+  /* Alvos de toque com pelo menos 44px de altura */
+  .btn, .btn-card, .btn-login, .btn-enviar, a.btn, button:not(.botao-favorito) {
+    min-height: 44px;
+  }
+  .cp-login, .cp-cadastrar, .cp-conta-usuario {
+    min-height: 44px; display: inline-flex; align-items: center;
+  }
+
+  /* Menu principal legível */
+  .cp-nav a { font-size: 13px; padding: 12px 0; }
+
+  /* Respiro lateral confortável */
+  main, .secao, .area-formulario { padding-left: 16px; padding-right: 16px; }
+  .conta-bloco { padding: 18px; }
+
+  /* Mapa do cadastro de animal: altura mínima para tocar e ajustar o marcador */
+  #mapa { min-height: 260px; }
+
+  /* Área segura (iPhone com notch) */
+  .cp-cabecalho {
+    padding-left: max(12px, env(safe-area-inset-left));
+    padding-right: max(12px, env(safe-area-inset-right));
+  }
+}
+
+@media (max-width: 480px) {
+  .cp-nav { gap: 8px; }
+  .cp-nav a { font-size: 12px; }
+
+  /* Formulários em coluna única */
+  .campos-linha, .campos-endereco { grid-template-columns: 1fr; }
+  .campos-endereco .form-field:first-child { grid-column: auto; }
+  .row > [class*="col-"] { width: 100%; }
+
+  /* Botões principais ocupam a largura da tela */
+  .btn-enviar, .btn-login { width: 100%; }
+}

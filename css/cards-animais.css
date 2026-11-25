@@ -1,0 +1,257 @@
+/* =====================================================
+   CARDS DE ANIMAIS — mesmo visual dos cards da home
+   Regras copiadas de css/style.css (seção CARD DO ANIMAL) e
+   variáveis de css/tokens.css, aplicadas só dentro da grade #grade.
+===================================================== */
+#grade {
+    --areia: #F1E8D4;
+    --borda: rgba(21, 58, 36, 0.12);
+    --branco: #FFFFFF;
+    --fonte-texto: 'Poppins', system-ui, sans-serif;
+    --fonte-titulo: 'Playfair Display', Georgia, serif;
+    --laranja-forte: #A85A1F;
+    --raio-g: 24px;
+    --raio-m: 16px;
+    --sombra-m: 0 12px 32px rgba(21, 58, 36, 0.12);
+    --sombra-p: 0 1px 3px rgba(21, 58, 36, 0.08);
+    --texto-suave: #4A5F52;
+    --verde: #153A24;
+}
+
+.btn-principal,
+.btn-destaque,
+.btn-secundario,
+.btn-card {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    border: 2px solid transparent;
+    border-radius: 999px;
+    font-family: var(--fonte-texto);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    cursor: pointer;
+    transition: background-color 0.25s ease, color 0.25s ease,
+                border-color 0.25s ease, transform 0.25s ease,
+                box-shadow 0.25s ease;
+}
+
+.btn-principal:active,
+.btn-destaque:active,
+.btn-secundario:active,
+.btn-card:active { transform: scale(0.97); }
+
+.btn-card {
+    width: 100%;
+    margin-top: 0.5rem;
+    padding: 0.75rem;
+    background: transparent;
+    color: var(--verde);
+    border-color: var(--borda);
+    border-radius: var(--raio-m);
+}
+
+.btn-card:hover {
+    background: var(--verde);
+    border-color: var(--verde);
+    color: var(--branco);
+}
+
+.lista-animais .card-animal {
+    flex: 0 0 calc((100% - 3.5rem) / 3);
+    min-width: 0;
+}
+
+.card-animal {
+    overflow: hidden;
+    background: var(--branco);
+    border: 1px solid var(--borda);
+    border-radius: var(--raio-g);
+    box-shadow: var(--sombra-p);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-animal:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--sombra-m);
+}
+
+.imagem-animal {
+    position: relative;
+    height: 270px;
+    background: var(--areia);
+}
+
+.imagem-animal img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.tags-animal {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    right: 1rem;
+    z-index: 2;
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+
+.botao-favorito {
+    position: absolute;
+    right: 1rem;
+    bottom: 1rem;
+    z-index: 2;
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.92);
+    color: var(--verde);
+    font-size: 1.05rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.botao-favorito:hover { transform: scale(1.1); }
+
+.botao-favorito.ativo,
+.botao-favorito.favoritado { color: #C0392B; }
+
+.dados-animal { padding: 1.4rem 1.5rem 1.5rem; }
+
+.nome-idade {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 0.4rem;
+}
+
+.nome-idade h3 {
+    font-family: var(--fonte-titulo);
+    font-size: 1.45rem;
+    font-weight: 600;
+}
+
+.nome-idade span { color: var(--texto-suave); font-size: 0.85rem; }
+
+.dados-animal p { margin-bottom: 0.7rem; font-size: 0.92rem; }
+
+.dados-animal .localizacao { color: var(--texto-suave); font-size: 0.85rem; }
+
+.dados-animal p i { margin-right: 0.45rem; color: var(--laranja-forte); }
+
+.descricao-animal { min-height: 3em; }
+
+@media (max-width: 1100px) {
+.lista-animais .card-animal { flex: 0 0 calc((100% - 1.75rem) / 2); }
+}
+
+@media (max-width: 560px) {
+.lista-animais .card-animal { flex: 0 0 100%; }
+}
+
+/* Grade: 3 colunas, como a home */
+#grade.grade-animais { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.75rem; }
+@media (max-width: 1100px) { #grade.grade-animais { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { #grade.grade-animais { grid-template-columns: 1fr; } }
+
+.card-animal h3 { overflow-wrap: anywhere; }
+.card-animal a.btn-card { text-decoration: none; }
+
+
+/* Acabamento da vitrine pública: proporções compactas e etiquetas como no carrossel da home. */
+#grade .card-animal {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    border-radius: 18px;
+}
+
+#grade .imagem-animal {
+    height: auto;
+    aspect-ratio: 1.5 / 1;
+}
+
+#grade .tags-animal {
+    top: 12px;
+    left: 12px;
+    right: 12px;
+    align-items: center;
+}
+
+#grade .tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 10px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.94);
+    color: #153A24;
+    font-size: 0.68rem;
+    line-height: 1.2;
+    font-weight: 700;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+#grade .tag.tipo {
+    background: #153A24;
+    color: #FFFFFF;
+}
+
+#grade .botao-favorito {
+    width: 36px;
+    height: 36px;
+    right: 12px;
+    bottom: 12px;
+    font-size: 0.95rem;
+}
+
+#grade .dados-animal {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: 14px 16px 16px;
+}
+
+#grade .nome-idade h3 {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+#grade .nome-idade span,
+#grade .dados-animal .localizacao {
+    font-size: 0.76rem;
+}
+
+#grade .dados-animal p {
+    font-size: 0.8rem;
+    line-height: 1.55;
+}
+
+#grade .descricao-animal {
+    flex: 1;
+    min-height: 3.1em;
+}
+
+#grade .btn-card {
+    min-height: 42px;
+    margin-top: 8px;
+    padding: 10px 12px;
+    border-width: 1px;
+    border-radius: 12px;
+    font-size: 0.72rem;
+    text-decoration: none;
+}
+
+@media (max-width: 560px) {
+    #grade .imagem-animal { aspect-ratio: 1.45 / 1; }
+}

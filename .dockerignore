@@ -1,0 +1,7 @@
+.git
+.env
+.env.*
+docker-compose.yml
+tests/
+.github/
+PRODUCAO.md

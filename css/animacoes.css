@@ -1,0 +1,190 @@
+/* =====================================================
+   CAMADA DE DESIGN OUSADO + ANIMAÇÕES — Conectando Patas
+   Carregue DEPOIS de style.css. Para desligar tudo: remova o <link>.
+   Os efeitos de entrada só valem quando o JS está ativo (classe .js-anim).
+===================================================== */
+
+/* ---------- Barra de progresso de rolagem ---------- */
+.cp-progresso {
+    position: fixed; top: 0; left: 0; z-index: 10000;
+    width: 100%; height: 4px;
+    background: linear-gradient(90deg, var(--laranja), var(--laranja-forte));
+    transform-origin: 0 50%; transform: scaleX(0);
+    pointer-events: none;
+}
+
+/* ---------- HERO: mais impacto ---------- */
+.banner-principal { min-height: clamp(560px, 82vh, 760px); }
+
+/* Zoom lento (efeito cinematográfico) */
+.banner-principal img { animation: zoomLento 22s ease-in-out infinite alternate; }
+@keyframes zoomLento { from { transform: scale(1); } to { transform: scale(1.12); } }
+
+/* Brilho laranja pulsando no canto */
+.banner-principal::before {
+    content: ""; position: absolute; z-index: -1;
+    right: -12%; bottom: -25%; width: 60%; aspect-ratio: 1;
+    background: radial-gradient(circle, rgba(212,139,84,.55), transparent 65%);
+    filter: blur(20px);
+    animation: pulsar 6s ease-in-out infinite;
+}
+@keyframes pulsar { 50% { transform: scale(1.25); opacity: .6; } }
+
+.banner-principal h1 {
+    font-size: clamp(2.8rem, 7.5vw, 5.6rem);
+    letter-spacing: -0.02em;
+    line-height: 1.02;
+}
+.banner-principal h1 span {
+    background: linear-gradient(100deg, #F0B988, #FFD9B0, #F0B988);
+    background-size: 200% auto;
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: brilhoTexto 5s linear infinite;
+}
+@keyframes brilhoTexto { to { background-position: 200% center; } }
+
+/* Entrada escalonada do conteúdo do hero */
+.js-anim .conteudo-banner > * {
+    opacity: 0; transform: translateY(32px);
+    animation: subir .9s cubic-bezier(.2,.8,.2,1) forwards;
+}
+.js-anim .conteudo-banner > :nth-child(1) { animation-delay: .15s; }
+.js-anim .conteudo-banner > :nth-child(2) { animation-delay: .30s; }
+.js-anim .conteudo-banner > :nth-child(3) { animation-delay: .50s; }
+.js-anim .conteudo-banner > :nth-child(4) { animation-delay: .70s; }
+@keyframes subir { to { opacity: 1; transform: none; } }
+
+/* Patinhas flutuando no hero */
+.patinha-flutuante {
+    position: absolute; z-index: 0; bottom: -40px;
+    color: rgba(255,255,255,.22); pointer-events: none;
+    animation: flutuar linear infinite;
+}
+@keyframes flutuar {
+    from { transform: translateY(0) rotate(0); opacity: 0; }
+    10%  { opacity: 1; }
+    to   { transform: translateY(-640px) rotate(40deg); opacity: 0; }
+}
+
+/* ---------- Faixa (marquee) ---------- */
+.faixa-marquee {
+    overflow: hidden; margin-top: 1.5rem;
+    background: var(--verde); color: var(--creme);
+    transform: rotate(-1.2deg); box-shadow: var(--sombra-m);
+}
+.faixa-marquee .trilho {
+    display: flex; width: max-content; gap: 3rem; padding: 1rem 0;
+    animation: correr 28s linear infinite;
+    font-family: var(--fonte-titulo); font-size: 1.35rem; letter-spacing: .08em;
+}
+.faixa-marquee:hover .trilho { animation-play-state: paused; }
+.faixa-marquee span::after { content: "🐾"; margin-left: 3rem; }
+@keyframes correr { to { transform: translateX(-50%); } }
+
+/* ---------- Revelar ao rolar ---------- */
+.js-anim [data-revelar] {
+    opacity: 0; transform: translateY(40px) scale(.97);
+    transition: opacity .8s cubic-bezier(.2,.8,.2,1), transform .8s cubic-bezier(.2,.8,.2,1);
+    transition-delay: var(--atraso, 0s);
+}
+.js-anim [data-revelar].visivel { opacity: 1; transform: none; }
+
+/* ---------- Cards de valores ---------- */
+.card-valor { position: relative; overflow: hidden; transition: transform .35s ease, box-shadow .35s ease, border-color .35s; }
+.card-valor::before {
+    content: ""; position: absolute; inset: 0 0 auto 0; height: 5px;
+    background: linear-gradient(90deg, var(--laranja), var(--laranja-forte));
+    transform: scaleX(0); transform-origin: left; transition: transform .45s ease;
+}
+.card-valor:hover { transform: translateY(-10px); box-shadow: var(--sombra-m); border-color: var(--laranja); }
+.card-valor:hover::before { transform: scaleX(1); }
+.icone-valor { transition: transform .5s cubic-bezier(.3,1.6,.5,1), background .3s, color .3s; }
+.card-valor:hover .icone-valor { transform: rotate(-12deg) scale(1.2); background: var(--laranja-forte); color: #fff; }
+
+/* ---------- Títulos de seção ---------- */
+.cabecalho-secao h2 { font-size: clamp(2rem, 4.5vw, 3.3rem); line-height: 1.1; }
+.cabecalho-secao h2 strong { position: relative; white-space: nowrap; }
+.cabecalho-secao h2 strong::after {
+    content: ""; position: absolute; left: 0; bottom: -.12em;
+    width: 100%; height: .14em; background: var(--laranja); border-radius: 99px;
+    transform: scaleX(0); transform-origin: left; transition: transform 1s .4s ease;
+}
+.cabecalho-secao.visivel h2 strong::after,
+.cabecalho-secao:not([data-revelar]) h2 strong::after { transform: scaleX(1); }
+
+/* ---------- Cards de animais ---------- */
+.card-animal { transform-style: preserve-3d; will-change: transform; }
+.card-animal:hover { box-shadow: 0 24px 50px rgba(21,58,36,.22); }
+.imagem-animal { overflow: hidden; }
+.imagem-animal img { transition: transform .8s cubic-bezier(.2,.8,.2,1); }
+.card-animal:hover .imagem-animal img { transform: scale(1.12) rotate(1deg); }
+
+/* Coração com "pop" */
+.botao-favorito.ativo i { animation: pop .5s cubic-bezier(.3,1.7,.5,1); color: #E0453A; }
+@keyframes pop { 0% { transform: scale(1); } 40% { transform: scale(1.6); } 100% { transform: scale(1); } }
+
+/* ---------- Botões: brilho que atravessa + seta que anda ---------- */
+.btn-destaque, .btn-secundario, .btn-card { position: relative; overflow: hidden; }
+.btn-destaque::after, .btn-card::after {
+    content: ""; position: absolute; top: 0; left: -80%; width: 50%; height: 100%;
+    background: linear-gradient(100deg, transparent, rgba(255,255,255,.45), transparent);
+    transform: skewX(-20deg); transition: left .7s ease;
+}
+.btn-destaque:hover::after, .btn-card:hover::after { left: 130%; }
+.btn-destaque i, .btn-card i { transition: transform .3s ease; }
+.btn-destaque:hover i, .btn-card:hover i { transform: translateX(6px); }
+.btn-destaque { animation: respirar 3.2s ease-in-out infinite; }
+@keyframes respirar {
+    0%,100% { box-shadow: 0 0 0 0 rgba(212,139,84,.55); }
+    50%     { box-shadow: 0 0 0 14px rgba(212,139,84,0); }
+}
+
+/* ---------- Mobile: efeitos mais leves ---------- */
+@media (max-width: 700px) {
+    .faixa-marquee { transform: none; }
+    .patinha-flutuante { display: none; }
+    .card-valor:hover { transform: none; }
+}
+
+/* ---------- Acessibilidade: sem movimento ---------- */
+@media (prefers-reduced-motion: reduce) {
+    .js-anim [data-revelar], .js-anim .conteudo-banner > * { opacity: 1 !important; transform: none !important; }
+    .patinha-flutuante, .faixa-marquee .trilho { animation: none !important; }
+}
+
+/* =====================================================
+   OUTRAS PÁGINAS (animais, contatos, termos)
+===================================================== */
+.cartao-animal { transform-style: preserve-3d; will-change: transform; transition: box-shadow .3s ease; }
+.cartao-animal:hover { box-shadow: 0 24px 50px rgba(21,58,36,.22); }
+.cartao-animal img { transition: transform .8s cubic-bezier(.2,.8,.2,1); }
+.cartao-animal:hover img { transform: scale(1.1); }
+
+.pagina-banner { position: relative; overflow: hidden; }
+.pagina-banner h1 { font-size: clamp(2.3rem, 6vw, 4rem); letter-spacing: -0.02em; }
+.js-anim .pagina-banner .interno > * {
+    opacity: 0; transform: translateY(28px);
+    animation: subir .9s cubic-bezier(.2,.8,.2,1) forwards;
+}
+.js-anim .pagina-banner .interno > :nth-child(1) { animation-delay: .1s; }
+.js-anim .pagina-banner .interno > :nth-child(2) { animation-delay: .25s; }
+.js-anim .pagina-banner .interno > :nth-child(3) { animation-delay: .4s; }
+
+.card-contato { transition: transform .35s ease, box-shadow .35s ease; }
+.card-contato:hover { transform: translateY(-8px); box-shadow: var(--sombra-m); }
+.icone-contato { transition: transform .5s cubic-bezier(.3,1.6,.5,1); }
+.card-contato:hover .icone-contato { transform: rotate(-12deg) scale(1.2); }
+
+.circulo-pata { animation: flutuarSuave 4s ease-in-out infinite; }
+.icone-coracao { animation: batimento 1.6s ease-in-out infinite; }
+@keyframes flutuarSuave { 50% { transform: translateY(-14px); } }
+@keyframes batimento { 0%,100% { transform: scale(1); } 15% { transform: scale(1.25); } 30% { transform: scale(1); } 45% { transform: scale(1.18); } }
+
+.btn:hover, .btn-principal:hover { transform: translateY(-2px); }
+.estado-vazio > i { animation: flutuarSuave 3.5s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+    .js-anim .pagina-banner .interno > * { opacity: 1 !important; transform: none !important; }
+    .circulo-pata, .icone-coracao, .estado-vazio > i { animation: none !important; }
+}
