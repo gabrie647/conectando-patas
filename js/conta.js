@@ -73,7 +73,7 @@
         $('desdeConta').textContent = desde ? 'Membro desde ' + desde : '';
         $('avatar').textContent = (u.nome.charAt(0) + u.sobrenome.charAt(0)).toUpperCase() || '?';
 
-        ['nome', 'sobrenome', 'email', 'cidade', 'bairro', 'numero'].forEach((campo) => {
+        ['nome', 'sobrenome', 'email', 'cidade', 'bairro'].forEach((campo) => {
             $(campo).value = u[campo] || '';
         });
         $('linkPainel').hidden = !dados.admin;
@@ -159,7 +159,7 @@
         ocupar(botao, true, 'Salvando...');
         try {
             const r = await enviar('perfil', form);
-            ['nome', 'sobrenome', 'cidade', 'bairro', 'numero'].forEach((c) => { dados.usuario[c] = $(c).value.trim(); });
+            ['nome', 'sobrenome', 'cidade', 'bairro'].forEach((c) => { dados.usuario[c] = $(c).value.trim(); });
             preencher();
             mostrarAviso(r.mensagem, true);
         } catch (erro) {

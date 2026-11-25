@@ -1,7 +1,7 @@
 <?php
 // Conta do usuário logado.
 //   GET  /backend/conta.php                      -> dados do perfil + registros de animais da pessoa
-//   POST acao=perfil  (nome, sobrenome, cidade, bairro, numero)
+//   POST acao=perfil  (nome, sobrenome, cidade, bairro)
 //   POST acao=senha   (senha_atual, nova_senha, confirmar_senha)
 //   POST acao=excluir (senha_atual)
 header('Content-Type: application/json; charset=UTF-8');
@@ -37,7 +37,7 @@ function conferir_senha_atual(PDO $pdo, int $idUsuario, string $senha): void
 try {
     // ---------- Leitura ----------
     if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-        $stmt = $pdo->prepare('SELECT id, nome, sobrenome, email, cidade, bairro, numero, criado_em FROM usuarios WHERE id = :id');
+        $stmt = $pdo->prepare('SELECT id, nome, sobrenome, email, cidade, bairro, criado_em FROM usuarios WHERE id = :id');
         $stmt->execute([':id' => $idUsuario]);
         $u = $stmt->fetch();
         if (!$u) {
@@ -71,7 +71,6 @@ try {
                 'email' => $u['email'],
                 'cidade' => $u['cidade'],
                 'bairro' => $u['bairro'],
-                'numero' => $u['numero'],
                 'criado_em' => $u['criado_em']
             ],
             'pets' => $pets,
@@ -94,22 +93,21 @@ try {
         $sobrenome = trim($_POST['sobrenome'] ?? '');
         $cidade = trim($_POST['cidade'] ?? '');
         $bairro = trim($_POST['bairro'] ?? '');
-        $numero = trim($_POST['numero'] ?? '');
 
         if ($nome === '' || $sobrenome === '' || $cidade === '' || $bairro === '') {
             responder(400, ['sucesso' => false, 'mensagem' => 'Preencha todos os campos.']);
         }
         if (mb_strlen($nome) > 100 || mb_strlen($sobrenome) > 100 || mb_strlen($cidade) > 100
-            || mb_strlen($bairro) > 100 || mb_strlen($numero) > 20) {
+            || mb_strlen($bairro) > 100) {
             responder(400, ['sucesso' => false, 'mensagem' => 'Algum campo excedeu o tamanho permitido.']);
         }
 
         $stmt = $pdo->prepare(
-            'UPDATE usuarios SET nome = :nome, sobrenome = :sobrenome, cidade = :cidade, bairro = :bairro, numero = :numero WHERE id = :id'
+            'UPDATE usuarios SET nome = :nome, sobrenome = :sobrenome, cidade = :cidade, bairro = :bairro WHERE id = :id'
         );
         $stmt->execute([
             ':nome' => $nome, ':sobrenome' => $sobrenome, ':cidade' => $cidade,
-            ':bairro' => $bairro, ':numero' => $numero, ':id' => $idUsuario
+            ':bairro' => $bairro, ':id' => $idUsuario
         ]);
 
         $_SESSION['usuario']['nome'] = $nome;
