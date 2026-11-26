@@ -163,6 +163,9 @@ function exigir_login(): array
     if (!$usuario) {
         responder(401, ['sucesso' => false, 'mensagem' => 'Faça login para continuar.']);
     }
+    if (isset($usuario['confirmado']) && $usuario['confirmado'] === false) {
+        responder(403, ['sucesso' => false, 'mensagem' => 'Confirme seu e-mail para usar este recurso. Verifique sua caixa de entrada (e o spam).']);
+    }
     return $usuario;
 }
 

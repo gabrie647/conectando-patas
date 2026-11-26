@@ -45,7 +45,8 @@ try {
             "id" => (int)$usuario["id"],
             "nome" => $usuario["nome"],
             "sobrenome" => $usuario["sobrenome"],
-            "email" => $usuario["email"]
+            "email" => $usuario["email"],
+            "confirmado" => true
         ];
         header("Location: " . $base . "/index.html?conta=confirmada");
         exit;

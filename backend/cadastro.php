@@ -20,7 +20,6 @@ $senha = $_POST["senha"] ?? "";
 $confirmarSenha = $_POST["confirmarSenha"] ?? "";
 $cidade = trim($_POST["cidade"] ?? "");
 $bairro = trim($_POST["bairro"] ?? "");
-$numero = trim($_POST["numero"] ?? "");
 $termos = $_POST["termos"] ?? "";
 
 if ($nome === "" || $sobrenome === "" || $email === "" || $senha === "" || $confirmarSenha === ""
@@ -31,7 +30,7 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     responder(400, ["sucesso" => false, "mensagem" => "Digite um e-mail válido."]);
 }
 if (mb_strlen($nome) > 100 || mb_strlen($sobrenome) > 100 || mb_strlen($email) > 150
-    || mb_strlen($cidade) > 100 || mb_strlen($bairro) > 100 || mb_strlen($numero) > 20) {
+    || mb_strlen($cidade) > 100 || mb_strlen($bairro) > 100) {
     responder(400, ["sucesso" => false, "mensagem" => "Algum campo excedeu o tamanho permitido."]);
 }
 if ($senha !== $confirmarSenha) {
@@ -58,8 +57,8 @@ try {
 
     $pdo->beginTransaction();
     $stmt = $pdo->prepare(
-        "INSERT INTO usuarios (nome, sobrenome, email, senha, cidade, bairro, numero, termos_aceitos, email_confirmado)
-         VALUES (:nome, :sobrenome, :email, :senha, :cidade, :bairro, :numero, :termos, :confirmado)
+        "INSERT INTO usuarios (nome, sobrenome, email, senha, cidade, bairro, termos_aceitos, email_confirmado)
+         VALUES (:nome, :sobrenome, :email, :senha, :cidade, :bairro, :termos, :confirmado)
          RETURNING id"
     );
     $stmt->execute([
@@ -69,47 +68,35 @@ try {
         ":senha" => $senhaHash,
         ":cidade" => $cidade,
         ":bairro" => $bairro,
-        ":numero" => $numero === "" ? null : $numero,
         ":termos" => true,
         ":confirmado" => !$exigeConfirmacao
     ]);
     $idUsuario = (int)$stmt->fetchColumn();
 
     $mensagem = "Cadastro realizado com sucesso!";
-    if ($exigeConfirmacao) {
-        $token = bin2hex(random_bytes(32));
-        $pdo->prepare(
-            "INSERT INTO confirmacoes_email (usuario_id, token_hash, expira_em)
-             VALUES (:id, :hash, NOW() + INTERVAL '24 hours')"
-        )->execute([":id" => $idUsuario, ":hash" => hash("sha256", $token)]);
-
-        $link = rtrim(url_base(), "/") . "/backend/confirmar-email.php?token=" . $token;
-        $html = "<p>Olá, " . htmlspecialchars($nome, ENT_QUOTES, "UTF-8") . "!</p>"
-              . "<p>Para ativar sua conta no Conectando Patas, confirme seu e-mail:</p>"
-              . "<p><a href=\"" . $link . "\">Confirmar meu e-mail</a></p>"
-              . "<p>O link vale por 24 horas. Se você não fez este cadastro, ignore esta mensagem.</p>";
-
-        if (!enviar_email($email, "Confirme seu e-mail - Conectando Patas", $html)) {
-            $pdo->rollBack();
-            responder(503, ["sucesso" => false, "mensagem" => "Não foi possível enviar o e-mail de confirmação. Tente novamente em alguns minutos."]);
-        }
-        $mensagem = "Cadastro realizado! Enviamos um link de confirmação para o seu e-mail. Confirme para poder entrar.";
-    }
+    $token = $exigeConfirmacao ? gerar_token_confirmacao($pdo, $idUsuario) : null;
     $pdo->commit();
 
-    // Sem confirmação de e-mail (não configurada), a pessoa já entra logada na home.
-    // Com confirmação, o login acontece ao clicar no link (backend/confirmar-email.php).
-    $logado = false;
-    if (!$exigeConfirmacao) {
-        session_regenerate_id(true);
-        $_SESSION["usuario"] = [
-            "id" => $idUsuario,
-            "nome" => $nome,
-            "sobrenome" => $sobrenome,
-            "email" => $email
-        ];
-        $logado = true;
+    // A conta já está criada. Se o e-mail falhar, o cadastro não é desfeito:
+    // o link é reenviado automaticamente quando a pessoa tentar entrar.
+    if ($exigeConfirmacao) {
+        $emailEnviado = enviar_confirmacao_email($nome, $email, $token);
+        $mensagem = $emailEnviado
+            ? "Cadastro realizado! Você já está logado. Enviamos um link de confirmação para o seu e-mail: confirme para liberar favoritos, adoções e cadastro de animais."
+            : "Cadastro realizado! Você já está logado, mas não conseguimos enviar o e-mail de confirmação agora. Saia e entre novamente em alguns minutos para receber um novo link.";
     }
+
+    // A pessoa entra logada logo após o cadastro. Enquanto o e-mail não for confirmado,
+    // a sessão fica marcada como não confirmada e as ações que exigem e-mail confirmado ficam bloqueadas.
+    session_regenerate_id(true);
+    $_SESSION["usuario"] = [
+        "id" => $idUsuario,
+        "nome" => $nome,
+        "sobrenome" => $sobrenome,
+        "email" => $email,
+        "confirmado" => !$exigeConfirmacao
+    ];
+    $logado = true;
 
     echo json_encode(["sucesso" => true, "mensagem" => $mensagem, "logado" => $logado]);
 } catch (PDOException $e) {

@@ -9,6 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 }
 csrf_exigir();
 require_once __DIR__ . '/conexao.php';
+require_once __DIR__ . '/email.php';
 
 $email = trim($_POST['email'] ?? '');
 $senha = $_POST['senha'] ?? '';
@@ -37,6 +38,14 @@ try {
     }
 
     if (!db_bool($usuario['email_confirmado'])) {
+        // Senha correta, mas conta não confirmada: reenvia o link (no máximo 1 a cada 10 minutos por conta).
+        if (email_configurado() && !limite_excedido($pdo, 'reenvio_confirmacao', 1, 10, $email)) {
+            registrar_tentativa($pdo, 'reenvio_confirmacao', $email);
+            $token = gerar_token_confirmacao($pdo, (int)$usuario['id']);
+            if (enviar_confirmacao_email($usuario['nome'], $usuario['email'], $token)) {
+                responder(403, ['sucesso' => false, 'mensagem' => 'Sua conta ainda não foi confirmada. Enviamos um novo link para o seu e-mail (verifique também o spam).']);
+            }
+        }
         responder(403, ['sucesso' => false, 'mensagem' => 'Confirme seu e-mail antes de entrar. Verifique a sua caixa de entrada (e o spam).']);
     }
 
